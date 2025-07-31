@@ -1,1 +1,3 @@
-# practical_course_bachelor
+# Practical Course in Theoretical Chemistry - QM Part
+
+

@@ -1,3 +1,5 @@
+## Optimierung der Molekülgeometrie
+
 Die dreidimensionale Anordnung der Atome in einem Molekül ist die sogenannte Molekülgeometrie. Die Minimums-Geometrie ist die Geometrie eines Moleküls, welche eine minimale Energie aufweist. In quantenchemischen Berechnungen molekularer Eigenschaften ist das Auffinden einer Minimums-Geometrie oft der erste Schritt.
 
 ![alt text](figures/potential_hyperfläche.png)

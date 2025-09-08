@@ -3378,14 +3378,7 @@ Scaling factor for frequencies =  1.000000000  (already applied!)
      5:       0.00 cm**-1
      6:    1071.39 cm**-1
      7:    1680.77 cm**-1
-     8:    1680.86 cm**-1
-     9:    3458.36 cm**-1
-    10:    3576.62 cm**-1
-    11:    3577.14 cm**-1
-
-
-------------
-NORMAL MODES
+     8:    1680.86 cm**-1a
 ------------
 
 These modes are the Cartesian displacements weighted by the diagonal matrix

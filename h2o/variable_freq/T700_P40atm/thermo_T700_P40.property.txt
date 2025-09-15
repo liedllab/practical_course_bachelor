@@ -1,0 +1,46 @@
+*************************************************
+******************* ORCA 6.0.0 ******************
+*************************************************
+$Calculation_Status
+   &GeometryIndex 0
+   &ListStatus       OUT
+   &VERSION [&Type "String"] "6.0.0"
+   &PROGNAME [&Type "String"] "orca"
+   &STATUS [&Type "String"] "Running"
+$End
+$THERMOCHEMISTRY_Energies
+   &GeometryIndex 0
+   &ListStatus       OUT
+   &temperature [&Type "Double"]       7.0000000000000000e+02
+   &pressure [&Type "Double"]       4.0000000000000000e+01
+   &totalMass [&Type "Double"]       1.8015000000000001e+01
+   &spinDegeneracy [&Type "Integer"] 1
+   &elEnergy [&Type "Double"]       0.0000000000000000e+00
+   &transEnergy [&Type "Double"]       3.3251383435860720e-03
+   &rotEnergy [&Type "Double"]       3.3251383435860720e-03
+   &vibEnergy [&Type "Double"]       2.8366126748917674e-04
+   &numOfFreqs [&Type "Integer"] 9
+   &freqScalingFactor [&Type "Double"]       1.0000000000000000e+00
+   &FREQ [&Type "ArrayOfDoubles", &Dim (9,1)] "In cm^-1"
+                                                         0
+
+0                                      0.0000000000000000e+00
+1                                      0.0000000000000000e+00
+2                                      0.0000000000000000e+00
+3                                      0.0000000000000000e+00
+4                                      0.0000000000000000e+00
+5                                      0.0000000000000000e+00
+6                                      1.6339745221864307e+03
+7                                      3.7043046261192958e+03
+8                                      3.8046055415459628e+03
+   &zpe [&Type "Double"]       2.0829023941013731e-02
+   &innerEnergyU [&Type "Double"]       2.7762961895675051e-02
+   &enthalpyH [&Type "Double"]       2.9979786747532062e-02
+   &qEl [&Type "Double"]       0.0000000000000000e+00
+   &qRot [&Type "Double"]       1.4011468465166521e-02
+   &qVib [&Type "Double"]       3.6414604584808827e-04
+   &qTrans [&Type "Double"]       3.5159509307615147e-02
+   &entropyS [&Type "Double"]       4.9535123818629755e-02
+   &freeEnergyG [&Type "Double"]      -1.9555337071097693e-02
+   &isLinear [&Type "Boolean"] false
+$End

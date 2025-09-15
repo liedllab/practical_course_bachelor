@@ -1,0 +1,16 @@
+! PrintThermoChem
+
+%geom
+  InHessName "T300_P20atm/hessian.hess"
+end
+
+%freq
+  Temp 300
+  Pressure 20
+end
+
+* xyz 0 1
+ O  0.000000  0.000000  0.000000
+  H  0.758602  0.000000  0.504284
+  H  0.758602  0.000000  -0.504284
+*

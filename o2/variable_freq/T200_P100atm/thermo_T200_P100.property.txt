@@ -1,0 +1,43 @@
+*************************************************
+******************* ORCA 6.0.0 ******************
+*************************************************
+$Calculation_Status
+   &GeometryIndex 0
+   &ListStatus       OUT
+   &VERSION [&Type "String"] "6.0.0"
+   &PROGNAME [&Type "String"] "orca"
+   &STATUS [&Type "String"] "Running"
+$End
+$THERMOCHEMISTRY_Energies
+   &GeometryIndex 0
+   &ListStatus       OUT
+   &temperature [&Type "Double"]       2.0000000000000000e+02
+   &pressure [&Type "Double"]       1.0000000000000000e+02
+   &totalMass [&Type "Double"]       3.1998000000000001e+01
+   &spinDegeneracy [&Type "Integer"] 3
+   &elEnergy [&Type "Double"]       0.0000000000000000e+00
+   &transEnergy [&Type "Double"]       9.5003952673887774e-04
+   &rotEnergy [&Type "Double"]       6.3335968449258512e-04
+   &vibEnergy [&Type "Double"]       5.6118634307330999e-08
+   &numOfFreqs [&Type "Integer"] 6
+   &freqScalingFactor [&Type "Double"]       1.0000000000000000e+00
+   &FREQ [&Type "ArrayOfDoubles", &Dim (6,1)] "In cm^-1"
+                                                         0
+
+0                                      0.0000000000000000e+00
+1                                      0.0000000000000000e+00
+2                                      0.0000000000000000e+00
+3                                      0.0000000000000000e+00
+4                                      0.0000000000000000e+00
+5                                      1.6402425080770004e+03
+   &zpe [&Type "Double"]       3.7367473864923532e-03
+   &innerEnergyU [&Type "Double"]       5.3202027163581234e-03
+   &enthalpyH [&Type "Double"]       5.9535812454601265e-03
+   &qEl [&Type "Double"]       6.9581673253051089e-04
+   &qRot [&Type "Double"]       3.5253078934832549e-03
+   &qVib [&Type "Double"]       5.9452572706598133e-08
+   &qTrans [&Type "Double"]       8.0273765135579211e-03
+   &entropyS [&Type "Double"]       1.2248560592144393e-02
+   &freeEnergyG [&Type "Double"]      -6.2949793466842664e-03
+   &isLinear [&Type "Boolean"] true
+$End

@@ -25,3 +25,38 @@ Die folgende Seite dient erklärt einige der grundlegenden Befehle zum arbeiten 
 | `chown` | Change file owner. | `chown user:group file.txt` |
 | `mount` | Mount a filesystem. | `mount /dev/sdb1 /mnt` |
 | `umount` | Unmount a filesystem. | `umount /mnt` |
+
+
+#### Übersicht Text-Editoren in Linux
+
+Linux bietet eine Vielzahl von Texteditoren, die in der Kommandozeile verwendet werden können. Hier sind einige der beliebtesten:
+
+**Nano Editor**
+
+Dieser Editor ist benutzerfreundlich und einfach zu bedienen und hat außerdem ein einfaches Interface. Hier eine Liste der wichtigsten Befehle:
+
++ __Undo__ in nano: `Alt + U` 
++ __Move to end of line__: `Ctrl + E`
++ __Save and Exit Nano__    : `Ctrl + X`, dann `Y` und `Enter`
++ __Search in Nano__: `Ctrl + W`, dann Suchbegriff eingeben und `Enter`
+
+**Kate Editor**
+
+Kate ist ein grafischer Texteditor der in vielen Linux-Distributionen vorinstalliert ist. Dieser ist am ähnlichsten zu Notepad und Word damit sehr einfach zu bedienen.
+
+**Vim Editor**
+
+Vim ist ein leistungsstarker und vielseitiger Texteditor, der in der Kommandozeile verwendet wird. Er hat eine steilere Lernkurve als Nano, bietet aber viele erweiterte Funktionen für erfahrene Benutzer. Hier eine Liste der wichtigsten Befehle:
+
++ __Enter Insert Mode__: `i` (um Text einzufügen)
++ __Exit Insert Mode__: `Esc` (um in den Befehlsmodus zurückzukehren)
++ __Save Changes__: `:w` (im Befehlsmodus, dann `Enter`)
++ __Save and Exit__: `:wq` (im Befehlsmodus, dann `Enter`)
++ __Exit without Saving__: `:q!` (im Befehlsmodus, dann `Enter`)
++ __Search__: `/suchbegriff` (im Befehlsmodus, dann `Enter`)
++ __Undo__: `u` (im Befehlsmodus)
++ __Redo__: `Ctrl + r` (im Befehlsmodus)
++ __Delete Line__: `dd` (im Befehlsmodus)
++ __Copy Line__: `yy` (im Befehlsmodus)
++ __Paste Line__: `p` (im Befehlsmodus)
+

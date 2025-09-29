@@ -1,3 +1,12 @@
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
 ## Frequenzberechnung
 
 Die Änderung der potentiellen Energie $V$ der Kerne kann durch eine Taylor-Reihe um Entwicklungspunkt $X_0$ ausgedrückt werden:

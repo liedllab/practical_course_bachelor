@@ -1,0 +1,16 @@
+! PrintThermoChem
+
+%geom
+  InHessName "T100_P70atm/hessian.hess"
+end
+
+%freq
+  Temp 100
+  Pressure 70
+end
+
+* xyz 0 1
+C 0.000000 0.000000 0.000000
+O 0.000000 0.000000 1.155028
+O 0.000000 0.000000 -1.155028
+*

@@ -1,0 +1,17 @@
+! PrintThermoChem
+
+%geom
+  InHessName "T900_P80atm/hessian.hess"
+end
+
+%freq
+  Temp 900
+  Pressure 80
+end
+
+* xyz 0 1
+N     0.000000    0.000000    0.000000
+H     0.940000    0.000000   -0.330000
+H    -0.470000    0.810000   -0.330000
+H    -0.470000   -0.810000   -0.330000
+*

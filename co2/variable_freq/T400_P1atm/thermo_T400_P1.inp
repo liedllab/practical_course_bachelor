@@ -1,0 +1,16 @@
+! PrintThermoChem
+
+%geom
+  InHessName "T400_P1atm/hessian.hess"
+end
+
+%freq
+  Temp 400
+  Pressure 1
+end
+
+* xyz 0 1
+C 0.000000 0.000000 0.000000
+O 0.000000 0.000000 1.155028
+O 0.000000 0.000000 -1.155028
+*

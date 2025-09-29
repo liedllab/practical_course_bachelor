@@ -1,0 +1,6 @@
+! MP2 6-311G(d,p) OPT FREQ NUMFREQ
+* xyz 0 1
+H 0.0 0.0 -0.37
+H 0.0 0.0  0.37
+*
+

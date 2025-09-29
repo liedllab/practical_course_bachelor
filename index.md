@@ -6,4 +6,5 @@ Jedem Praktikumsteilnehmer wird eine Reaktion zugeteilt im Zuge des Praktikums w
 + **Aufgabe 2** Untersuchung der Potential-Hyperfläche
 + **Aufgabe 3** Frequenzberechnung (Schwingungsspektroskopie, Infrarot)
 + **Aufgabe 4** Thermodynamik
++ **Linux Tutorial** [Linux Tutorial](Linux-Tutorial.html)
 

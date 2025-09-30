@@ -91,3 +91,21 @@ Thus, these vectors are normalized but *not* orthogonal
       8       0.559049  -0.398396   0.427133
 ```
 Im Output-File findet man dann die berechneten Frequenzen in cm$^{-1}$ und die zugehörigen massegewichteten Normalmoden.
+
+### Anharmonische Frequenzberechnung mit VPT2 
+
+Vibrational pertubation theroy (VPT) ist eine möglichkeit um die harmonische Beschreibung von molekularen Schwingungen zu verbessern. Ein quartisches Kraftfeld in Normalkoordinaten beschreibt hier harmonische und anharmonische Effekte
+
+$$V = \frac{1}{2} \sum \lambda_i Q_i² + \frac{1}{6} \sum F_{ijk} Q_i Q_j Q_k + \frac{1}{24} \sum F_{ijkl} Q_i Q_j Q_k Q_l $$
+
+hierbei sind $F_{ijk}$ und $F_{ijkl}$ die kubischen und quartischen Ableitungen des Potentials mit der Form:
+
+$$F_{ijk} = \frac{\partial^3 V}{\partial Q_i \partial Q_j \partial Q_k}$$
+
+$$F_{ijkl} = \frac{\partial^4 V}{\partial Q_i \partial Q_j \partial Q_k \partial Q_l}$$
+
+Man schreibt den Hamiltonian dann als Summe:
+
+$$H = H^{(0)} + H^{(1)} + H^{(2)}$$
+
+wo jeweils die kubischen Terme in $H^{(1)}$ und die quartischen Terme in $H^{(2)}$ enthalten sind. 

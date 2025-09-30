@@ -1,0 +1,1528 @@
+
+                                 *****************
+                                 * O   R   C   A *
+                                 *****************
+
+                                            #,                                       
+                                            ###                                      
+                                            ####                                     
+                                            #####                                    
+                                            ######                                   
+                                           ########,                                 
+                                     ,,################,,,,,                         
+                               ,,#################################,,                 
+                          ,,##########################################,,             
+                       ,#########################################, ''#####,          
+                    ,#############################################,,   '####,        
+                  ,##################################################,,,,####,       
+                ,###########''''           ''''###############################       
+              ,#####''   ,,,,##########,,,,          '''####'''          '####       
+            ,##' ,,,,###########################,,,                        '##       
+           ' ,,###''''                  '''############,,,                           
+         ,,##''                                '''############,,,,        ,,,,,,###''
+      ,#''                                            '''#######################'''  
+     '                                                          ''''####''''         
+             ,#######,   #######,   ,#######,      ##                                
+            ,#'     '#,  ##    ##  ,#'     '#,    #''#        ,####,    ,#,          
+            ##       ##  ##   ,#'  ##            #'  '#       #'       ,# #          
+            ##       ##  #######   ##           ,######,      #####,      #          
+            '#,     ,#'  ##    ##  '#,     ,#' ,#      #,     #,   #      #          
+             '#######'   ##     ##  '#######'  #'      '#     '####' #    #          
+
+
+
+                #########################################################
+                #                        -***-                          #
+                #          Department of theory and spectroscopy        #
+                #                                                       #
+                #                      Frank Neese                      #
+                #                                                       #
+                #     Directorship, Architecture, Infrastructure        #
+                #                    SHARK, DRIVERS                     #
+                #        Core code/Algorithms in most modules           #
+                #                                                       #
+                #        Max Planck Institute fuer Kohlenforschung      #
+                #                Kaiser Wilhelm Platz 1                 #
+                #                 D-45470 Muelheim/Ruhr                 #
+                #                      Germany                          #
+                #                                                       #
+                #                  All rights reserved                  #
+                #                        -***-                          #
+                #########################################################
+
+
+                         Program Version 6.1.0  -  RELEASE   -
+                                (GIT: $679e74b$)
+                          ($2025-06-10 18:02:51 +0200$)
+
+
+ With contributions from (in alphabetic order):
+[Max-Planck-Institut fuer Kohlenforschung]                               
+  Daniel Aravena         : Magnetic Suceptibility                        
+  Michael Atanasov       : Ab Initio Ligand Field Theory (pilot matlab implementation)
+  Alexander A. Auer      : GIAO ZORA, VPT2 properties, NMR spectrum      
+  Ute Becker             : All parallelization in ORCA, NUMFREQ, NUMCALC 
+  Giovanni Bistoni       : ED, misc. LED, open-shell LED, HFLD           
+  Dmytro Bykov           : pre 5.0 version of the SCF Hessian            
+  Marcos Casanova-Páez   : Triplet and SCS-CIS(D). UHF-(DLPNO)-IP/EA/STEOM-CCSD. UHF-CVS-IP/STEOM-CCSD   
+  Vijay G. Chilkuri      : MRCI spin determinant printing, contributions to CSF-ICE 
+  Pauline Colinet        : FMM embedding                                 
+  Dipayan Datta          : RHF DLPNO-CCSD density                        
+  Achintya Kumar Dutta   : EOM-CC, STEOM-CC                              
+  Nicolas Foglia         : Exact transition moments, OPA infrastructure, MCD improvements    
+  Dmitry Ganyushin       : Spin-Orbit,Spin-Spin,Magnetic field MRCI      
+  Miquel Garcia-Rates    : C-PCM and meta-GGA Hessian, CCSD/C-PCM, Gaussian charge scheme 
+  Tiago L. C. Gouveia    : GS-ROHF, GS-ROCIS                             
+  Yang Guo               : DLPNO-NEVPT2, F12-NEVPT2, CIM, IAO-localization        
+  Andreas Hansen         : Spin unrestricted coupled pair/coupled cluster methods 
+  Ingolf Harden          : AUTO-CI MPn and infrastructure                
+  Benjamin Helmich-Paris : MC-RPA, TRAH-(SCF,CASSCF), AVAS, COSX integrals, SCF dyn. polar., MC-PDFT, srDFT 
+  Lee Huntington         : MR-EOM, pCC                                   
+  Robert Izsak           : Overlap fitted RIJCOSX, COSX-SCS-MP3, EOM     
+  Riya Kayal             : Wick's Theorem for AUTO-CI, AUTO-CI UHF-CCSDT 
+  Emily Kempfer          : AUTO-CI RHF CISDT and CCSDT, approximate NEVPT4
+  Christian Kollmar      : KDIIS, OOCD, Brueckner-CCSD(T), CCSD density, CASPT2, CASPT2-K, improved NEVPT2 
+  Axel Koslowski         : Symmetry handling                             
+  Simone Kossmann        : meta-GGA functionals, TD-DFT gradient, OOMP2, (MP2 Hessian; deprecated post 5.0) 
+  Lucas Lang             : DCDCAS, Hyperfine gauge corrections, ICE-SOC+SSC
+  Marvin Lechner         : AUTO-CI (C++ implementation), FIC-MRCC        
+  Spencer Leger          : CASSCF response                               
+  Dagmar Lenk            : GEPOL surface, SMD, ORCA-2-JSON               
+  Dimitrios Liakos       : Extrapolation schemes; Compound Job, Property file
+  Dimitrios Manganas     : Further ROCIS development; embedding schemes. LFT, Crystal Embedding 
+  Dimitrios Pantazis     : SARC Basis sets                               
+  Anastasios Papadopoulos: AUTO-CI, single reference methods and gradients 
+  Taras Petrenko         : pre 6.0 DFT Hessian and TD-DFT gradient,  ECA, NRVS 
+  Petra Pikulova         : Analytic Raman intensities                    
+  Peter Pinski           : DLPNO-MP2, DLPNO-MP2 Gradient                 
+  Shashank Vittal Rao    : ES-AILFT, MagRelax                            
+  Christoph Reimann      : Effective Core Potentials                     
+  Marius Retegan         : Local ZFS, SOC                                
+  Christoph Riplinger    : Optimizer, TS searches, QM/MM, DLPNO-CCSD(T), (RO)-DLPNO pert. Triples 
+  Michael Roemelt        : Original ROCIS implementation, recursive CI coupling coefficients
+  Masaaki Saitow         : Open-shell DLPNO-CCSD energy and density      
+  Barbara Sandhoefer     : DKH picture change effects                    
+  Yorick L. A. Schmerwitz: GMF and freeze-and-release deltaSCF, NEB S-IDPP initial path                    
+  Kantharuban Sivalingam : CASSCF convergence/infrastructure, NEVPT2, NEVPT3, NEVPT4(SD), FIC-MRCI and CEPA variants
+  Bernardo de Souza      : ESD, SOC TD-DFT                               
+  Georgi L. Stoychev     : AutoAux, RI-MP2 NMR, DLPNO-MP2 response, X2C  
+  Van Anh Tran           : RI-MP2 g-tensors                              
+  Willem Van den Heuvel  : Paramagnetic NMR                              
+  Zikuan Wang            : NOTCH, Electric field optimization            
+  Frank Wennmohs         : Technical directorship and infrastructure     
+  Hang Xu                : AUTO-CI-Response properties                   
+                                                                         
+[FACCTs GmbH]                                                            
+  Markus Bursch, Nicolas Foglia, Miquel Garcia-Rates, Ingolf Harden, Hagen Neugebauer, Anastasios Papadopoulos, 
+  Christoph Riplinger, Bernardo de Souza, Georgi L. Stoychev                                                    
+                                                                 
+  APM, various basis sets, CI-OPT, improved COSX, DLPNO-Multilevel,           
+  DOCKER, DRACO, updates on ESD, Fragmentator, GOAT, IRC, LR-CPCM, L-BFGS, MBIS, meta-GGA TD-DFT gradient, ML-optimized integration grids, 
+  MM, NACMEs, nearIR, NEB, NEB-TS, NL-DFT gradient (VV10), 2- and 3-layer-ONIOM, interface openCOSMO-RS, QMMM,   
+  Crystal-QMMM, RESP, rigid body optimization, SF, symmetry and pop. for TD-DFT, various functionals, SOLVATOR                                   
+                                                                         
+[Other institutions]                                                     
+  V. Asgeirsson          : NEB                                           
+  Christoph Bannwarth    : sTDA-DFT, sTD-DFT, PBEh-3c, B97-3c, D3        
+  Giovanni Bistoni       : ETS/NOCV, ADLD/ADEX, COVALED                  
+  Martin Brehm           : Molecular dynamics                            
+  Ronald Cardenas        : ETS/NOCV                                      
+  Martina Colucci        : COVALED                                       
+  Sebastian Ehlert       : rSCAN, r2SCAN, r2SCAN-3c, D4, dhf basis sets  
+  Marvin Friede          : D4 for Fr, Ra, Ac-Lr                          
+  Lars Goerigk           : TD-DFT with DH, B97 family of functionals     
+  Stefan Grimme          : VdW corrections, initial TS optimization, DFT functionals, gCP, sTDA/sTD-DF 
+  Waldemar Hujo          : DFT-NL                                        
+  H. Jonsson             : NEB                                           
+  Holger Kruse           : gCP                                           
+  Marcel Mueller         : wB97X-3c, vDZP basis set                      
+  Hagen Neugebauer       : wr2SCAN, Native XTB                           
+  Gianluca Regni         : ADLD/ADEX                                     
+  Tobias Risthaus        : pre 6.0 range-separated hybrid DFT and stability analysis
+  Lukas Wittmann         : regularized MP2, r2SCAN double-hybrids, wr2SCAN        
+                                                                         
+We gratefully acknowledge several colleagues who have allowed us to      
+interface, adapt or use parts of their codes:                            
+  Ed Valeev, F. Pavosevic, A. Kumar             : LibInt (2-el integral package), F12 methods 
+  Garnet Chan, S. Sharma, J. Yang, R. Olivares  : DMRG                   
+  Ulf Ekstrom                                   : XCFun DFT Library      
+  Mihaly Kallay                                 : mrcc  (arbitrary order and MRCC methods)
+  Frank Weinhold                                : gennbo (NPA and NBO analysis)           
+  Simon Mueller                                 : openCOSMO-RS                            
+  Christopher J. Cramer and Donald G. Truhlar   : smd solvation model                     
+  S Lehtola, MJT Oliveira, MAL Marques          : LibXC Library                           
+  Liviu Ungur et al                             : ANISO software                          
+
+
+ Your calculation uses the libint2 library for the computation of 2-el integrals
+ For citations please refer to: http://libint.valeyev.net
+
+ Your ORCA version has been built with support for libXC version: 7.0.0
+ For citations please refer to: https://libxc.gitlab.io
+
+ This ORCA versions uses:
+   CBLAS   interface :  Fast vector & matrix operations
+   LAPACKE interface :  Fast linear algebra routines
+   SCALAPACK package :  Parallel linear algebra routines
+   Shared memory     :  Shared parallel matrices
+   BLAS/LAPACK       :  OpenBLAS 0.3.29  USE64BITINT DYNAMIC_ARCH NO_AFFINITY Haswell SINGLE_THREADED
+        Core in use  :  Haswell
+   Copyright (c) 2011-2014, The OpenBLAS Project
+
+
+  ***********************************
+  * Starting time: Tue Sep 30 11:20:26 2025
+  * Host name:     sv1-c724
+  * Process ID:    1519224
+  * Working dir.:  /home/lme/practical_course/practical_course_bachelor/h2co3/vpt2
+  ***********************************
+
+================================================================================
+
+----- Orbital basis set information -----
+Your calculation utilizes the basis: def2-SVP
+   F. Weigend and R. Ahlrichs, Phys. Chem. Chem. Phys. 7, 3297 (2005).
+
+----- AuxC basis set information -----
+Your calculation utilizes the auxiliary basis: cc-pVDZ/C 
+  H-He, B, Ne, Al-Ar, Ga-Br : Obtained from the EMSL Basis Set Exchange (bse.pnl.gov) Feb. 2017
+                              F. Weigend, A. Kohn, C. Hattig, J. Chem. Phys. 116, 3175 (2002)
+               Li-Be, Na-Mg : Obtained from the EMSL Basis Set Exchange (bse.pnl.gov) Feb. 2017
+                              C. Haettig, Phys. Chem. Chem. Phys. 7, 59 (2005)
+                        C-F : Obtained from the EMSL Basis Set Exchange (bse.pnl.gov) Feb. 2017
+                              C. Haettig, Phys. Chem. Chem. Phys. 7, 59 (2005)
+                              F. Weigend, A. Kohn, C. Hattig, J. Chem. Phys. 116, 3175 (2002)
+                         Kr : Obtained from the TURBOMOLE 7.0 basis set library
+                              F. Weigend, A. Kohn, C. Hattig, J. Chem. Phys. 116, 3175 (2002)
+                              S function revised in Sep. 2009
+
+================================================================================
+                                        WARNINGS
+                       Please study these warnings very carefully!
+================================================================================
+
+WARNING: Old DensityContainer found on disk!
+         Will remove this file - 
+         If you want to keep old densities, please start your calculation with a different basename. 
+
+
+WARNING: Instead of the default, updated atomic masses from 2016 are used.
+
+
+WARNING: TCut can not be >=Thresh
+  ===> : TCut is set to 0.01*Thresh
+
+================================================================================
+                                       INPUT FILE
+================================================================================
+NAME = h2co3.inp
+|  1> ! RHF cc-PVDZ/C ExtremeSCF VPT2
+|  2> 
+|  3> %vpt2
+|  4> 	VPT2 	On
+|  5> 	HessianCutoff 	1e-12
+|  6> 	PrintLevel 	1	
+|  7> 	MinimiseOrcaPrint True
+|  8> end
+|  9> 
+| 10> %method
+| 11> 	Z_Tol 	1e-14
+| 12> end
+| 13> 
+| 14> %pal nprocs 4 end
+| 15> 
+| 16> 
+| 17> * xyz 0 1
+| 18>   C           0.09356223167900      0.00000000000003      0.00000001055351
+| 19>   O           1.30021353231093     -0.00000000000022     -0.00000000050884
+| 20>   O          -0.68682240827543      1.08527399443860      0.00000000095827
+| 21>   O          -0.68682240827540     -1.08527399443839      0.00000000095824
+| 22>   H          -0.08270047371965      1.84136684670137     -0.00000000598060
+| 23>   H          -0.08270047371944     -1.84136684670138     -0.00000000598058
+| 24> *
+| 25> 
+| 26>                          ****END OF INPUT****
+================================================================================
+
+numfreqdx 1 AnHess 0 RunTyp -104441088 
+                     *******************************
+                     *              VPT2           *
+                     *******************************
+
+    Basename = h2co3
+    Pickettname = 
+    MinimiseOrcaOutput = true
+    SymThresh = 1.00e-04
+    AnharmDisp = 0.050
+    PropDisp = 0.050
+    HessianCutoff = 1.00e-12
+    print_level = 1
+    AvgProp = 0
+    SkipModes = 0
+    CubicXTB = 0
+
+
+Rotating Geometry into its principle axis frame!
+ -----------------------------------------------
+| PLEASE NOTE :                                 |
+| In contrast to most parts of ORCA, which keep |
+| the orientation of a system from the input,   |
+| the VPT2 module will rotate the system into   |
+| the principlal axes frame. This influences    |
+| all directional properties like dipole        |
+| or transition dipole components. Please check |
+| the geometry output below for the new coords !|
+ -----------------------------------------------
+
+ > Obtaining the initial Hessian.
+calling ORCA analytical Hessian for initial Hessian 
+VPT2 initial Hessian finished in     7.193553 seconds 
+VPT2 initial property finished in     0.000000 seconds 
+-----------------------------------------------------------------
+                         IR Intensities                      
+-----------------------------------------------------------------
+Mode freq     Int          T2   (      Tx       Ty       Tz     )  
+     cm-1    km/mol        a.u.                                 
+----------------------------------------------------------------
+0   -0.00   -nan       -nan (      -nan       -nan       -nan)
+1   -0.00   -nan       -nan (      -nan       -nan       -nan)
+2   -0.00   -nan       -nan (      -nan       -nan       -nan)
+3  127.87  0.000   0.000000 (  0.000000   0.000000   0.000000)
+4  168.28  0.156   0.000057 (  0.007567  -0.000000   0.000000)
+5  192.16  1.902   0.000611 (  0.000000  -0.000000  -0.024725)
+6  633.88  4.974   0.000485 ( -0.000000   0.022013   0.000000)
+7  671.61 40.109   0.003688 ( -0.060728   0.000000   0.000000)
+8  799.65  0.000   0.000000 ( -0.000000   0.000000   0.000000)
+9  802.29 142.105   0.010938 (  0.000000   0.000000   0.104583)
+10  962.00 228.001   0.014635 (  0.000000  -0.000000  -0.120977)
+11  1021.66 18.918   0.001143 (  0.000000   0.033814  -0.000000)
+12  1336.77 632.973   0.029240 (  0.170996  -0.000000   0.000000)
+13  1466.67  8.353   0.000352 ( -0.000000  -0.018753   0.000000)
+14  1594.14 84.996   0.003292 ( -0.057380  -0.000000   0.000000)
+15  1902.58 711.681   0.023099 (  0.000000   0.151982  -0.000000)
+16  3886.65 270.435   0.004297 ( -0.065549  -0.000000   0.000000)
+17  3889.46 55.625   0.000883 ( -0.000000   0.029717   0.000000)
+ > Generate 24 displacements .
+generating displaced geometries for force field 
+generating displaced geometries for property derivatives 
+Storing displaced geometries for hessian and property derivatives
+List of participating nodes    ...  h2co3.hostnames
+
+	<< Calculating Hessian on displaced geometry   1 (of  24)   >>
+	<< Calculating Hessian on displaced geometry   2 (of  24)   >>
+	<< Calculating Hessian on displaced geometry   3 (of  24)   >>
+	<< Calculating Hessian on displaced geometry   4 (of  24)   >>
+	<< Calculating Hessian on displaced geometry   5 (of  24)   >>
+	<< Calculating Hessian on displaced geometry   6 (of  24)   >>
+	<< Calculating Hessian on displaced geometry   7 (of  24)   >>
+	<< Calculating Hessian on displaced geometry   8 (of  24)   >>
+	<< Calculating Hessian on displaced geometry   9 (of  24)   >>
+	<< Calculating Hessian on displaced geometry  10 (of  24)   >>
+	<< Calculating Hessian on displaced geometry  11 (of  24)   >>
+	<< Calculating Hessian on displaced geometry  12 (of  24)   >>
+	<< Calculating Hessian on displaced geometry  13 (of  24)   >>
+	<< Calculating Hessian on displaced geometry  14 (of  24)   >>
+	<< Calculating Hessian on displaced geometry  15 (of  24)   >>
+	<< Calculating Hessian on displaced geometry  16 (of  24)   >>
+	<< Calculating Hessian on displaced geometry  17 (of  24)   >>
+	<< Calculating Hessian on displaced geometry  18 (of  24)   >>
+	<< Calculating Hessian on displaced geometry  19 (of  24)   >>
+	<< Calculating Hessian on displaced geometry  20 (of  24)   >>
+	<< Calculating Hessian on displaced geometry  22 (of  24)   >>
+	<< Calculating Hessian on displaced geometry  21 (of  24)   >>
+	<< Calculating Hessian on displaced geometry  23 (of  24)   >>
+	<< Calculating Hessian on displaced geometry  24 (of  24)   >>
+VPT2 displaced Hessians finished in   151.711326 seconds 
+ 
+------- collect hessians vpt2 -------- 
+-----------------------------------------------------------------
+                         IR Intensities                      
+-----------------------------------------------------------------
+Mode freq     Int          T2   (      Tx       Ty       Tz     )  
+     cm-1    km/mol        a.u.                                 
+----------------------------------------------------------------
+0   -0.00   -nan       -nan (      -nan       -nan       -nan)
+1   -0.00   -nan       -nan (      -nan       -nan       -nan)
+2    0.00  0.000   0.000000 (  0.000000  -0.000000  -0.000000)
+3  129.49  0.000   0.000000 ( -0.000000   0.000000   0.000000)
+4  168.35  0.156   0.000057 (  0.007563   0.000000   0.000000)
+5  191.15  1.905   0.000615 (  0.000000  -0.000000  -0.024809)
+6  632.86  5.003   0.000488 ( -0.000000   0.022094   0.000000)
+7  672.41 40.345   0.003705 ( -0.060870  -0.000000   0.000000)
+8  799.96  0.000   0.000000 ( -0.000000   0.000000  -0.000000)
+9  802.09 141.748   0.010913 (  0.000000   0.000000   0.104464)
+10  962.07 228.340   0.014656 ( -0.000000  -0.000000  -0.121062)
+11  1020.98 18.967   0.001147 (  0.000000   0.033870  -0.000000)
+12  1336.97 634.442   0.029303 (  0.171181  -0.000000   0.000000)
+13  1467.18  8.231   0.000346 (  0.000000  -0.018613   0.000000)
+14  1594.62 84.584   0.003275 ( -0.057232  -0.000000   0.000000)
+15  1903.55 709.917   0.023030 (  0.000000   0.151755  -0.000000)
+16  3885.88 270.519   0.004299 ( -0.065566  -0.000000   0.000000)
+17  3888.73 56.453   0.000896 ( -0.000000   0.029941   0.000000)
+-----------------------------------------------------------------
+                         IR Intensities                      
+-----------------------------------------------------------------
+Mode freq     Int          T2   (      Tx       Ty       Tz     )  
+     cm-1    km/mol        a.u.                                 
+----------------------------------------------------------------
+0   -0.00   -nan       -nan (      -nan       -nan       -nan)
+1    0.00  0.000   0.000000 ( -0.000000  -0.000000   0.000000)
+2    0.00  0.000   0.000000 (  0.000000   0.000000  -0.000000)
+3  126.21  0.000   0.000000 ( -0.000000  -0.000000   0.000000)
+4  168.22  0.156   0.000057 (  0.007574   0.000000  -0.000000)
+5  193.16  1.900   0.000607 ( -0.000000  -0.000000  -0.024644)
+6  634.92  4.945   0.000481 ( -0.000000   0.021931   0.000000)
+7  670.81 39.870   0.003670 ( -0.060582  -0.000000   0.000000)
+8  799.40  0.000   0.000000 ( -0.000000   0.000000  -0.000000)
+9  802.53 142.408   0.010958 (  0.000000   0.000000   0.104679)
+10  961.93 227.714   0.014618 ( -0.000000  -0.000000  -0.120905)
+11  1022.35 18.869   0.001140 ( -0.000000   0.033759  -0.000000)
+12  1336.58 631.537   0.029177 (  0.170814   0.000000   0.000000)
+13  1466.18  8.472   0.000357 (  0.000000  -0.018890   0.000000)
+14  1593.65 85.368   0.003308 ( -0.057514   0.000000   0.000000)
+15  1901.60 713.443   0.023168 (  0.000000   0.152209  -0.000000)
+16  3887.33 270.335   0.004294 ( -0.065531  -0.000000   0.000000)
+17  3890.09 54.803   0.000870 ( -0.000000   0.029495   0.000000)
+-----------------------------------------------------------------
+                         IR Intensities                      
+-----------------------------------------------------------------
+Mode freq     Int          T2   (      Tx       Ty       Tz     )  
+     cm-1    km/mol        a.u.                                 
+----------------------------------------------------------------
+0   -0.00   -nan       -nan (      -nan       -nan       -nan)
+1    0.00  0.000   0.000000 ( -0.000000   0.000000   0.000000)
+2    0.00  0.000   0.000000 (  0.000000  -0.000000  -0.000000)
+3  127.82  0.001   0.000000 ( -0.000000   0.000000   0.000652)
+4  168.28  0.156   0.000057 (  0.007568  -0.000057  -0.000000)
+5  192.19  1.901   0.000611 ( -0.000000  -0.000000  -0.024718)
+6  633.87  4.985   0.000486 (  0.001140   0.022008   0.000000)
+7  671.63 40.094   0.003686 ( -0.060713   0.000492  -0.000000)
+8  799.50  8.036   0.000621 ( -0.000000  -0.000000  -0.024914)
+9  802.45 134.057   0.010316 ( -0.000000   0.000000   0.101568)
+10  962.00 228.012   0.014636 ( -0.000000  -0.000000  -0.120980)
+11  1021.66 18.946   0.001145 (  0.001292   0.033815  -0.000000)
+12  1336.78 632.902   0.029236 (  0.170986   0.000265  -0.000000)
+13  1466.68  8.396   0.000353 (  0.001419  -0.018748   0.000000)
+14  1594.14 84.995   0.003292 ( -0.057379   0.000186   0.000000)
+15  1902.56 711.679   0.023099 ( -0.000171   0.151983  -0.000000)
+16  3886.62 269.645   0.004284 ( -0.065425  -0.001935  -0.000000)
+17  3889.45 56.417   0.000896 ( -0.004037   0.029655   0.000000)
+-----------------------------------------------------------------
+                         IR Intensities                      
+-----------------------------------------------------------------
+Mode freq     Int          T2   (      Tx       Ty       Tz     )  
+     cm-1    km/mol        a.u.                                 
+----------------------------------------------------------------
+0    0.00  0.000   0.000000 ( -0.000000   0.000000  -0.000000)
+1    0.00  0.000   0.000000 (  0.000000  -0.000000  -0.000000)
+2    0.00  0.000   0.000000 (  0.000000  -0.000000   0.000000)
+3  127.82  0.001   0.000000 ( -0.000000  -0.000000  -0.000652)
+4  168.28  0.156   0.000057 (  0.007568   0.000057   0.000000)
+5  192.19  1.901   0.000611 (  0.000000  -0.000000  -0.024718)
+6  633.87  4.985   0.000486 ( -0.001140   0.022008   0.000000)
+7  671.63 40.094   0.003686 ( -0.060713  -0.000492   0.000000)
+8  799.50  8.036   0.000621 ( -0.000000   0.000000   0.024914)
+9  802.45 134.057   0.010316 ( -0.000000  -0.000000  -0.101568)
+10  962.00 228.012   0.014636 (  0.000000  -0.000000  -0.120980)
+11  1021.66 18.946   0.001145 ( -0.001292   0.033815  -0.000000)
+12  1336.78 632.902   0.029236 (  0.170986  -0.000265   0.000000)
+13  1466.68  8.396   0.000353 ( -0.001419  -0.018748   0.000000)
+14  1594.14 84.995   0.003292 ( -0.057379  -0.000186  -0.000000)
+15  1902.56 711.679   0.023099 (  0.000171   0.151983  -0.000000)
+16  3886.62 269.645   0.004284 ( -0.065425   0.001935   0.000000)
+17  3889.45 56.417   0.000896 (  0.004037   0.029655   0.000000)
+-----------------------------------------------------------------
+                         IR Intensities                      
+-----------------------------------------------------------------
+Mode freq     Int          T2   (      Tx       Ty       Tz     )  
+     cm-1    km/mol        a.u.                                 
+----------------------------------------------------------------
+0   -0.00   -nan       -nan (      -nan       -nan       -nan)
+1    0.00  0.000   0.000000 ( -0.000000  -0.000000  -0.000000)
+2    0.00  0.000   0.000000 (  0.000000  -0.000000  -0.000000)
+3  127.88  0.000   0.000000 (  0.000000  -0.000017   0.000000)
+4  168.30  0.157   0.000057 (  0.007579  -0.000000  -0.000091)
+5  192.16  1.904   0.000612 ( -0.000008  -0.000000  -0.024738)
+6  633.91  4.973   0.000484 (  0.000000  -0.022010  -0.000000)
+7  671.62 40.098   0.003687 (  0.060711   0.000000   0.000965)
+8  799.90  0.004   0.000000 (  0.000000   0.000545  -0.000000)
+9  802.46 141.911   0.010920 (  0.001339  -0.000000  -0.104492)
+10  962.03 228.185   0.014647 ( -0.000239   0.000000   0.121023)
+11  1021.67 18.920   0.001144 (  0.000000   0.033817  -0.000000)
+12  1336.85 633.088   0.029243 (  0.171006  -0.000000  -0.000129)
+13  1466.75  8.345   0.000351 ( -0.000000  -0.018744   0.000000)
+14  1594.16 84.895   0.003288 ( -0.057345   0.000000  -0.000209)
+15  1902.58 711.685   0.023099 ( -0.000000  -0.151983   0.000000)
+16  3886.27 270.431   0.004297 ( -0.065549  -0.000000  -0.000551)
+17  3889.08 55.621   0.000883 ( -0.000000   0.029718   0.000000)
+-----------------------------------------------------------------
+                         IR Intensities                      
+-----------------------------------------------------------------
+Mode freq     Int          T2   (      Tx       Ty       Tz     )  
+     cm-1    km/mol        a.u.                                 
+----------------------------------------------------------------
+0   -0.00   -nan       -nan (      -nan       -nan       -nan)
+1    0.00  0.000   0.000000 ( -0.000000  -0.000000  -0.000000)
+2    0.00  0.000   0.000000 (  0.000000   0.000000   0.000000)
+3  127.88  0.000   0.000000 ( -0.000000  -0.000017   0.000000)
+4  168.30  0.157   0.000057 (  0.007579   0.000000   0.000091)
+5  192.16  1.904   0.000612 (  0.000008  -0.000000  -0.024738)
+6  633.91  4.973   0.000484 ( -0.000000  -0.022010  -0.000000)
+7  671.62 40.098   0.003687 (  0.060711  -0.000000  -0.000965)
+8  799.90  0.004   0.000000 (  0.000000  -0.000545   0.000000)
+9  802.46 141.911   0.010920 (  0.001339   0.000000   0.104492)
+10  962.03 228.185   0.014647 (  0.000239   0.000000   0.121023)
+11  1021.67 18.920   0.001144 ( -0.000000   0.033817  -0.000000)
+12  1336.85 633.088   0.029243 (  0.171006   0.000000   0.000129)
+13  1466.75  8.345   0.000351 (  0.000000  -0.018744   0.000000)
+14  1594.16 84.895   0.003288 (  0.057345   0.000000  -0.000209)
+15  1902.58 711.685   0.023099 (  0.000000  -0.151983   0.000000)
+16  3886.27 270.431   0.004297 ( -0.065549   0.000000   0.000551)
+17  3889.08 55.621   0.000883 ( -0.000000  -0.029718  -0.000000)
+-----------------------------------------------------------------
+                         IR Intensities                      
+-----------------------------------------------------------------
+Mode freq     Int          T2   (      Tx       Ty       Tz     )  
+     cm-1    km/mol        a.u.                                 
+----------------------------------------------------------------
+0   -0.00   -nan       -nan (      -nan       -nan       -nan)
+1   -0.00   -nan       -nan (      -nan       -nan       -nan)
+2    0.00  0.000   0.000000 ( -0.000000  -0.000000  -0.000000)
+3  127.88  0.000   0.000000 ( -0.000322   0.000000   0.000000)
+4  168.30  0.156   0.000057 ( -0.007575   0.000000  -0.000000)
+5  192.16  1.904   0.000612 ( -0.000000  -0.000282  -0.024733)
+6  633.91  4.973   0.000484 (  0.000000   0.022010   0.000084)
+7  671.62 40.091   0.003686 (  0.060714  -0.000000  -0.000000)
+8  799.83  0.023   0.000002 (  0.001345  -0.000000   0.000000)
+9  802.42 141.955   0.010924 ( -0.000000  -0.000102   0.104519)
+10  962.01 228.071   0.014640 ( -0.000000   0.000034   0.120995)
+11  1021.68 18.988   0.001148 (  0.000000   0.033818  -0.002002)
+12  1336.83 633.051   0.029242 ( -0.171003   0.000000  -0.000000)
+13  1466.73  8.346   0.000351 ( -0.000000  -0.018745  -0.000078)
+14  1594.15 84.929   0.003290 ( -0.057357  -0.000000   0.000000)
+15  1902.58 711.680   0.023099 (  0.000000   0.151982  -0.000131)
+16  3886.36 270.426   0.004297 ( -0.065550   0.000000   0.000000)
+17  3889.16 55.638   0.000883 (  0.000000   0.029718   0.000488)
+-----------------------------------------------------------------
+                         IR Intensities                      
+-----------------------------------------------------------------
+Mode freq     Int          T2   (      Tx       Ty       Tz     )  
+     cm-1    km/mol        a.u.                                 
+----------------------------------------------------------------
+0    0.00  0.000   0.000000 ( -0.000000  -0.000000   0.000000)
+1    0.00  0.000   0.000000 (  0.000000  -0.000000  -0.000000)
+2    0.00  0.000   0.000000 (  0.000000   0.000000   0.000000)
+3  127.88  0.000   0.000000 ( -0.000322   0.000000  -0.000000)
+4  168.30  0.156   0.000057 ( -0.007575  -0.000000   0.000000)
+5  192.16  1.904   0.000612 ( -0.000000   0.000282  -0.024733)
+6  633.91  4.973   0.000484 ( -0.000000   0.022010  -0.000084)
+7  671.62 40.091   0.003686 (  0.060714   0.000000  -0.000000)
+8  799.83  0.023   0.000002 ( -0.001345   0.000000  -0.000000)
+9  802.42 141.955   0.010924 ( -0.000000  -0.000102  -0.104519)
+10  962.01 228.071   0.014640 ( -0.000000  -0.000034   0.120995)
+11  1021.68 18.988   0.001148 (  0.000000   0.033818   0.002002)
+12  1336.83 633.051   0.029242 ( -0.171003   0.000000  -0.000000)
+13  1466.73  8.346   0.000351 ( -0.000000  -0.018745   0.000078)
+14  1594.15 84.929   0.003290 (  0.057357   0.000000  -0.000000)
+15  1902.58 711.680   0.023099 (  0.000000   0.151982   0.000131)
+16  3886.36 270.426   0.004297 ( -0.065550  -0.000000   0.000000)
+17  3889.16 55.638   0.000883 (  0.000000  -0.029718   0.000488)
+-----------------------------------------------------------------
+                         IR Intensities                      
+-----------------------------------------------------------------
+Mode freq     Int          T2   (      Tx       Ty       Tz     )  
+     cm-1    km/mol        a.u.                                 
+----------------------------------------------------------------
+0   -0.00   -nan       -nan (      -nan       -nan       -nan)
+1    0.00  0.000   0.000000 (  0.000000   0.000000  -0.000000)
+2    0.00  0.000   0.000000 ( -0.000000   0.000000   0.000000)
+3  127.87  0.000   0.000000 (  0.000031  -0.000000  -0.000000)
+4  168.29  0.156   0.000057 ( -0.007569   0.000000  -0.000000)
+5  192.17  1.903   0.000611 (  0.000000   0.000164  -0.024728)
+6  633.89  4.974   0.000485 ( -0.000000  -0.022013  -0.000128)
+7  671.61 40.103   0.003687 (  0.060723  -0.000000  -0.000000)
+8  799.69  0.004   0.000000 ( -0.000534   0.000000   0.000000)
+9  802.31 142.067   0.010934 (  0.000000   0.000317   0.104567)
+10  962.00 228.019   0.014637 ( -0.000000   0.000075   0.120982)
+11  1021.66 18.924   0.001144 (  0.000000  -0.033816  -0.000528)
+12  1336.78 633.003   0.029241 (  0.170999   0.000000  -0.000000)
+13  1466.69  8.352   0.000352 (  0.000000  -0.018747   0.000439)
+14  1594.14 84.963   0.003291 (  0.057368  -0.000000  -0.000000)
+15  1902.56 711.671   0.023099 (  0.000000  -0.151982  -0.000001)
+16  3886.58 270.427   0.004297 ( -0.065548  -0.000000   0.000000)
+17  3889.38 55.626   0.000883 (  0.000000  -0.029717   0.000226)
+-----------------------------------------------------------------
+                         IR Intensities                      
+-----------------------------------------------------------------
+Mode freq     Int          T2   (      Tx       Ty       Tz     )  
+     cm-1    km/mol        a.u.                                 
+----------------------------------------------------------------
+0   -0.00   -nan       -nan (      -nan       -nan       -nan)
+1    0.00  0.000   0.000000 (  0.000000  -0.000000   0.000000)
+2    0.00  0.000   0.000000 (  0.000000  -0.000000  -0.000000)
+3  127.87  0.000   0.000000 (  0.000031   0.000000  -0.000000)
+4  168.29  0.156   0.000057 ( -0.007569   0.000000  -0.000000)
+5  192.17  1.903   0.000611 (  0.000000  -0.000164  -0.024728)
+6  633.89  4.974   0.000485 ( -0.000000  -0.022013   0.000128)
+7  671.61 40.103   0.003687 (  0.060723  -0.000000  -0.000000)
+8  799.69  0.004   0.000000 (  0.000534   0.000000   0.000000)
+9  802.31 142.067   0.010934 ( -0.000000   0.000317  -0.104567)
+10  962.00 228.019   0.014637 ( -0.000000  -0.000075   0.120982)
+11  1021.66 18.924   0.001144 ( -0.000000  -0.033816   0.000528)
+12  1336.78 633.003   0.029241 (  0.170999  -0.000000   0.000000)
+13  1466.69  8.352   0.000352 ( -0.000000  -0.018747  -0.000439)
+14  1594.14 84.963   0.003291 ( -0.057368  -0.000000   0.000000)
+15  1902.56 711.671   0.023099 ( -0.000000  -0.151982   0.000001)
+16  3886.58 270.427   0.004297 ( -0.065548  -0.000000  -0.000000)
+17  3889.38 55.626   0.000883 ( -0.000000   0.029717   0.000226)
+-----------------------------------------------------------------
+                         IR Intensities                      
+-----------------------------------------------------------------
+Mode freq     Int          T2   (      Tx       Ty       Tz     )  
+     cm-1    km/mol        a.u.                                 
+----------------------------------------------------------------
+0   -0.00   -nan       -nan (      -nan       -nan       -nan)
+1    0.00  0.000   0.000000 ( -0.000000   0.000000  -0.000000)
+2    0.00  0.000   0.000000 (  0.000000   0.000000  -0.000000)
+3  131.85  0.000   0.000000 ( -0.000000  -0.000000  -0.000000)
+4  171.04  0.155   0.000056 (  0.007490   0.000000   0.000000)
+5  194.40  1.885   0.000599 ( -0.000000  -0.000000  -0.024469)
+6  633.18  5.035   0.000491 ( -0.000000   0.022160   0.000000)
+7  670.64 39.216   0.003611 ( -0.060091  -0.000000   0.000000)
+8  798.66  0.000   0.000000 ( -0.000000   0.000000  -0.000000)
+9  802.02 144.295   0.011110 (  0.000000   0.000000   0.105403)
+10  961.93 225.895   0.014501 ( -0.000000  -0.000000  -0.120421)
+11  1016.70 19.279   0.001171 (  0.000000   0.034219  -0.000000)
+12  1332.03 637.301   0.029544 ( -0.171885   0.000000  -0.000000)
+13  1465.41  8.254   0.000348 ( -0.000000  -0.018650   0.000000)
+14  1590.58 79.984   0.003105 ( -0.055724   0.000000   0.000000)
+15  1898.94 710.479   0.023104 (  0.000000   0.151999  -0.000000)
+16  3886.44 270.533   0.004298 ( -0.065562   0.000000   0.000000)
+17  3889.24 55.245   0.000877 (  0.000000   0.029617   0.000000)
+-----------------------------------------------------------------
+                         IR Intensities                      
+-----------------------------------------------------------------
+Mode freq     Int          T2   (      Tx       Ty       Tz     )  
+     cm-1    km/mol        a.u.                                 
+----------------------------------------------------------------
+0    0.00  0.000   0.000000 (  0.000000   0.000000  -0.000000)
+1    0.00  0.000   0.000000 (  0.000000  -0.000000   0.000000)
+2    0.00  0.000   0.000000 ( -0.000000   0.000000  -0.000000)
+3  123.71  0.000   0.000000 (  0.000000  -0.000000   0.000000)
+4  165.45  0.157   0.000058 (  0.007648  -0.000000   0.000000)
+5  189.87  1.920   0.000624 (  0.000000  -0.000000  -0.024986)
+6  634.58  4.915   0.000478 ( -0.000000  -0.021869  -0.000000)
+7  672.57 41.001   0.003764 ( -0.061355   0.000000   0.000000)
+8  800.65  0.000   0.000000 (  0.000000  -0.000000   0.000000)
+9  802.54 139.897   0.010764 ( -0.000000  -0.000000  -0.103751)
+10  962.07 230.124   0.014771 ( -0.000000  -0.000000  -0.121535)
+11  1026.64 18.553   0.001116 ( -0.000000  -0.033405   0.000000)
+12  1341.47 628.420   0.028927 ( -0.170081   0.000000  -0.000000)
+13  1467.93  8.450   0.000355 (  0.000000   0.018853  -0.000000)
+14  1597.78 90.233   0.003487 ( -0.059054   0.000000   0.000000)
+15  1906.23 712.881   0.023093 (  0.000000   0.151965  -0.000000)
+16  3886.85 270.338   0.004295 ( -0.065535  -0.000000   0.000000)
+17  3889.67 56.006   0.000889 ( -0.000000   0.029818   0.000000)
+-----------------------------------------------------------------
+                         IR Intensities                      
+-----------------------------------------------------------------
+Mode freq     Int          T2   (      Tx       Ty       Tz     )  
+     cm-1    km/mol        a.u.                                 
+----------------------------------------------------------------
+0   -0.00   -nan       -nan (      -nan       -nan       -nan)
+1    0.00  0.000   0.000000 ( -0.000000  -0.000000  -0.000000)
+2    0.00  0.000   0.000000 ( -0.000000   0.000000   0.000000)
+3  127.81  0.001   0.000000 (  0.000000   0.000000  -0.000618)
+4  168.28  0.157   0.000057 (  0.007571   0.000366   0.000000)
+5  192.18  1.902   0.000611 (  0.000000  -0.000000  -0.024720)
+6  633.89  4.974   0.000485 ( -0.000105  -0.022011  -0.000000)
+7  671.61 40.098   0.003687 ( -0.060718   0.000410  -0.000000)
+8  799.72  0.033   0.000003 (  0.000000   0.000000   0.001607)
+9  802.34 142.015   0.010930 (  0.000000  -0.000000  -0.104546)
+10  962.01 228.059   0.014639 ( -0.000000  -0.000000  -0.120991)
+11  1021.59 19.091   0.001154 (  0.003271   0.033812  -0.000000)
+12  1336.84 632.672   0.029224 (  0.170950  -0.000448   0.000000)
+13  1466.69  8.537   0.000359 (  0.002699   0.018766  -0.000000)
+14  1594.14 84.991   0.003292 ( -0.057356  -0.001587  -0.000000)
+15  1902.62 711.668   0.023098 ( -0.001205   0.151975  -0.000000)
+16  3886.11 245.578   0.003902 ( -0.061635   0.010167   0.000000)
+17  3889.73 80.492   0.001278 (  0.022317   0.027925   0.000000)
+-----------------------------------------------------------------
+                         IR Intensities                      
+-----------------------------------------------------------------
+Mode freq     Int          T2   (      Tx       Ty       Tz     )  
+     cm-1    km/mol        a.u.                                 
+----------------------------------------------------------------
+0   -0.00   -nan       -nan (      -nan       -nan       -nan)
+1    0.00  0.000   0.000000 ( -0.000000   0.000000   0.000000)
+2    0.00  0.000   0.000000 (  0.000000   0.000000  -0.000000)
+3  127.81  0.001   0.000000 (  0.000000  -0.000000   0.000618)
+4  168.28  0.157   0.000057 (  0.007571  -0.000366  -0.000000)
+5  192.18  1.902   0.000611 ( -0.000000  -0.000000  -0.024720)
+6  633.89  4.974   0.000485 ( -0.000105   0.022011   0.000000)
+7  671.61 40.098   0.003687 ( -0.060718  -0.000410   0.000000)
+8  799.72  0.033   0.000003 ( -0.000000   0.000000   0.001607)
+9  802.34 142.015   0.010930 (  0.000000   0.000000   0.104546)
+10  962.01 228.059   0.014639 (  0.000000  -0.000000  -0.120991)
+11  1021.59 19.091   0.001154 ( -0.003271   0.033812  -0.000000)
+12  1336.84 632.672   0.029224 (  0.170950   0.000448  -0.000000)
+13  1466.69  8.537   0.000359 (  0.002699  -0.018766   0.000000)
+14  1594.14 84.991   0.003292 ( -0.057356   0.001587   0.000000)
+15  1902.62 711.668   0.023098 (  0.001205   0.151975  -0.000000)
+16  3886.11 245.578   0.003902 ( -0.061635  -0.010167  -0.000000)
+17  3889.73 80.492   0.001278 ( -0.022317   0.027925   0.000000)
+-----------------------------------------------------------------
+                         IR Intensities                      
+-----------------------------------------------------------------
+Mode freq     Int          T2   (      Tx       Ty       Tz     )  
+     cm-1    km/mol        a.u.                                 
+----------------------------------------------------------------
+0   -0.00   -nan       -nan (      -nan       -nan       -nan)
+1    0.00  0.000   0.000000 (  0.000000   0.000000   0.000000)
+2    0.00  0.000   0.000000 (  0.000000   0.000000  -0.000000)
+3  129.37  0.000   0.000000 (  0.000000   0.000000   0.000000)
+4  167.33  0.166   0.000061 (  0.007830  -0.000000   0.000000)
+5  189.61  1.822   0.000594 (  0.000000  -0.000000  -0.024362)
+6  633.84  5.076   0.000495 ( -0.000000   0.022238   0.000000)
+7  671.68 40.349   0.003710 ( -0.060906  -0.000000   0.000000)
+8  797.38  0.000   0.000000 ( -0.000000   0.000000  -0.000000)
+9  802.58 145.854   0.011222 (  0.000000   0.000000   0.105935)
+10  959.80 225.301   0.014495 (  0.000000  -0.000000  -0.120397)
+11  1022.09 18.880   0.001141 ( -0.000000   0.033773  -0.000000)
+12  1335.31 629.021   0.029089 ( -0.170554  -0.000000  -0.000000)
+13  1464.95 10.122   0.000427 (  0.000000  -0.020656   0.000000)
+14  1591.36 88.339   0.003428 ( -0.058548   0.000000   0.000000)
+15  1907.50 712.628   0.023070 (  0.000000   0.151887  -0.000000)
+16  3888.51 273.411   0.004342 ( -0.065893   0.000000   0.000000)
+17  3891.30 54.552   0.000866 (  0.000000   0.029423   0.000000)
+-----------------------------------------------------------------
+                         IR Intensities                      
+-----------------------------------------------------------------
+Mode freq     Int          T2   (      Tx       Ty       Tz     )  
+     cm-1    km/mol        a.u.                                 
+----------------------------------------------------------------
+0   -0.00   -nan       -nan (      -nan       -nan       -nan)
+1   -0.00   -nan       -nan (      -nan       -nan       -nan)
+2    0.00  0.000   0.000000 ( -0.000000  -0.000000   0.000000)
+3  126.33  0.000   0.000000 (  0.000000   0.000000  -0.000000)
+4  169.23  0.147   0.000054 (  0.007320   0.000000   0.000000)
+5  194.65  1.985   0.000630 ( -0.000000   0.000000   0.025094)
+6  633.94  4.873   0.000475 ( -0.000000   0.021787   0.000000)
+7  671.54 39.862   0.003665 ( -0.060543  -0.000000   0.000000)
+8  802.07  0.000   0.000000 ( -0.000000   0.000000   0.000000)
+9  802.08 138.343   0.010651 (  0.000000   0.000000   0.103203)
+10  964.24 230.716   0.014775 ( -0.000000  -0.000000  -0.121554)
+11  1021.23 18.947   0.001146 ( -0.000000  -0.033848   0.000000)
+12  1338.25 636.918   0.029389 (  0.171433  -0.000000   0.000000)
+13  1468.36  6.720   0.000283 (  0.000000   0.016811  -0.000000)
+14  1596.93 81.686   0.003159 ( -0.056202  -0.000000   0.000000)
+15  1897.73 710.627   0.023123 (  0.000000   0.152063  -0.000000)
+16  3884.46 267.480   0.004252 ( -0.065208  -0.000000   0.000000)
+17  3887.28 56.704   0.000901 ( -0.000000   0.030013   0.000000)
+-----------------------------------------------------------------
+                         IR Intensities                      
+-----------------------------------------------------------------
+Mode freq     Int          T2   (      Tx       Ty       Tz     )  
+     cm-1    km/mol        a.u.                                 
+----------------------------------------------------------------
+0   -0.00   -nan       -nan (      -nan       -nan       -nan)
+1   -0.00   -nan       -nan (      -nan       -nan       -nan)
+2   -0.00   -nan       -nan (      -nan       -nan       -nan)
+3  127.82  0.002   0.000001 ( -0.000000  -0.000000  -0.001097)
+4  168.28  0.156   0.000057 (  0.007566  -0.000037   0.000000)
+5  192.16  1.900   0.000611 ( -0.000000   0.000000   0.024712)
+6  633.88  4.975   0.000485 ( -0.000218  -0.022013  -0.000000)
+7  671.61 40.101   0.003687 ( -0.060722   0.000027   0.000000)
+8  799.52  6.740   0.000521 (  0.000000  -0.000000  -0.022816)
+9  802.41 135.377   0.010418 (  0.000000   0.000000   0.102069)
+10  962.03 227.989   0.014634 (  0.000000  -0.000000  -0.120972)
+11  1021.62 19.026   0.001150 ( -0.002473   0.033821  -0.000000)
+12  1336.78 632.719   0.029228 ( -0.170958   0.001106   0.000000)
+13  1466.63  8.598   0.000362 (  0.003349   0.018730  -0.000000)
+14  1594.21 84.903   0.003289 ( -0.057343   0.000690  -0.000000)
+15  1902.60 711.700   0.023099 (  0.001066   0.151980  -0.000000)
+16  3885.68 228.148   0.003626 ( -0.058715   0.013352   0.000000)
+17  3890.29 97.916   0.001554 (  0.029144   0.026550   0.000000)
+-----------------------------------------------------------------
+                         IR Intensities                      
+-----------------------------------------------------------------
+Mode freq     Int          T2   (      Tx       Ty       Tz     )  
+     cm-1    km/mol        a.u.                                 
+----------------------------------------------------------------
+0   -0.00   -nan       -nan (      -nan       -nan       -nan)
+1   -0.00   -nan       -nan (      -nan       -nan       -nan)
+2    0.00  0.000   0.000000 (  0.000000  -0.000000   0.000000)
+3  127.82  0.002   0.000001 (  0.000000  -0.000000  -0.001097)
+4  168.28  0.156   0.000057 (  0.007566   0.000037  -0.000000)
+5  192.16  1.900   0.000611 (  0.000000   0.000000   0.024712)
+6  633.88  4.975   0.000485 ( -0.000218   0.022013   0.000000)
+7  671.61 40.101   0.003687 ( -0.060722  -0.000027  -0.000000)
+8  799.52  6.740   0.000521 ( -0.000000  -0.000000  -0.022816)
+9  802.41 135.377   0.010418 ( -0.000000   0.000000   0.102069)
+10  962.03 227.989   0.014634 (  0.000000   0.000000   0.120972)
+11  1021.62 19.026   0.001150 ( -0.002473  -0.033821   0.000000)
+12  1336.78 632.719   0.029228 ( -0.170958  -0.001106  -0.000000)
+13  1466.63  8.598   0.000362 ( -0.003349   0.018730  -0.000000)
+14  1594.21 84.903   0.003289 (  0.057343   0.000690  -0.000000)
+15  1902.60 711.700   0.023099 ( -0.001066   0.151980  -0.000000)
+16  3885.68 228.148   0.003626 ( -0.058715  -0.013352  -0.000000)
+17  3890.29 97.916   0.001554 ( -0.029144   0.026550   0.000000)
+-----------------------------------------------------------------
+                         IR Intensities                      
+-----------------------------------------------------------------
+Mode freq     Int          T2   (      Tx       Ty       Tz     )  
+     cm-1    km/mol        a.u.                                 
+----------------------------------------------------------------
+0   -0.00   -nan       -nan (      -nan       -nan       -nan)
+1    0.00  0.000   0.000000 ( -0.000000  -0.000000   0.000000)
+2    0.00  0.000   0.000000 (  0.000000  -0.000000  -0.000000)
+3  127.77  0.000   0.000000 ( -0.000000  -0.000000   0.000000)
+4  166.84  0.175   0.000065 (  0.008045  -0.000000   0.000000)
+5  189.65  1.944   0.000633 (  0.000000   0.000000   0.025158)
+6  634.08  4.846   0.000472 (  0.000000   0.021725   0.000000)
+7  670.90 39.902   0.003673 ( -0.060602   0.000000   0.000000)
+8  799.91  0.000   0.000000 ( -0.000000   0.000000   0.000000)
+9  801.00 139.238   0.010734 ( -0.000000  -0.000000  -0.103606)
+10  961.71 230.241   0.014784 (  0.000000  -0.000000  -0.121588)
+11  1019.79 19.699   0.001193 ( -0.000000   0.034537  -0.000000)
+12  1334.47 638.487   0.029545 ( -0.171887  -0.000000  -0.000000)
+13  1470.62  9.894   0.000415 (  0.000000  -0.020382   0.000000)
+14  1593.13 78.911   0.003059 ( -0.055305   0.000000   0.000000)
+15  1913.52 709.866   0.022908 (  0.000000   0.151354  -0.000000)
+16  3886.11 267.218   0.004246 ( -0.065162   0.000000   0.000000)
+17  3888.87 55.662   0.000884 (  0.000000   0.029730   0.000000)
+-----------------------------------------------------------------
+                         IR Intensities                      
+-----------------------------------------------------------------
+Mode freq     Int          T2   (      Tx       Ty       Tz     )  
+     cm-1    km/mol        a.u.                                 
+----------------------------------------------------------------
+0   -0.00   -nan       -nan (      -nan       -nan       -nan)
+1    0.00  0.000   0.000000 (  0.000000   0.000000  -0.000000)
+2    0.00  0.000   0.000000 (  0.000000   0.000000  -0.000000)
+3  127.94  0.000   0.000000 ( -0.000000   0.000000   0.000000)
+4  169.65  0.139   0.000051 (  0.007113   0.000000   0.000000)
+5  194.52  1.861   0.000591 (  0.000000  -0.000000  -0.024307)
+6  633.68  5.105   0.000497 ( -0.000000   0.022304   0.000000)
+7  672.29 40.323   0.003704 ( -0.060858  -0.000000   0.000000)
+8  799.40  0.000   0.000000 (  0.000000  -0.000000  -0.000000)
+9  803.55 144.956   0.011139 (  0.000000   0.000000   0.105544)
+10  962.26 225.776   0.014489 ( -0.000000  -0.000000  -0.120369)
+11  1023.51 18.129   0.001094 (  0.000000   0.033072  -0.000000)
+12  1338.97 627.223   0.028926 ( -0.170078   0.000000  -0.000000)
+13  1462.61  6.902   0.000291 (  0.000000   0.017070  -0.000000)
+14  1595.22 91.333   0.003535 ( -0.059460  -0.000000   0.000000)
+15  1891.84 713.419   0.023286 (  0.000000   0.152599  -0.000000)
+16  3887.15 273.673   0.004348 ( -0.065936  -0.000000   0.000000)
+17  3890.00 55.584   0.000882 ( -0.000000   0.029704   0.000000)
+-----------------------------------------------------------------
+                         IR Intensities                      
+-----------------------------------------------------------------
+Mode freq     Int          T2   (      Tx       Ty       Tz     )  
+     cm-1    km/mol        a.u.                                 
+----------------------------------------------------------------
+0   -0.00   -nan       -nan (      -nan       -nan       -nan)
+1    0.00  0.000   0.000000 ( -0.000000  -0.000000   0.000000)
+2    0.00  0.000   0.000000 ( -0.000000   0.000000  -0.000000)
+3  127.64  0.013   0.000006 ( -0.000000   0.000000   0.002517)
+4  168.17  0.154   0.000057 (  0.007509   0.000479   0.000000)
+5  192.14  1.891   0.000608 (  0.000000  -0.000000  -0.024650)
+6  633.62  5.266   0.000513 (  0.005377  -0.022006  -0.000000)
+7  671.69 39.895   0.003668 ( -0.060552  -0.001062   0.000000)
+8  772.65 79.246   0.006333 (  0.000000  -0.000000  -0.079583)
+9  826.39 60.364   0.004511 ( -0.000000  -0.000000  -0.067161)
+10  962.88 230.495   0.014782 ( -0.000000  -0.000000  -0.121581)
+11  1021.66 18.916   0.001143 (  0.000623   0.033808  -0.000000)
+12  1335.89 628.550   0.029054 ( -0.170437   0.002336  -0.000000)
+13  1466.91 13.373   0.000563 (  0.014665   0.018652  -0.000000)
+14  1594.28 84.341   0.003267 ( -0.057156   0.000013   0.000000)
+15  1902.58 711.669   0.023098 (  0.000768   0.151979  -0.000000)
+16  3843.21 166.310   0.002672 ( -0.047295   0.020865   0.000000)
+17  3933.32 159.747   0.002508 (  0.045388   0.021163   0.000000)
+-----------------------------------------------------------------
+                         IR Intensities                      
+-----------------------------------------------------------------
+Mode freq     Int          T2   (      Tx       Ty       Tz     )  
+     cm-1    km/mol        a.u.                                 
+----------------------------------------------------------------
+0   -0.00   -nan       -nan (      -nan       -nan       -nan)
+1    0.00  0.000   0.000000 ( -0.000000  -0.000000  -0.000000)
+2    0.00  0.000   0.000000 (  0.000000   0.000000  -0.000000)
+3  127.64  0.013   0.000006 (  0.000000   0.000000   0.002517)
+4  168.17  0.154   0.000057 (  0.007509  -0.000479  -0.000000)
+5  192.14  1.891   0.000608 (  0.000000   0.000000   0.024650)
+6  633.62  5.266   0.000513 (  0.005377   0.022006   0.000000)
+7  671.69 39.895   0.003668 ( -0.060552   0.001062  -0.000000)
+8  772.65 79.246   0.006333 ( -0.000000  -0.000000  -0.079583)
+9  826.39 60.364   0.004511 ( -0.000000   0.000000   0.067161)
+10  962.88 230.495   0.014782 (  0.000000  -0.000000  -0.121581)
+11  1021.66 18.916   0.001143 (  0.000623  -0.033808   0.000000)
+12  1335.89 628.550   0.029054 (  0.170437   0.002336  -0.000000)
+13  1466.91 13.373   0.000563 ( -0.014665   0.018652  -0.000000)
+14  1594.28 84.341   0.003267 (  0.057156   0.000013   0.000000)
+15  1902.58 711.669   0.023098 ( -0.000768   0.151979  -0.000000)
+16  3843.21 166.310   0.002672 ( -0.047295  -0.020865  -0.000000)
+17  3933.32 159.747   0.002508 ( -0.045388   0.021163   0.000000)
+-----------------------------------------------------------------
+                         IR Intensities                      
+-----------------------------------------------------------------
+Mode freq     Int          T2   (      Tx       Ty       Tz     )  
+     cm-1    km/mol        a.u.                                 
+----------------------------------------------------------------
+0   -0.00   -nan       -nan (      -nan       -nan       -nan)
+1    0.00  0.000   0.000000 (  0.000000  -0.000000   0.000000)
+2    0.00  0.000   0.000000 (  0.000000   0.000000   0.000000)
+3  129.82  0.000   0.000000 ( -0.000000  -0.000000   0.000000)
+4  170.52  0.217   0.000078 (  0.008858   0.000000  -0.000000)
+5  192.31  2.069   0.000664 (  0.000000   0.000000   0.025776)
+6  637.50  4.826   0.000467 ( -0.000000   0.021621   0.000000)
+7  672.80 38.884   0.003569 ( -0.059740  -0.000000   0.000000)
+8  824.19 114.761   0.008598 (  0.000000   0.000000   0.092726)
+9  828.94  0.000   0.000000 ( -0.000000   0.000000  -0.000000)
+10  968.27 255.267   0.016280 (  0.000000   0.000000   0.127591)
+11  1021.97 18.891   0.001141 ( -0.000000  -0.033786   0.000000)
+12  1345.54 645.323   0.029616 (  0.172092  -0.000000   0.000000)
+13  1476.05  7.466   0.000312 (  0.000000   0.017673  -0.000000)
+14  1597.03 74.758   0.002891 ( -0.053764  -0.000000   0.000000)
+15  1903.53 712.420   0.023111 (  0.000000   0.152023  -0.000000)
+16  3841.83 270.007   0.004340 ( -0.065878   0.000000   0.000000)
+17  3844.60 55.872   0.000897 (  0.000000   0.029957   0.000000)
+-----------------------------------------------------------------
+                         IR Intensities                      
+-----------------------------------------------------------------
+Mode freq     Int          T2   (      Tx       Ty       Tz     )  
+     cm-1    km/mol        a.u.                                 
+----------------------------------------------------------------
+0    0.00  0.000   0.000000 (  0.000000  -0.000000   0.000000)
+1    0.00  0.000   0.000000 (  0.000000  -0.000000  -0.000000)
+2    0.00  0.000   0.000000 ( -0.000000   0.000000  -0.000000)
+3  125.42  0.000   0.000000 ( -0.000000   0.000000  -0.000000)
+4  165.83  0.102   0.000038 (  0.006163  -0.000000   0.000000)
+5  191.96  1.713   0.000551 (  0.000000  -0.000000  -0.023474)
+6  629.99  5.138   0.000504 (  0.000000   0.022441   0.000000)
+7  670.33 41.441   0.003818 ( -0.061786   0.000000   0.000000)
+8  768.31  0.000   0.000000 ( -0.000000   0.000000  -0.000000)
+9  777.13 166.324   0.013216 (  0.000000   0.000000   0.114961)
+10  957.03 203.883   0.013155 (  0.000000  -0.000000  -0.114696)
+11  1021.35 18.934   0.001145 ( -0.000000   0.033834  -0.000000)
+12  1327.36 619.993   0.028843 (  0.169832   0.000000  -0.000000)
+13  1456.85  9.293   0.000394 (  0.000000  -0.019847   0.000000)
+14  1591.32 95.755   0.003716 ( -0.060957   0.000000   0.000000)
+15  1901.62 710.884   0.023084 ( -0.000000   0.151935  -0.000000)
+16  3931.89 270.859   0.004254 ( -0.065222  -0.000000   0.000000)
+17  3934.73 55.368   0.000869 ( -0.000000   0.029478   0.000000)
+----- collect hessians vpt2 done ! ---
+
+processing dipole derivatives 
+
+ Computing mean and mean square displacements of normal modes 
+
+ mode      frequency         <q>          <q^2>
+------------------------------------------------
+  0      633.8813644     0.0002583     0.0949700
+  1      671.6092125     0.0000000     0.0896350
+  2      799.6503307    -0.0000000     0.0752825
+  3      802.2861383     0.0000000     0.0750352
+  4      961.9970740    -0.0000000     0.0625778
+  5     1021.6647167     0.0726317     0.0589231
+  6     1336.7716285     0.0000000     0.0450336
+  7     1466.6684998     0.0017879     0.0410452
+  8     1594.1361151    -0.0000000     0.0377632
+  9     1902.5774737    -0.0089991     0.0316411
+ 10     3886.6502907     0.0000000     0.0154888
+ 11     3889.4561176     0.0013324     0.0154777
+------------------------------------------------
+
+Write the harmonic data into the VPT2 file.
+Calling the VPT2 program via:
+    /usr/local/orca_6_1_0/orca_vpt2 h2co3.vpt2 
+orca_vpt vpt2_filename: h2co3.vpt2
+
+
+  *******************************
+                         .@      
+                      .@@@       
+                   @@@@@@*       
+                @@@@@@@@         
+               @@@@@@@@          
+             @@@@@@@@@           
+            @@@@@@@@@@           
+           @@@@@@@@@@@           
+         @@@@@@@@@@@@@@          
+   @@@@@@@@@@@@@@@@@@@@@         
+   @@@@@@@@@@@@@@@@@    @@@@@@@  
+         ORCA VPT2/GVPT2 Analysis
+  *******************************
+
+VPT2 Settings:
+    Basename:                                h2co3
+    Pickettname:                                
+    Minimise the Orca amount of output:      true
+    Rotational symmetry detection threshold: 1.00e-04
+    Anharmonic displacement factor:          0.050
+    Property deriv. displ. factor:           0.050
+    Cutoff value when reading the Hessian:   1.00e-12
+    Print-level:                             1  
+    Averaged prop. (0=none,1=NMR,2=Atensor,3=Jcouplings, 4=Gtensor): 0  
+
+geometry reading: h2co3.vpt2
+geometry read: h2co3.vpt2
+-----------------------------------------------------------------
+                         IR Intensities                      
+-----------------------------------------------------------------
+Mode freq     Int          T2   (      Tx       Ty       Tz     )  
+     cm-1    km/mol        a.u.                                 
+----------------------------------------------------------------
+0   -0.00   -nan       -nan (      -nan       -nan       -nan)
+1   -0.00   -nan       -nan (      -nan       -nan       -nan)
+2   -0.00   -nan       -nan (      -nan       -nan       -nan)
+3  127.87  0.000   0.000000 ( -0.000000  -0.000000  -0.000000)
+4  168.28  0.156   0.000057 (  0.007567  -0.000000  -0.000000)
+5  192.16  1.902   0.000611 (  0.000000  -0.000000  -0.024725)
+6  633.88  4.974   0.000485 (  0.000000   0.022013   0.000000)
+7  671.61 40.109   0.003688 ( -0.060728   0.000000  -0.000000)
+8  799.65  0.000   0.000000 ( -0.000000  -0.000000   0.000000)
+9  802.29 142.105   0.010938 (  0.000000   0.000000   0.104583)
+10  962.00 228.001   0.014635 ( -0.000000  -0.000000  -0.120977)
+11  1021.66 18.918   0.001143 (  0.000000   0.033814  -0.000000)
+12  1336.77 632.973   0.029240 (  0.170996  -0.000000  -0.000000)
+13  1466.67  8.353   0.000352 ( -0.000000  -0.018753   0.000000)
+14  1594.14 84.996   0.003292 ( -0.057380  -0.000000   0.000000)
+15  1902.58 711.681   0.023099 (  0.000000   0.151982  -0.000000)
+16  3886.65 270.435   0.004297 ( -0.065549  -0.000000  -0.000000)
+17  3889.46 55.625   0.000883 ( -0.000000   0.029717   0.000000)
+
+ Analysis of possible Fermi resonances with VPT2 denominators 
+ below 10 wavenumbers (denominator values in wavenumbers): 
+
+ possible Type II resonance 10 mode 0 8 4     1.742323 
+ possible Type II resonance 10 mode 1 6 1     6.446797 
+ possible Type II resonance 10 mode 1 7 2     4.591043 
+ possible Type II resonance 10 mode 1 7 3     7.226851 
+ possible Type II resonance 10 mode 2 7 1     4.591043 
+ possible Type II resonance 10 mode 2 8 2     5.164546 
+ possible Type II resonance 10 mode 2 8 3     7.800354 
+ possible Type II resonance 10 mode 3 7 1     7.226851 
+ possible Type II resonance 10 mode 3 8 2     7.800354 
+ possible Type II resonance 10 mode 4 8 0     1.742323 
+ possible Type I resonance mode 6 1     6.446797 
+ possible Type I resonance mode 8 2     5.164546 
+ 
+                                                  ... done 
+
+evaluating centrifugal distortion constants...................  
+centrifugal distortion constants -- 
+  i  j  k  l    Tau [cm-1]  
+  0  0  0  0  -1.334262e-06 
+  0  0  0  1  2.058042e-17 
+  0  0  0  2  1.044879e-25 
+  0  0  1  0  -2.539405e-17 
+  0  0  1  1  4.824161e-07 
+  0  0  1  2  -1.388406e-15 
+  0  0  2  0  7.654394e-26 
+  0  0  2  1  9.800023e-16 
+  0  0  2  2  -1.894055e-07 
+  0  1  0  0  2.058042e-17 
+  0  1  0  1  -9.629082e-07 
+  0  1  0  2  -5.845942e-16 
+  0  1  1  0  -9.416800e-07 
+  0  1  1  1  -3.490863e-17 
+  0  1  1  2  3.957342e-26 
+  0  1  2  0  1.168320e-15 
+  0  1  2  1  -1.692255e-26 
+  0  1  2  2  -4.308415e-18 
+  0  2  0  0  1.044879e-25 
+  0  2  0  1  -5.845942e-16 
+  0  2  0  2  -3.156851e-24 
+  0  2  1  0  -5.710639e-16 
+  0  2  1  1  -3.753299e-26 
+  0  2  1  2  -0.000000e+00 
+  0  2  2  0  -8.313186e-25 
+  0  2  2  1  -0.000000e+00 
+  0  2  2  2  1.489727e-26 
+  1  0  0  0  -2.539405e-17 
+  1  0  0  1  -9.416800e-07 
+  1  0  0  2  -5.710639e-16 
+  1  0  1  0  -9.212348e-07 
+  1  0  1  1  1.703675e-17 
+  1  0  1  2  -3.413032e-26 
+  1  0  2  0  1.109671e-15 
+  1  0  2  1  1.827395e-26 
+  1  0  2  2  -1.537184e-18 
+  1  1  0  0  4.824161e-07 
+  1  1  0  1  -3.490863e-17 
+  1  1  0  2  -3.753299e-26 
+  1  1  1  0  1.703675e-17 
+  1  1  1  1  -1.314162e-06 
+  1  1  1  2  8.337746e-16 
+  1  1  2  0  3.328900e-27 
+  1  1  2  1  -1.051354e-15 
+  1  1  2  2  -2.315167e-07 
+  1  2  0  0  -1.388406e-15 
+  1  2  0  1  3.957342e-26 
+  1  2  0  2  -0.000000e+00 
+  1  2  1  0  -3.413032e-26 
+  1  2  1  1  8.337746e-16 
+  1  2  1  2  -3.896481e-24 
+  1  2  2  0  -0.000000e+00 
+  1  2  2  1  -3.184008e-25 
+  1  2  2  2  -1.097612e-16 
+  2  0  0  0  7.654394e-26 
+  2  0  0  1  1.168320e-15 
+  2  0  0  2  -8.313186e-25 
+  2  0  1  0  1.109671e-15 
+  2  0  1  1  3.328900e-27 
+  2  0  1  2  -0.000000e+00 
+  2  0  2  0  -1.097908e-09 
+  2  0  2  1  -5.222957e-21 
+  2  0  2  2  1.879054e-26 
+  2  1  0  0  9.800023e-16 
+  2  1  0  1  -1.692255e-26 
+  2  1  0  2  -0.000000e+00 
+  2  1  1  0  1.827395e-26 
+  2  1  1  1  -1.051354e-15 
+  2  1  1  2  -3.184008e-25 
+  2  1  2  0  -5.222957e-21 
+  2  1  2  1  -2.099903e-09 
+  2  1  2  2  -1.233766e-16 
+  2  2  0  0  -1.894055e-07 
+  2  2  0  1  -4.308415e-18 
+  2  2  0  2  1.489727e-26 
+  2  2  1  0  -1.537184e-18 
+  2  2  1  1  -2.315167e-07 
+  2  2  1  2  -1.097612e-16 
+  2  2  2  0  1.879054e-26 
+  2  2  2  1  -1.233766e-16 
+  2  2  2  2  -1.058516e-07 
+----------------------------------- 
+ quartic centrifugal distortion parameters for Watson's symmetrically 
+ and asymmetrically reduced Hamiltonian in cm-1 : 
+ --------------------------------------------------------
+ R5    -4.061498e-08  
+ R6    -1.495281e-08  
+ sigma 1.220080e+00  
+
+         s-reduced       
+ --------------------------------------------------------
+ DJ    1.143073e-07  
+ DK    -9.348395e-08  
+ DJK   3.127421e-07  
+ D1    -7.551939e-08  
+ D2    -3.159721e-08  
+
+         a-reduced       
+ --------------------------------------------------------
+ DJ    1.475961e-07 
+ DK    7.296003e-08 
+ DJK   1.130094e-07 
+ DelJ  1.775017e-07 
+ DelK  2.224882e-07 
+ DelJK -6.642441e-08 
+ delJ  7.551939e-08 
+ delK  1.542045e-07 
+
+                                           ................... done.
+
+Generating anharmonicity constants accoding to Amos et al. 
+J. Chem. Phys. 8323 (1991) (doi:10.1063/1.461259) eq. 5 & 6 
+Definition of Fermi resonances as described by Franke et al.  
+J. Phys. Chem. A 1301 (2021)  (doi:10.1021/acs.jpca.0c09526) 
+eq. 37 and 38 (see also Papousek/Alijev, 1982, 160 pp.) 
+ 
+                                              ................ done. 
+
+evaluating zero point vibrational energies ...................  
+                                           ................... done. 
+
+
+ combination band and overtone Analysis according 
+ to Barone et al. PCCP 16, 1759 (2014) 
+ using the VPT2 anharmonicity constants (see above). 
+ unphysical contributions to the intensities due           
+ to resonances in the anharmonic terms are circumvented by 
+ eliminating contributions for which the denominator 
+ |wi + wj - wk| is larger than 2 cm-1 
+ 
+                                              ................ done.
+
+
+
+============================ Geometry ==========================
+
+
+Coordinates in Angstroem
+--------------------------------------------------------------
+Atom         x               y               z        Mass [u]
+--------------------------------------------------------------
+C      -0.000000000    -0.097086009     0.000000008  12.000000
+O      -0.000000000    -1.303737316    -0.000000002  15.994915
+O       1.085274000     0.683298635    -0.000000002  15.994915
+O      -1.085274000     0.683298635    -0.000000002  15.994915
+H       1.841366856     0.079176697    -0.000000008   1.007825
+H      -1.841366856     0.079176697    -0.000000008   1.007825
+--------------------------------------------------------------
+
+
+===================== Rotational Analysis ======================
+
+
+Moment of inertia tensor [u * Angstrom^2]
+-----------------------------------------
+Axis      x            y            z
+-----------------------------------------
+ x   42.2487524    0.0000000    0.0000000
+ y    0.0000000   44.5125770   -0.0000000
+ z    0.0000000   -0.0000000   86.7613295
+-----------------------------------------
+
+Vibrational-rotational constants [1/cm]
+---------------------------------------------------
+ a    i      T1         T2+3       T4        Total
+---------------------------------------------------
+ x    0   -0.00051    0.00059   -0.00036   -0.00028
+ x    1   -0.00060    0.00003    0.00064    0.00007
+ x    2   -0.00000    0.00087    0.00000    0.00087
+ x    3   -0.00000    0.00026   -0.00017    0.00010
+ x    4   -0.00000    0.00090   -0.00025    0.00064
+ x    5   -0.00034   -0.00032    0.00092    0.00026
+ x    6   -0.00003   -0.00048    0.00103    0.00052
+ x    7   -0.00015   -0.00054    0.00051   -0.00018
+ x    8   -0.00001   -0.00022    0.00080    0.00058
+ x    9   -0.00003   -0.00065    0.00252    0.00183
+ x   10   -0.00000   -0.00009    0.00009   -0.00001
+ x   11   -0.00000   -0.00009    0.00011    0.00002
+ y    0   -0.00052    0.00022    0.00072    0.00042
+ y    1   -0.00059    0.00022   -0.00013   -0.00050
+ y    2   -0.00000    0.00033    0.00007    0.00040
+ y    3   -0.00000    0.00064    0.00002    0.00065
+ y    4   -0.00000    0.00088    0.00006    0.00094
+ y    5   -0.00047   -0.00000    0.00182    0.00135
+ y    6   -0.00003   -0.00081    0.00132    0.00048
+ y    7   -0.00003   -0.00024    0.00016   -0.00011
+ y    8   -0.00000   -0.00061    0.00095    0.00033
+ y    9   -0.00000   -0.00002    0.00039    0.00037
+ y   10   -0.00000   -0.00015    0.00063    0.00048
+ y   11   -0.00000   -0.00015    0.00061    0.00046
+ z    0   -0.00000    0.00242    0.00010    0.00252
+ z    1   -0.00000   -0.00225    0.00012   -0.00213
+ z    2   -0.00000    0.00000    0.00002    0.00002
+ z    3   -0.00000   -0.00000   -0.00003   -0.00003
+ z    4   -0.00000    0.00000   -0.00005   -0.00005
+ z    5   -0.00020    0.00001    0.00070    0.00051
+ z    6   -0.00000    0.00006    0.00059    0.00065
+ z    7   -0.00001    0.00004    0.00016    0.00020
+ z    8   -0.00000    0.00021    0.00044    0.00064
+ z    9   -0.00000   -0.00030    0.00070    0.00040
+ z   10   -0.00000   -0.00007    0.00019    0.00012
+ z   11   -0.00000   -0.00007    0.00019    0.00012
+---------------------------------------------------
+
+Rotational constants B_e and B_0 [1/cm]
+----------------------------------------------
+Const          x            y            z
+----------------------------------------------
+B_e          0.39901      0.37872      0.19430
+B_0          0.39679      0.37609      0.19281
+B_e-B_0      0.00222      0.00263      0.00149
+----------------------------------------------
+
+
+===================== Vibrational Analysis =====================
+
+
+Anharmonic constants [1/cm]
+---------------------------
+  r      s        chi[r][s] 
+---------------------------
+  0      0          0.10905 
+  1      0          0.50503 
+  1      1          0.15606 
+  2      0          0.33600 
+  2      1          0.45992 
+  2      2          1.03720 
+  3      0          0.68896 
+  3      1          0.61111 
+  3      2        -12.84637 
+  3      3         -2.44297 
+  4      0         -0.10570 
+  4      1         -0.05306 
+  4      2          4.50741 
+  4      3         -2.08019 
+  4      4          0.68872 
+  5      0         -2.67169 
+  5      1          1.50337 
+  5      2         -1.78010 
+  5      3         -1.91138 
+  5      4         -2.84536 
+  5      5         -1.34180 
+  6      0         -3.28919 
+  6      1         -1.30287 
+  6      2          0.32729 
+  6      3         -1.20520 
+  6      4         -3.99968 
+  6      5         -7.10541 
+  6      6         -4.31621 
+  7      0         -0.52210 
+  7      1         -0.99569 
+  7      2         -9.11160 
+  7      3         -1.15942 
+  7      4         -6.65888 
+  7      5         -0.74242 
+  7      6        -11.64400 
+  7      7         -3.97178 
+  8      0         -2.84947 
+  8      1         -3.37581 
+  8      2        -18.52355 
+  8      3        -10.80193 
+  8      4        -10.95557 
+  8      5         -8.80307 
+  8      6        -11.03826 
+  8      7         -8.99559 
+  8      8         -3.90216 
+  9      0         -1.18578 
+  9      1         -7.16314 
+  9      2         -0.07659 
+  9      3          1.57088 
+  9      4         -4.48630 
+  9      5         -6.46883 
+  9      6         -7.10598 
+  9      7        -13.08930 
+  9      8         -4.50164 
+  9      9         -8.99962 
+ 10      0         -0.76575 
+ 10      1         -0.15919 
+ 10      2         -2.85423 
+ 10      3         -2.64731 
+ 10      4         -0.68833 
+ 10      5         -1.34520 
+ 10      6         -1.79222 
+ 10      7         -9.09476 
+ 10      8         -9.20683 
+ 10      9         -1.56283 
+ 10     10        -40.61643 
+ 11      0         -0.78028 
+ 11      1         -0.17168 
+ 11      2         -3.08983 
+ 11      3         -2.61509 
+ 11      4         -0.73290 
+ 11      5         -1.32345 
+ 11      6         -2.47253 
+ 11      7         -8.25991 
+ 11      8         -9.71530 
+ 11      9          0.25753 
+ 11     10       -162.70175 
+ 11     11        -40.81892 
+---------------------------
+
+Fundamental transitions [1/cm] 
+-----------------------------------------
+Mode     w(harm)      v(fund)      Diff
+-----------------------------------------
+  0      633.881      628.779      -5.102
+  1      671.609      666.850      -4.759
+  2      799.650      780.399     -19.251
+  3      802.286      781.202     -21.084
+  4      961.997      949.325     -12.672
+  5     1021.665     1002.234     -19.430
+  6     1336.772     1302.825     -33.946
+  7     1466.668     1423.588     -43.080
+  8     1594.136     1536.948     -57.188
+  9     1902.577     1862.672     -39.905
+ 10     3886.650     3709.008    -177.642
+ 11     3889.456     3712.016    -177.440
+-----------------------------------------
+
+Zero-point ro-vibrational energy [1/cm]
+---------------------------------------
+Harmonic contribution:         9483.674
+Anharmonic correction:         -126.770
+Ro-vibrational correction:       18.112
+---------------------------------------
+Total:                         9375.016
+
+
+Overtones and combination bands 
+--------------------------------------------------------------------------------
+  modes   freq      eps        Int     T**2     (  Tx          Ty          Tz )
+         [cm-1] [L/(mol*cm)] [km/mol] [a.u.]     
+--------------------------------------------------------------------------------
+  0   0  1257.78  0.000000    0.00   0.000000   ( 0.000000 -0.000256  0.000000)
+  0   1  1296.13  0.000022    0.11   0.000005   (-0.002280  0.000000 -0.000000)
+  0   2  1409.51  0.000000    0.00   0.000000   ( 0.000000  0.000000  0.000000)
+  0   3  1410.67  0.000001    0.01   0.000000   ( 0.000000 -0.000000 -0.000510)
+  0   4  1578.00  0.000000    0.00   0.000000   ( 0.000000 -0.000000 -0.000170)
+  0   5  1628.34  0.000005    0.02   0.000001   (-0.000000 -0.000954  0.000000)
+  0   6  1928.32  0.000000    0.00   0.000000   (-0.000181  0.000000 -0.000000)
+  0   7  2051.85  0.000004    0.02   0.000001   ( 0.000000  0.000823  0.000000)
+  0   8  2162.88  0.000029    0.15   0.000004   (-0.002056 -0.000000  0.000000)
+  0   9  2490.27  0.000007    0.03   0.000001   (-0.000000  0.000932 -0.000000)
+  0  10  4337.02  0.000024    0.12   0.000002   (-0.001325 -0.000000  0.000000)
+  0  11  4340.01  0.000013    0.07   0.000001   (-0.000000  0.000965 -0.000000)
+  1   1  1334.01  0.000027    0.14   0.000006   ( 0.000000 -0.002525  0.000000)
+  1   2  1447.71  0.000003    0.01   0.000001   (-0.000000  0.000000 -0.000751)
+  1   3  1448.66  0.000000    0.00   0.000000   ( 0.000000  0.000000  0.000000)
+  1   4  1616.12  0.000000    0.00   0.000000   ( 0.000000  0.000000 -0.000000)
+  1   5  1670.59  0.000001    0.00   0.000000   ( 0.000421  0.000000  0.000000)
+  1   6  1968.37  0.000000    0.00   0.000000   ( 0.000000  0.000198 -0.000000)
+  1   7  2089.44  0.000001    0.00   0.000000   (-0.000298  0.000000 -0.000000)
+  1   8  2200.42  0.000000    0.00   0.000000   ( 0.000000  0.000247  0.000000)
+  1   9  2522.36  0.000000    0.00   0.000000   (-0.000130  0.000000  0.000000)
+  1  10  4375.70  0.000009    0.05   0.000001   ( 0.000000 -0.000805  0.000000)
+  1  11  4378.69  0.000003    0.02   0.000000   ( 0.000497 -0.000000  0.000000)
+  2   2  1562.87  0.000010    0.05   0.000002   (-0.000000  0.001446 -0.000000)
+  2   3  1548.75  0.000001    0.00   0.000000   (-0.000433  0.000000 -0.000000)
+  2   4  1734.23  0.000003    0.01   0.000000   ( 0.000696  0.000000  0.000000)
+  2   5  1780.85  0.000000    0.00   0.000000   ( 0.000000 -0.000000  0.000000)
+  2   6  2083.55  0.000050    0.26   0.000008   ( 0.000000  0.000000  0.002750)
+  2   7  2194.88  0.000000    0.00   0.000000   ( 0.000000 -0.000000  0.000000)
+  2   8  2298.82  0.000045    0.23   0.000006   (-0.000000 -0.000000  0.002478)
+  2   9  2642.99  0.000000    0.00   0.000000   ( 0.000000  0.000000  0.000000)
+  2  10  4486.55  0.000002    0.01   0.000000   (-0.000000 -0.000000 -0.000376)
+  2  11  4489.32  0.000000    0.00   0.000000   (-0.000000  0.000000 -0.000000)
+  3   3  1557.52  0.000001    0.01   0.000000   ( 0.000000 -0.000501 -0.000000)
+  3   4  1728.45  0.000003    0.01   0.000000   ( 0.000000  0.000699  0.000000)
+  3   5  1781.53  0.000000    0.00   0.000000   ( 0.000000  0.000000 -0.000103)
+  3   6  2082.82  0.000000    0.00   0.000000   ( 0.000000 -0.000000  0.000000)
+  3   7  2203.63  0.000042    0.21   0.000006   ( 0.000000  0.000000  0.002433)
+  3   8  2307.35  0.000000    0.00   0.000000   ( 0.000000 -0.000000 -0.000000)
+  3   9  2645.45  0.000060    0.30   0.000007   (-0.000000 -0.000000 -0.002651)
+  3  10  4487.56  0.000000    0.00   0.000000   ( 0.000000  0.000000 -0.000000)
+  3  11  4490.60  0.000130    0.65   0.000009   (-0.000000 -0.000000  0.003001)
+  4   4  1900.03  0.002096   10.59   0.000344   (-0.000000 -0.018554  0.000000)
+  4   5  1948.71  0.000000    0.00   0.000000   ( 0.000000  0.000000 -0.000166)
+  4   6  2248.15  0.000000    0.00   0.000000   ( 0.000000 -0.000000 -0.000000)
+  4   7  2366.25  0.000002    0.01   0.000000   (-0.000000 -0.000000 -0.000567)
+  4   8  2475.32  0.000000    0.00   0.000000   (-0.000000 -0.000000  0.000000)
+  4   9  2807.51  0.000003    0.01   0.000000   ( 0.000000  0.000000  0.000565)
+  4  10  4657.65  0.000000    0.00   0.000000   (-0.000000 -0.000000  0.000000)
+  4  11  4660.61  0.000010    0.05   0.000001   (-0.000000  0.000000 -0.000838)
+  5   5  2001.79  0.002943   14.87   0.000459   ( 0.000000 -0.021419  0.000000)
+  5   6  2297.95  0.000826    4.18   0.000112   (-0.010592  0.000000  0.000000)
+  5   7  2425.08  0.000003    0.01   0.000000   ( 0.000000  0.000576 -0.000000)
+  5   8  2530.38  0.000032    0.16   0.000004   ( 0.001982  0.000000 -0.000000)
+  5   9  2858.44  0.000518    2.62   0.000057   ( 0.000000 -0.007523  0.000000)
+  5  10  4709.90  0.000004    0.02   0.000000   ( 0.000520  0.000000  0.000000)
+  5  11  4712.93  0.000025    0.12   0.000002   (-0.000000 -0.001275 -0.000000)
+  6   6  2597.02  0.000466    2.35   0.000056   (-0.000000 -0.007479 -0.000000)
+  6   7  2714.77  0.000026    0.13   0.000003   ( 0.001741 -0.000000  0.000000)
+  6   8  2828.74  0.000000    0.00   0.000000   (-0.000000  0.000030  0.000000)
+  6   9  3158.39  0.000229    1.15   0.000023   (-0.004752 -0.000000 -0.000000)
+  6  10  5010.04  0.000002    0.01   0.000000   (-0.000000  0.000381 -0.000000)
+  6  11  5012.37  0.000323    1.63   0.000020   ( 0.004483  0.000000  0.000000)
+  7   7  2839.23  0.000129    0.65   0.000014   (-0.000000  0.003759 -0.000000)
+  7   8  2951.54  0.000005    0.02   0.000001   ( 0.000714 -0.000000  0.000000)
+  7   9  3273.17  0.000620    3.13   0.000059   (-0.000000  0.007688 -0.000000)
+  7  10  5123.50  0.000095    0.48   0.000006   (-0.002402  0.000000  0.000000)
+  7  11  5127.34  0.000018    0.09   0.000001   (-0.000000 -0.001060 -0.000000)
+  8   8  3066.09  0.000022    0.11   0.000002   ( 0.000000 -0.001504  0.000000)
+  8   9  3395.12  0.000001    0.01   0.000000   (-0.000329 -0.000000 -0.000000)
+  8  10  5236.75  0.000040    0.20   0.000002   (-0.000000  0.001536 -0.000000)
+  8  11  5239.25  0.000000    0.00   0.000000   (-0.000096  0.000000 -0.000000)
+  9   9  3707.35  0.000487    2.46   0.000041   (-0.000000  0.006402 -0.000000)
+  9  10  5570.12  0.000370    1.87   0.000021   ( 0.004550  0.000000  0.000000)
+  9  11  5574.95  0.000006    0.03   0.000000   ( 0.000000 -0.000588 -0.000000)
+ 10  10  7336.78  0.000034    0.17   0.000001   (-0.000000 -0.001202 -0.000000)
+ 10  11  7258.32  0.001517    7.66   0.000065   ( 0.008075  0.000000 -0.000000)
+ 11  11  7342.39  0.000040    0.20   0.000002   ( 0.000000 -0.001312 -0.000000)
+
+
+============================== End =============================
+
+
+--------------------------------
+SUGGESTED CITATIONS FOR THIS RUN
+--------------------------------
+
+Below you find a list of papers that are relevant to this ORCA run
+We neither can nor want to force you to cite these papers, but we appreciate if you do
+You receive ORCA, which is the product of decades of hard work by many enthusiastic individuals, for free
+The only thing we kindly ask in return is that you cite our papers,
+We deeply appreciate it, if you show your appreciation for ORCA by not just citing the generic ORCA reference.
+
+Please note that relegating all ORCA citations to the supporting information does *not* help us.
+SI sections are not indexed - citations you put there will not count into any citation statistics
+But we need these citations in order to attract the funding resources that allow us to do what we are doing
+
+Therefore, if you are a happy ORCA user, please consider citing a few of the papers listed below in the main body of your paper
+
+In addition to the list printed below, the program has created the file h2co3.bibtex that contains the list in bibtex format
+You can import this file easily into all common literature databanks and citation aid programs
+
+
+List of essential papers. We consider these as the minimum necessary citations
+
+  1. Neese, F.
+     Software update: the ORCA program system, version 6.0
+     WIRES Comput. Molec. Sci. 2025 15(1), e70019
+     doi.org/10.1002/wcms.7019
+
+List of papers to cite with high priority. The work reported in these papers was absolutely
+necessary for this run to complete.
+Our perspective: the developers of density functionals and basis sets usually get cited in chemistry papers
+Good! But without the algorithms to do something with them, the functionals or basis sets would not do anything.
+Hence, in our opinion, the algorithm design and method developments papers are equally worthy of getting cited
+
+  1. Neese, F.
+     The SHARK Integral Generation and Digestion System
+     J. Comp. Chem. 2022 44(3), 381
+     doi.org/10.1002/jcc.26942
+
+List of suggested additional citations. These are papers that are important in the 'surrounding' of 
+of this run, or papers that preceded the highly important papers. If you like your results we are grateful for a citation.
+
+  1. Mills, I.M.
+     Molecular Spectroscopy: Modern Research
+     In:Rao, K.N.; Matthews, C.W. (Eds)
+     Academic, New York 1972 115-140
+  2. Neese, F.
+     The ORCA program system
+     WIRES Comput. Molec. Sci. 2012 2(1), 73-78
+     doi.org/10.1002/wcms.81
+  3. Barone, V.; Biczysko, M.; Bloino, J.
+     Fully anharmonic IR and Raman spectra of medium-size molecular 
+      systems: accuracy and interpretation
+     Phys. Chem. Chem. Phys. 2014 16 , 1759-1787
+     doi.org/10.1039/C3CP53413H
+  4. Neese, F.
+     Software update: the ORCA program system, version 4.0
+     WIRES Comput. Molec. Sci. 2018 8(1), 1-6
+     doi.org/10.1002/wcms.1327
+  5. Neese, F.; Wennmohs, F.; Becker, U.; Riplinger, C.
+     The ORCA quantum chemistry program package
+     J. Chem. Phys. 2020 152(22), 224108
+     doi.org/10.1063/5.0004608
+  6. Franke, P.R.; Stanton, J.F.; Douberly, G.E.
+     How to VPT2: Accurate and Intuitive Simulations of CH Stretching 
+     Infrared Spectra Using VPT2+K with Large Effective Hamiltonian 
+     Resonance Treatments
+     J. Phys. Chem. A 2021 125(6), 1301-1324
+     doi.org/10.1021/acs.jpca.0c09526
+  7. Neese, F.
+     Software update: The ORCA program system—Version 5.0
+     WIRES Comput. Molec. Sci. 2022 12(1), e1606
+     doi.org/10.1002/wcms.1606
+
+List of optional additional citations
+
+  1. Waston, J.K.
+     Determination of Centrifugal Distortion Coefficients of Asymmetric-Top Molecules
+     J. Chem. Phys. 1967 46 , 1035
+     doi.org/10.1063/1.1840957
+  2. Amos, R.D.; Handy, N.C.; Green, W.H.; Jayatilaka, D.; Willetts, A.; Palmieri, P.
+     Anharmonic vibrational properties of CH2F2 : 
+     A comparison of theory and experiment
+     J. Chem. Phys. 1991 95 , 8323-8336
+     doi.org/10.1063/1.461259
+  3. Neese, F.
+     Approximate second-order SCF convergence for spin unrestricted wavefunctions
+     Chem. Phys. Lett. 2000 325(1-3), 93-98
+     doi.org/10.1016/s0009-2614(00)00662-x
+
+Timings for individual modules:
+
+Sum of individual times          ...        2.006 sec (=   0.033 min)
+Startup calculation              ...        0.609 sec (=   0.010 min)  30.4 %
+SCF iterations                   ...        0.966 sec (=   0.016 min)  48.2 %
+Property calculations            ...        0.431 sec (=   0.007 min)  21.5 %
+                             ****ORCA TERMINATED NORMALLY****
+TOTAL RUN TIME: 0 days 0 hours 2 minutes 41 seconds 558 msec

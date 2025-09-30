@@ -1,0 +1,22 @@
+! RI-MP2 def2-TZVP/C VeryTightSCF VPT2
+
+%vpt2
+	VPT2 	On
+	HessianCutoff 	1e-16
+	PrintLevel 	1	
+	MinimiseOrcaPrint True
+end
+
+%method
+	Z_Tol 	1e-16
+end
+
+%pal nprocs 4 end
+
+
+* xyz 0 1
+  N           0.00000589747430      0.00000000000019      0.04646641605119
+  H           0.93237318859286     -0.00000000000003     -0.34552211841389
+  H          -0.46618954303355      0.80746953528134     -0.34547214881858
+  H          -0.46618954303360     -0.80746953528149     -0.34547214881872
+*

@@ -1,0 +1,372 @@
+
+
+           ************************************************************
+           *        Program running with 4 parallel MPI-processes     *
+           *              working on a common directory               *
+           ************************************************************
+
+------------------------------------------------------------------------------
+                         ORCA PROPERTY INTEGRAL CALCULATIONS
+------------------------------------------------------------------------------
+
+GBWName                                   ... h2co3.gbw
+Number of atoms                           ...      6
+Number of basis functions                 ...     66
+Max core memory                           ...   4096 MB
+
+Dipole integrals                          ...  NO
+Quadrupole integrals                      ...  NO
+Linear momentum integrals                 ...  NO
+Angular momentum integrals                ...  NO
+Higher moments length integrals           ...  NO
+Higher moments velocity integrals         ...  NO
+Kinetic energy integrals                  ...  NO
+GIAO right hand sides                     ...  NO
+GIAO dipole derivative integrals          ...  NO
+SOC integrals                             ...  NO
+EPR diamagnetic integrals (GIAO)          ...  NO
+EPR gauge integrals                       ...  NO
+Field gradient integrals                  ...  NO (   0 nuclei)
+Spin-dipole/Fermi contact integrals       ...  NO (   0 nuclei)
+Contact density integrals                 ...  NO (   0 nuclei)
+Nucleus-orbit integrals                   ...  NO (   0 nuclei)
+Geometric perturbations                   ... YES (   6 nuclei)
+
+Choice of electric origin   ... Center of mass
+Position of electric origin ... (  0.0000,  0.0000, -0.0000) 
+Choice of magnetic origin   ... GIAO
+Position of magnetic origin ... (  0.0000,  0.0000,  0.0000) 
+
+Calculating integrals                     ... Geometrical perturbation right hand sides
+
+-----------------------
+GEOMETRIC PERTURBATIONS (6 nuclei)
+-----------------------
+
+MaxCore                            ...   4096 MB
+Number of batches                  ...      1
+
+BATCH   0: Atoms    0 -    5 ( 18 perturbations)
+   => H(core) and overlap derivative integrals     ... done (     0.0 sec)
+   => Making and storing internal U-coefficients   ... done (     0.0 sec)
+   => Exact two electron derivative integrals      ... done (     0.2 sec)
+   => Exact two-electron response operators        ... done (     0.4 sec)
+   => Completing and storing right hand sides      ... done (     0.0 sec)
+   => Total time for right hand sides =   0.4 sec
+
+  geometrical perturbations done (  0.4 sec)
+
+Property integrals calculated in   0.4 sec
+
+Maximum memory used throughout the entire PROPINT-calculation: 14.5 MB
+
+
+           ************************************************************
+           *        Program running with 4 parallel MPI-processes     *
+           *              working on a common directory               *
+           ************************************************************
+------------------------------------------------------------------------------
+                            ORCA SCF RESPONSE CALCULATION
+------------------------------------------------------------------------------
+
+GBWName                                 ... h2co3.gbw
+Number of atoms                         ...      6
+Number of basis functions               ...     66
+Max core memory                         ...   4096 MB
+
+Electric field perturbation             ...  NO
+Quadrupolar field perturbation          ...  NO
+Magnetic field perturbation (no GIAO)   ...  NO
+Magnetic field perturbation (with GIAO) ...  NO
+Linear momentum (velocity) perturbation ...  NO
+Spin-orbit coupling perturbation        ...  NO
+Choice of electric origin               ... Center of mass
+Position of electric origin             ...     0.000000     0.000000    -0.000000
+Choice of magnetic origin               ... GIAO
+Position of magnetic origin             ...     0.000000     0.000000     0.000000
+Nuclear geometric perturbations         ... YES (  18 perturbations)
+Nucleus-orbit perturbations             ...  NO (   0 perturbations)
+Spin-dipole/Fermi contact perturbations ...  NO (   0 perturbations)
+
+Total number of real perturbations      ...     18
+Total number of imaginary perturbations ...      0
+Total number of triplet perturbations   ...      0
+Total number of SOC perturbations       ...      0
+
+
+                                **********************
+                                * REAL PERTURBATIONS *
+                                **********************
+
+
+
+-------------------
+SHARK CP-SCF DRIVER
+-------------------
+
+Dimension of the orbital basis          ...     66
+Dimension of the CPSCF-problem          ...    800
+Number of operators                     ...      1
+Max. number of iterations               ...    128
+Convergence Tolerance                   ... 1.0e-14
+Number of perturbations                 ...     18
+Perturbation type                       ... REAL
+
+----------------------------
+POPLE LINEAR EQUATION SOLVER
+----------------------------
+
+  ITERATION   0:   ||err||_max =   2.2350e-01 (   0.2 sec   0/ 18 done)
+  ITERATION   1:   ||err||_max =   5.0020e-02 (   0.2 sec   0/ 18 done)
+  ITERATION   2:   ||err||_max =   1.9186e-02 (   0.2 sec   0/ 18 done)
+  ITERATION   3:   ||err||_max =   7.0167e-03 (   0.2 sec   0/ 18 done)
+  ITERATION   4:   ||err||_max =   2.3041e-03 (   0.2 sec   0/ 18 done)
+  ITERATION   5:   ||err||_max =   7.1561e-04 (   0.2 sec   0/ 18 done)
+  ITERATION   6:   ||err||_max =   1.8371e-04 (   0.2 sec   0/ 18 done)
+  ITERATION   7:   ||err||_max =   3.3486e-05 (   0.2 sec   0/ 18 done)
+  ITERATION   8:   ||err||_max =   1.1884e-05 (   0.2 sec   0/ 18 done)
+  ITERATION   9:   ||err||_max =   2.6361e-06 (   0.2 sec   0/ 18 done)
+  ITERATION  10:   ||err||_max =   6.1609e-07 (   0.2 sec   0/ 18 done)
+  ITERATION  11:   ||err||_max =   1.2245e-07 (   0.2 sec   0/ 18 done)
+  ITERATION  12:   ||err||_max =   1.9746e-08 (   0.2 sec   0/ 18 done)
+  ITERATION  13:   ||err||_max =   3.5921e-09 (   0.2 sec   0/ 18 done)
+  ITERATION  14:   ||err||_max =   7.1369e-10 (   0.2 sec   0/ 18 done)
+  ITERATION  15:   ||err||_max =   1.3500e-10 (   0.2 sec   0/ 18 done)
+  ITERATION  16:   ||err||_max =   2.4614e-11 (   0.2 sec   0/ 18 done)
+  ITERATION  17:   ||err||_max =   4.5169e-12 (   0.2 sec   0/ 18 done)
+  ITERATION  18:   ||err||_max =   9.3718e-13 (   0.2 sec   3/ 18 done)
+  ITERATION  19:   ||err||_max =   1.4195e-13 (   0.2 sec   6/ 18 done)
+  ITERATION  20:   ||err||_max =   2.5171e-14 (   0.1 sec   6/ 18 done)
+  ITERATION  21:   ||err||_max =   7.5859e-15 (   0.1 sec  18/ 18 done)
+
+CP-SCF equations solved in   4.0 sec
+Response densities calculated in   0.0 sec
+
+Maximum memory used throughout the entire SCFRESP-calculation: 9.3 MB
+
+
+           ************************************************************
+           *        Program running with 4 parallel MPI-processes     *
+           *              working on a common directory               *
+           ************************************************************
+
+------------------------------------------------------------------------------
+                              ORCA PROPERTY CALCULATIONS
+------------------------------------------------------------------------------
+
+GBWName                                 ... h2co3.gbw
+Number of atoms                         ...      6
+Number of basis functions               ...     66
+Max core memory                         ...   4096 MB
+
+Electric properties:
+Dipole moment                           ...  NO
+Quadrupole moment                       ...  NO
+Static polarizability (Dipole/Dipole)   ...  NO
+Static polarizability (Dipole/Quad.)    ...  NO
+Static polarizability (Quad./Quad.)     ...  NO
+Static polarizability (Velocity)        ...  NO
+Static hyperpolarizability              ...  NO
+
+Atomic electric properties:
+Dipole moment                           ...  NO
+Quadrupole moment                       ...  NO
+Static polarizability                   ...  NO
+
+Choice of electric origin               ... Center of mass
+Position of electric origin             ...     0.000000     0.000000    -0.000000
+
+General magnetic properties:
+Magnetizability                         ...  NO
+
+EPR properties:
+g-Tensor (aka g-matrix)                 ...  NO
+Zero-Field splitting spin-orbit         ...  NO
+Zero-field splitting spin-spin          ...  NO
+Hyperfine couplings                     ...  NO (   0 nuclei)
+Quadrupole couplings                    ...  NO (   0 nuclei)
+Contact density                         ...  NO (   0 nuclei)
+
+NMR properties:
+Chemical shifts                         ...  NO (   0 nuclei)
+Spin-rotation constants                 ...  NO (   0 nuclei)
+Spin-spin couplings                     ...  NO (   0 nuclei,    0 pairs)
+
+Choice of magnetic origin               ... GIAO
+Position of magnetic origin             ...     0.000000     0.000000     0.000000
+
+Properties with geometric perturbations:
+SCF Hessian                             ... YES
+IR spectrum                             ... YES
+VCD spectrum                            ...  NO
+X-ray spectroscopy properties:
+SCF XES/XAS/RIXS spectra                ...  NO
+
+SCF SOC stabilization energy            ...  NO
+Diagonal Born-Oppenheimer correction    ...  NO
+
+-----------
+SCF HESSIAN
+-----------
+
+Occupied/Occupied contributions to the Hessian:
+   => Occupied/Occupied contributions              ... done (  0.0 sec)
+Perturbed density contributions to the Hessian:
+   => Perturbed density contributions              ... done (  0.0 sec)
+Explicit contributions to the Hessian:
+   => Nuclear repulsion Hessian                    ... done (  0.0 sec)
+   => HCore and overlap Hessian                    ... done (  0.1 sec)
+   => Exact two electron integral Hessian          ... done (  1.4 sec)
+   => Explicit contributions done
+Dipole derivatives                                 ... done (  0.0 sec)
+Mass weighting the Hessian           ... done
+Calculating normal modes             ... done
+Scaling frequencies                  ... done
+
+The first frequency considered to be a vibration is 6
+The total number of vibrations considered is 12
+
+
+--------------------------
+THERMOCHEMISTRY AT 298.15K
+--------------------------
+
+Temperature         ...   298.15 K
+Pressure            ...     1.00 atm
+Total Mass          ...    62.00 AMU
+Quasi RRHO          ...     True
+Cut-Off Frequency   ...     1.00 cm^-1
+
+Throughout the following assumptions are being made:
+  (1) The electronic state is orbitally nondegenerate
+  (2) There are no thermally accessible electronically excited states
+  (3) Hindered rotations indicated by low frequency modes are not
+      treated as such but are treated as vibrations and this may
+      cause some error
+  (4) All equations used are the standard statistical mechanics
+      equations for an ideal gas
+  (5) All vibrations are strictly harmonic
+
+freq.     633.88  E(vib)   ...       0.09 
+freq.     671.58  E(vib)   ...       0.08 
+freq.     798.57  E(vib)   ...       0.05 
+freq.     800.04  E(vib)   ...       0.05 
+freq.     961.80  E(vib)   ...       0.03 
+freq.    1021.66  E(vib)   ...       0.02 
+freq.    1336.57  E(vib)   ...       0.01 
+freq.    1466.67  E(vib)   ...       0.00 
+freq.    1594.05  E(vib)   ...       0.00 
+freq.    1902.58  E(vib)   ...       0.00 
+freq.    3886.65  E(vib)   ...       0.00 
+freq.    3889.46  E(vib)   ...       0.00 
+
+------------
+INNER ENERGY
+------------
+
+The inner energy is: U= E(el) + E(ZPE) + E(vib) + E(rot) + E(trans)
+    E(el)   - is the total energy from the electronic structure calculation
+              = E(kin-el) + E(nuc-el) + E(el-el) + E(nuc-nuc)
+    E(ZPE)  - the the zero temperature vibrational energy from the frequency calculation
+    E(vib)  - the the finite temperature correction to E(ZPE) due to population
+              of excited vibrational states
+    E(rot)  - is the rotational thermal energy
+    E(trans)- is the translational thermal energy
+
+Summary of contributions to the inner energy U:
+Electronic energy                ...   -263.44921454 Eh
+Zero point energy                ...      0.04320205 Eh      27.11 kcal/mol
+Thermal vibrational correction   ...      0.00052017 Eh       0.33 kcal/mol
+Thermal rotational correction    ...      0.00141627 Eh       0.89 kcal/mol
+Thermal translational correction ...      0.00141627 Eh       0.89 kcal/mol
+-----------------------------------------------------------------------
+Total thermal energy                   -263.40265979 Eh
+
+
+Summary of corrections to the electronic energy:
+(perhaps to be used in another calculation)
+Total thermal correction                  0.00335271 Eh       2.10 kcal/mol
+Non-thermal (ZPE) correction              0.04320205 Eh      27.11 kcal/mol
+-----------------------------------------------------------------------
+Total correction                          0.04655476 Eh      29.21 kcal/mol
+
+
+--------
+ENTHALPY
+--------
+
+The enthalpy is H = U + kB*T
+                kB is Boltzmann's constant
+Total thermal energy              ...   -263.40265979 Eh 
+Thermal Enthalpy correction       ...      0.00094421 Eh       0.59 kcal/mol
+-----------------------------------------------------------------------
+Total Enthalpy                    ...   -263.40171558 Eh
+
+
+Note: Rotational entropy computed according to Herzberg 
+Infrared and Raman Spectra, Chapter V,1, Van Nostrand Reinhold, 1945 
+Point Group:  C2v, Symmetry Number:   2  
+Rotational constants in cm-1:     0.399009     0.378716     0.194299 
+
+Vibrational entropy computed according to the QRRHO of S. Grimme
+Chem.Eur.J. 2012 18 9955 using a reference frequency of 100.0 cm-1
+
+
+-------
+ENTROPY
+-------
+
+The entropy contributions are T*S = T*(S(el)+S(vib)+S(rot)+S(trans))
+     S(el)   - electronic entropy
+     S(vib)  - vibrational entropy
+     S(rot)  - rotational entropy
+     S(trans)- translational entropy
+The entropies will be listed as multiplied by the temperature to get
+units of energy
+
+Electronic entropy                ...      0.00000000 Eh      0.00 kcal/mol
+Vibrational entropy               ...      0.00066290 Eh      0.42 kcal/mol
+Rotational entropy                ...      0.01052193 Eh      6.60 kcal/mol
+Translational entropy             ...      0.01819422 Eh     11.42 kcal/mol
+-----------------------------------------------------------------------
+Final entropy term                ...      0.02937906 Eh     18.44 kcal/mol
+
+In case the symmetry of your molecule has not been determined correctly
+or in case you have a reason to use a different symmetry number we print 
+out the resulting rotational entropy values for sn=1,12:
+
+ non-linear molecules -----------------------------------
+|  sn= 1 | S(rot)=       0.01117639 Eh      7.01 kcal/mol|
+|  sn= 2 | S(rot)=       0.01052193 Eh      6.60 kcal/mol|
+|  sn= 3 | S(rot)=       0.01013910 Eh      6.36 kcal/mol|
+|  sn= 4 | S(rot)=       0.00986748 Eh      6.19 kcal/mol|
+|  sn= 5 | S(rot)=       0.00965679 Eh      6.06 kcal/mol|
+|  sn= 6 | S(rot)=       0.00948465 Eh      5.95 kcal/mol|
+|  sn= 7 | S(rot)=       0.00933910 Eh      5.86 kcal/mol|
+|  sn= 8 | S(rot)=       0.00921302 Eh      5.78 kcal/mol|
+|  sn= 9 | S(rot)=       0.00910181 Eh      5.71 kcal/mol|
+|  sn=10 | S(rot)=       0.00900233 Eh      5.65 kcal/mol|
+|  sn=11 | S(rot)=       0.00891234 Eh      5.59 kcal/mol|
+|  sn=12 | S(rot)=       0.00883019 Eh      5.54 kcal/mol|
+ linear molecules ---------------------------------------
+|  Dinfh | S(rot)=       0.00687271 Eh      4.31 kcal/mol|
+|  Cinfv | S(rot)=       0.00752717 Eh      4.72 kcal/mol|
+ --------------------------------------------------------
+
+
+-------------------
+GIBBS FREE ENERGY
+-------------------
+
+The Gibbs free energy is G = H - T*S
+
+Total enthalpy                    ...   -263.40171558 Eh 
+Total entropy correction          ...     -0.02937906 Eh    -18.44 kcal/mol
+-----------------------------------------------------------------------
+Final Gibbs free energy         ...   -263.43109464 Eh
+
+For completeness - the Gibbs free energy minus the electronic energy
+G-E(el)                           ...      0.01811991 Eh     11.37 kcal/mol
+
+
+Maximum memory used throughout the entire PROP-calculation: 24.4 MB

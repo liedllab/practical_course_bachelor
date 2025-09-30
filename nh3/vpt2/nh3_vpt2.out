@@ -1,0 +1,986 @@
+
+                                 *****************
+                                 * O   R   C   A *
+                                 *****************
+
+                                            #,                                       
+                                            ###                                      
+                                            ####                                     
+                                            #####                                    
+                                            ######                                   
+                                           ########,                                 
+                                     ,,################,,,,,                         
+                               ,,#################################,,                 
+                          ,,##########################################,,             
+                       ,#########################################, ''#####,          
+                    ,#############################################,,   '####,        
+                  ,##################################################,,,,####,       
+                ,###########''''           ''''###############################       
+              ,#####''   ,,,,##########,,,,          '''####'''          '####       
+            ,##' ,,,,###########################,,,                        '##       
+           ' ,,###''''                  '''############,,,                           
+         ,,##''                                '''############,,,,        ,,,,,,###''
+      ,#''                                            '''#######################'''  
+     '                                                          ''''####''''         
+             ,#######,   #######,   ,#######,      ##                                
+            ,#'     '#,  ##    ##  ,#'     '#,    #''#        ,####,    ,#,          
+            ##       ##  ##   ,#'  ##            #'  '#       #'       ,# #          
+            ##       ##  #######   ##           ,######,      #####,      #          
+            '#,     ,#'  ##    ##  '#,     ,#' ,#      #,     #,   #      #          
+             '#######'   ##     ##  '#######'  #'      '#     '####' #    #          
+
+
+
+                #########################################################
+                #                        -***-                          #
+                #          Department of theory and spectroscopy        #
+                #                                                       #
+                #                      Frank Neese                      #
+                #                                                       #
+                #     Directorship, Architecture, Infrastructure        #
+                #                    SHARK, DRIVERS                     #
+                #        Core code/Algorithms in most modules           #
+                #                                                       #
+                #        Max Planck Institute fuer Kohlenforschung      #
+                #                Kaiser Wilhelm Platz 1                 #
+                #                 D-45470 Muelheim/Ruhr                 #
+                #                      Germany                          #
+                #                                                       #
+                #                  All rights reserved                  #
+                #                        -***-                          #
+                #########################################################
+
+
+                         Program Version 6.1.0  -  RELEASE   -
+                                (GIT: $679e74b$)
+                          ($2025-06-10 18:02:51 +0200$)
+
+
+ With contributions from (in alphabetic order):
+[Max-Planck-Institut fuer Kohlenforschung]                               
+  Daniel Aravena         : Magnetic Suceptibility                        
+  Michael Atanasov       : Ab Initio Ligand Field Theory (pilot matlab implementation)
+  Alexander A. Auer      : GIAO ZORA, VPT2 properties, NMR spectrum      
+  Ute Becker             : All parallelization in ORCA, NUMFREQ, NUMCALC 
+  Giovanni Bistoni       : ED, misc. LED, open-shell LED, HFLD           
+  Dmytro Bykov           : pre 5.0 version of the SCF Hessian            
+  Marcos Casanova-Páez   : Triplet and SCS-CIS(D). UHF-(DLPNO)-IP/EA/STEOM-CCSD. UHF-CVS-IP/STEOM-CCSD   
+  Vijay G. Chilkuri      : MRCI spin determinant printing, contributions to CSF-ICE 
+  Pauline Colinet        : FMM embedding                                 
+  Dipayan Datta          : RHF DLPNO-CCSD density                        
+  Achintya Kumar Dutta   : EOM-CC, STEOM-CC                              
+  Nicolas Foglia         : Exact transition moments, OPA infrastructure, MCD improvements    
+  Dmitry Ganyushin       : Spin-Orbit,Spin-Spin,Magnetic field MRCI      
+  Miquel Garcia-Rates    : C-PCM and meta-GGA Hessian, CCSD/C-PCM, Gaussian charge scheme 
+  Tiago L. C. Gouveia    : GS-ROHF, GS-ROCIS                             
+  Yang Guo               : DLPNO-NEVPT2, F12-NEVPT2, CIM, IAO-localization        
+  Andreas Hansen         : Spin unrestricted coupled pair/coupled cluster methods 
+  Ingolf Harden          : AUTO-CI MPn and infrastructure                
+  Benjamin Helmich-Paris : MC-RPA, TRAH-(SCF,CASSCF), AVAS, COSX integrals, SCF dyn. polar., MC-PDFT, srDFT 
+  Lee Huntington         : MR-EOM, pCC                                   
+  Robert Izsak           : Overlap fitted RIJCOSX, COSX-SCS-MP3, EOM     
+  Riya Kayal             : Wick's Theorem for AUTO-CI, AUTO-CI UHF-CCSDT 
+  Emily Kempfer          : AUTO-CI RHF CISDT and CCSDT, approximate NEVPT4
+  Christian Kollmar      : KDIIS, OOCD, Brueckner-CCSD(T), CCSD density, CASPT2, CASPT2-K, improved NEVPT2 
+  Axel Koslowski         : Symmetry handling                             
+  Simone Kossmann        : meta-GGA functionals, TD-DFT gradient, OOMP2, (MP2 Hessian; deprecated post 5.0) 
+  Lucas Lang             : DCDCAS, Hyperfine gauge corrections, ICE-SOC+SSC
+  Marvin Lechner         : AUTO-CI (C++ implementation), FIC-MRCC        
+  Spencer Leger          : CASSCF response                               
+  Dagmar Lenk            : GEPOL surface, SMD, ORCA-2-JSON               
+  Dimitrios Liakos       : Extrapolation schemes; Compound Job, Property file
+  Dimitrios Manganas     : Further ROCIS development; embedding schemes. LFT, Crystal Embedding 
+  Dimitrios Pantazis     : SARC Basis sets                               
+  Anastasios Papadopoulos: AUTO-CI, single reference methods and gradients 
+  Taras Petrenko         : pre 6.0 DFT Hessian and TD-DFT gradient,  ECA, NRVS 
+  Petra Pikulova         : Analytic Raman intensities                    
+  Peter Pinski           : DLPNO-MP2, DLPNO-MP2 Gradient                 
+  Shashank Vittal Rao    : ES-AILFT, MagRelax                            
+  Christoph Reimann      : Effective Core Potentials                     
+  Marius Retegan         : Local ZFS, SOC                                
+  Christoph Riplinger    : Optimizer, TS searches, QM/MM, DLPNO-CCSD(T), (RO)-DLPNO pert. Triples 
+  Michael Roemelt        : Original ROCIS implementation, recursive CI coupling coefficients
+  Masaaki Saitow         : Open-shell DLPNO-CCSD energy and density      
+  Barbara Sandhoefer     : DKH picture change effects                    
+  Yorick L. A. Schmerwitz: GMF and freeze-and-release deltaSCF, NEB S-IDPP initial path                    
+  Kantharuban Sivalingam : CASSCF convergence/infrastructure, NEVPT2, NEVPT3, NEVPT4(SD), FIC-MRCI and CEPA variants
+  Bernardo de Souza      : ESD, SOC TD-DFT                               
+  Georgi L. Stoychev     : AutoAux, RI-MP2 NMR, DLPNO-MP2 response, X2C  
+  Van Anh Tran           : RI-MP2 g-tensors                              
+  Willem Van den Heuvel  : Paramagnetic NMR                              
+  Zikuan Wang            : NOTCH, Electric field optimization            
+  Frank Wennmohs         : Technical directorship and infrastructure     
+  Hang Xu                : AUTO-CI-Response properties                   
+                                                                         
+[FACCTs GmbH]                                                            
+  Markus Bursch, Nicolas Foglia, Miquel Garcia-Rates, Ingolf Harden, Hagen Neugebauer, Anastasios Papadopoulos, 
+  Christoph Riplinger, Bernardo de Souza, Georgi L. Stoychev                                                    
+                                                                 
+  APM, various basis sets, CI-OPT, improved COSX, DLPNO-Multilevel,           
+  DOCKER, DRACO, updates on ESD, Fragmentator, GOAT, IRC, LR-CPCM, L-BFGS, MBIS, meta-GGA TD-DFT gradient, ML-optimized integration grids, 
+  MM, NACMEs, nearIR, NEB, NEB-TS, NL-DFT gradient (VV10), 2- and 3-layer-ONIOM, interface openCOSMO-RS, QMMM,   
+  Crystal-QMMM, RESP, rigid body optimization, SF, symmetry and pop. for TD-DFT, various functionals, SOLVATOR                                   
+                                                                         
+[Other institutions]                                                     
+  V. Asgeirsson          : NEB                                           
+  Christoph Bannwarth    : sTDA-DFT, sTD-DFT, PBEh-3c, B97-3c, D3        
+  Giovanni Bistoni       : ETS/NOCV, ADLD/ADEX, COVALED                  
+  Martin Brehm           : Molecular dynamics                            
+  Ronald Cardenas        : ETS/NOCV                                      
+  Martina Colucci        : COVALED                                       
+  Sebastian Ehlert       : rSCAN, r2SCAN, r2SCAN-3c, D4, dhf basis sets  
+  Marvin Friede          : D4 for Fr, Ra, Ac-Lr                          
+  Lars Goerigk           : TD-DFT with DH, B97 family of functionals     
+  Stefan Grimme          : VdW corrections, initial TS optimization, DFT functionals, gCP, sTDA/sTD-DF 
+  Waldemar Hujo          : DFT-NL                                        
+  H. Jonsson             : NEB                                           
+  Holger Kruse           : gCP                                           
+  Marcel Mueller         : wB97X-3c, vDZP basis set                      
+  Hagen Neugebauer       : wr2SCAN, Native XTB                           
+  Gianluca Regni         : ADLD/ADEX                                     
+  Tobias Risthaus        : pre 6.0 range-separated hybrid DFT and stability analysis
+  Lukas Wittmann         : regularized MP2, r2SCAN double-hybrids, wr2SCAN        
+                                                                         
+We gratefully acknowledge several colleagues who have allowed us to      
+interface, adapt or use parts of their codes:                            
+  Ed Valeev, F. Pavosevic, A. Kumar             : LibInt (2-el integral package), F12 methods 
+  Garnet Chan, S. Sharma, J. Yang, R. Olivares  : DMRG                   
+  Ulf Ekstrom                                   : XCFun DFT Library      
+  Mihaly Kallay                                 : mrcc  (arbitrary order and MRCC methods)
+  Frank Weinhold                                : gennbo (NPA and NBO analysis)           
+  Simon Mueller                                 : openCOSMO-RS                            
+  Christopher J. Cramer and Donald G. Truhlar   : smd solvation model                     
+  S Lehtola, MJT Oliveira, MAL Marques          : LibXC Library                           
+  Liviu Ungur et al                             : ANISO software                          
+
+
+ Your calculation uses the libint2 library for the computation of 2-el integrals
+ For citations please refer to: http://libint.valeyev.net
+
+ Your ORCA version has been built with support for libXC version: 7.0.0
+ For citations please refer to: https://libxc.gitlab.io
+
+ This ORCA versions uses:
+   CBLAS   interface :  Fast vector & matrix operations
+   LAPACKE interface :  Fast linear algebra routines
+   SCALAPACK package :  Parallel linear algebra routines
+   Shared memory     :  Shared parallel matrices
+   BLAS/LAPACK       :  OpenBLAS 0.3.29  USE64BITINT DYNAMIC_ARCH NO_AFFINITY Haswell SINGLE_THREADED
+        Core in use  :  Haswell
+   Copyright (c) 2011-2014, The OpenBLAS Project
+
+
+  ***********************************
+  * Starting time: Tue Sep 30 11:12:02 2025
+  * Host name:     sv1-c724
+  * Process ID:    1511546
+  * Working dir.:  /home/lme/practical_course/practical_course_bachelor/nh3/vpt2
+  ***********************************
+
+================================================================================
+
+----- Orbital basis set information -----
+Your calculation utilizes the basis: def2-SVP
+   F. Weigend and R. Ahlrichs, Phys. Chem. Chem. Phys. 7, 3297 (2005).
+
+----- AuxC basis set information -----
+Your calculation utilizes the auxiliary basis: def2-TZVP/C
+  H-La, Hf-Rn : A. Hellweg, C. Hattig, S. Hofener and W. Klopper, Theor. Chem. Acc. 117, 587 (2007).
+        Ce-Lu : J. Chmela and M. E. Harding, Mol. Phys. (2018).
+
+================================================================================
+                                        WARNINGS
+                       Please study these warnings very carefully!
+================================================================================
+
+WARNING: Old DensityContainer found on disk!
+         Will remove this file - 
+         If you want to keep old densities, please start your calculation with a different basename. 
+
+
+WARNING: Instead of the default, updated atomic masses from 2016 are used.
+
+
+WARNING: No MP2 level density has been requested!
+         To calculate MP2 level properties use
+         %mp2 Density relaxed end
+         or
+         %mp2 Density unrelaxed end
+
+WARNING: Post HF methods need fully converged wavefunctions
+  ===> : Setting SCFConvForced true
+         You can overwrite this default with %scf ConvForced false 
+
+
+================================================================================
+                                       INPUT FILE
+================================================================================
+NAME = nh3.inp
+|  1> ! RI-MP2 def2-TZVP/C VeryTightSCF VPT2
+|  2> 
+|  3> %vpt2
+|  4> 	VPT2 	On
+|  5> 	HessianCutoff 	1e-16
+|  6> 	PrintLevel 	1	
+|  7> 	MinimiseOrcaPrint True
+|  8> end
+|  9> 
+| 10> %method
+| 11> 	Z_Tol 	1e-16
+| 12> end
+| 13> 
+| 14> %pal nprocs 4 end
+| 15> 
+| 16> 
+| 17> * xyz 0 1
+| 18>   N           0.00000589747430      0.00000000000019      0.04646641605119
+| 19>   H           0.93237318859286     -0.00000000000003     -0.34552211841389
+| 20>   H          -0.46618954303355      0.80746953528134     -0.34547214881858
+| 21>   H          -0.46618954303360     -0.80746953528149     -0.34547214881872
+| 22> *
+| 23> 
+| 24>                          ****END OF INPUT****
+================================================================================
+
+numfreqdx 1 AnHess 0 RunTyp -1925977344 
+                     *******************************
+                     *              VPT2           *
+                     *******************************
+
+    Basename = nh3
+    Pickettname = 
+    MinimiseOrcaOutput = true
+    SymThresh = 1.00e-04
+    AnharmDisp = 0.050
+    PropDisp = 0.050
+    HessianCutoff = 1.00e-16
+    print_level = 1
+    AvgProp = 0
+    SkipModes = 0
+    CubicXTB = 0
+
+
+Rotating Geometry into its principle axis frame!
+ -----------------------------------------------
+| PLEASE NOTE :                                 |
+| In contrast to most parts of ORCA, which keep |
+| the orientation of a system from the input,   |
+| the VPT2 module will rotate the system into   |
+| the principlal axes frame. This influences    |
+| all directional properties like dipole        |
+| or transition dipole components. Please check |
+| the geometry output below for the new coords !|
+ -----------------------------------------------
+
+ > Obtaining the initial Hessian.
+VPT2 initial Hessian finished in     0.000035 seconds 
+VPT2 initial property finished in     0.000000 seconds 
+-----------------------------------------------------------------
+                         IR Intensities                      
+-----------------------------------------------------------------
+Mode freq     Int          T2   (      Tx       Ty       Tz     )  
+     cm-1    km/mol        a.u.                                 
+----------------------------------------------------------------
+0   -0.00   -nan       -nan (      -nan       -nan       -nan)
+1    0.00  0.000   0.000000 (  0.000000   0.000000  -0.000000)
+2    0.01  0.000   0.000000 ( -0.000000   0.000000   0.000000)
+3  365.52  0.000   0.000000 (  0.000006  -0.000000  -0.000000)
+4  391.04 80.337   0.012686 (  0.000000   0.112634   0.000000)
+5  391.05 80.337   0.012686 (  0.112633  -0.000000  -0.000000)
+6  1267.10 181.776   0.008859 (  0.000000  -0.000000   0.094120)
+7  1821.90 19.601   0.000664 ( -0.000000   0.025775   0.000000)
+8  1821.90 19.601   0.000664 ( -0.025775  -0.000000   0.000000)
+9  3548.22  0.031   0.000001 (  0.000000   0.000000   0.000738)
+10  3652.85  0.000   0.000000 ( -0.000083  -0.000000  -0.000000)
+11  3652.85  0.000   0.000000 ( -0.000000   0.000083   0.000000)
+ > Generate 12 displacements .
+generating displaced geometries for force field 
+generating displaced geometries for property derivatives 
+Storing displaced geometries for hessian and property derivatives
+List of participating nodes    ...  nh3.hostnames
+
+Skipping Hessian calculation.
+
+VPT2 displaced Hessians finished in     0.000730 seconds 
+ 
+------- collect hessians vpt2 -------- 
+-----------------------------------------------------------------
+                         IR Intensities                      
+-----------------------------------------------------------------
+Mode freq     Int          T2   (      Tx       Ty       Tz     )  
+     cm-1    km/mol        a.u.                                 
+----------------------------------------------------------------
+0   -0.00   -nan       -nan (      -nan       -nan       -nan)
+1    0.00  0.000   0.000000 (  0.000000  -0.000000  -0.000000)
+2    0.00  0.000   0.000000 ( -0.000000   0.000000   0.000000)
+3  362.12  0.000   0.000000 (  0.000005   0.000000  -0.000000)
+4  394.04 81.481   0.012769 ( -0.000000   0.113000   0.000000)
+5  394.05 81.481   0.012769 (  0.112998   0.000000   0.000000)
+6  1281.01 178.243   0.008592 ( -0.000000  -0.000000   0.092694)
+7  1822.73 19.345   0.000655 ( -0.000002   0.025600   0.000000)
+8  1822.73 19.345   0.000655 ( -0.025600  -0.000002  -0.000000)
+9  3545.46  0.047   0.000001 (  0.000000   0.000000   0.000908)
+10  3647.23  0.008   0.000000 (  0.000360   0.000000  -0.000000)
+11  3647.23  0.008   0.000000 (  0.000000  -0.000360   0.000000)
+-----------------------------------------------------------------
+                         IR Intensities                      
+-----------------------------------------------------------------
+Mode freq     Int          T2   (      Tx       Ty       Tz     )  
+     cm-1    km/mol        a.u.                                 
+----------------------------------------------------------------
+0   -0.00   -nan       -nan (      -nan       -nan       -nan)
+1    0.00  0.000   0.000000 (  0.000000  -0.000000  -0.000000)
+2    0.01  0.000   0.000000 ( -0.000000  -0.000000   0.000000)
+3  369.09  0.000   0.000000 (  0.000008  -0.000000  -0.000000)
+4  388.43 79.179   0.012587 (  0.000000   0.112194   0.000000)
+5  388.44 79.179   0.012587 (  0.112192  -0.000000  -0.000000)
+6  1252.96 185.348   0.009135 ( -0.000000  -0.000000   0.095576)
+7  1821.05 19.858   0.000673 (  0.000001   0.025950   0.000000)
+8  1821.05 19.858   0.000673 ( -0.025949   0.000001   0.000000)
+9  3550.73  0.019   0.000000 (  0.000000  -0.000000   0.000571)
+10  3658.18  0.016   0.000000 ( -0.000526  -0.000000  -0.000000)
+11  3658.19  0.016   0.000000 ( -0.000000   0.000526   0.000000)
+-----------------------------------------------------------------
+                         IR Intensities                      
+-----------------------------------------------------------------
+Mode freq     Int          T2   (      Tx       Ty       Tz     )  
+     cm-1    km/mol        a.u.                                 
+----------------------------------------------------------------
+0   -0.00   -nan       -nan (      -nan       -nan       -nan)
+1   -0.00   -nan       -nan (      -nan       -nan       -nan)
+2    0.00  0.000   0.000000 (  0.000000   0.000000   0.000000)
+3  364.16  6.224   0.001055 (  0.032487   0.000000  -0.000000)
+4  382.33 74.507   0.012034 (  0.109699  -0.000001  -0.000000)
+5  400.89 79.946   0.012314 (  0.000000   0.110967   0.000886)
+6  1267.10 181.774   0.008859 (  0.000000  -0.000345   0.094120)
+7  1819.10 19.897   0.000675 ( -0.025989   0.000000   0.000000)
+8  1824.66 19.309   0.000653 (  0.000000   0.025563   0.000006)
+9  3548.14  0.032   0.000001 ( -0.000000   0.000079   0.000738)
+10  3649.86  0.003   0.000000 (  0.000231  -0.000000  -0.000000)
+11  3655.64  0.009   0.000000 (  0.000000   0.000398  -0.000012)
+-----------------------------------------------------------------
+                         IR Intensities                      
+-----------------------------------------------------------------
+Mode freq     Int          T2   (      Tx       Ty       Tz     )  
+     cm-1    km/mol        a.u.                                 
+----------------------------------------------------------------
+0   -0.00   -nan       -nan (      -nan       -nan       -nan)
+1    0.00  0.000   0.000000 (  0.000000   0.000000   0.000000)
+2    0.00  0.000   0.000000 ( -0.000000  -0.000000   0.000000)
+3  364.98  1.278   0.000216 ( -0.014707  -0.000000   0.000000)
+4  380.88 80.733   0.013089 (  0.000000   0.114403  -0.000894)
+5  401.52 78.666   0.012098 ( -0.109992   0.000000  -0.000000)
+6  1267.10 181.774   0.008859 (  0.000000  -0.000340  -0.094120)
+7  1819.08 19.900   0.000676 (  0.000000   0.025991  -0.000006)
+8  1824.68 19.307   0.000653 ( -0.025561   0.000000  -0.000000)
+9  3548.14  0.032   0.000001 (  0.000000  -0.000080   0.000738)
+10  3649.95  0.003   0.000000 (  0.000000   0.000231  -0.000013)
+11  3655.55  0.009   0.000000 ( -0.000398   0.000000   0.000000)
+-----------------------------------------------------------------
+                         IR Intensities                      
+-----------------------------------------------------------------
+Mode freq     Int          T2   (      Tx       Ty       Tz     )  
+     cm-1    km/mol        a.u.                                 
+----------------------------------------------------------------
+0   -0.00   -nan       -nan (      -nan       -nan       -nan)
+1    0.00  0.000   0.000000 ( -0.000000   0.000000  -0.000000)
+2    0.00  0.000   0.000000 (  0.000000  -0.000000  -0.000000)
+3  364.55  3.970   0.000672 ( -0.009734   0.024036   0.000075)
+4  381.61 77.440   0.012531 ( -0.081888   0.076322   0.000641)
+5  401.21 79.267   0.012200 ( -0.076813  -0.079369   0.000613)
+6  1267.10 181.774   0.008859 (  0.000343   0.000002   0.094120)
+7  1819.09 19.898   0.000675 (  0.018410  -0.018345  -0.000004)
+8  1824.67 19.308   0.000653 (  0.018043   0.018108  -0.000004)
+9  3548.14  0.032   0.000001 ( -0.000080   0.000000   0.000738)
+10  3649.91  0.003   0.000000 (  0.000165  -0.000162  -0.000009)
+11  3655.60  0.009   0.000000 ( -0.000280  -0.000283  -0.000008)
+-----------------------------------------------------------------
+                         IR Intensities                      
+-----------------------------------------------------------------
+Mode freq     Int          T2   (      Tx       Ty       Tz     )  
+     cm-1    km/mol        a.u.                                 
+----------------------------------------------------------------
+0   -0.01   -nan       -nan (      -nan       -nan       -nan)
+1    0.00  0.000   0.000000 (  0.000000  -0.000000  -0.000000)
+2    0.01  0.000   0.000000 ( -0.000000   0.000000  -0.000000)
+3  364.55  3.970   0.000672 ( -0.009734  -0.024035  -0.000075)
+4  381.61 77.441   0.012531 (  0.081889   0.076322   0.000641)
+5  401.21 79.267   0.012200 (  0.076812  -0.079369   0.000613)
+6  1267.10 181.774   0.008859 (  0.000343  -0.000002  -0.094120)
+7  1819.09 19.898   0.000675 ( -0.018411  -0.018345  -0.000004)
+8  1824.67 19.308   0.000653 (  0.018043  -0.018108   0.000004)
+9  3548.14  0.032   0.000001 (  0.000080   0.000000   0.000738)
+10  3649.91  0.003   0.000000 ( -0.000165  -0.000162  -0.000009)
+11  3655.60  0.009   0.000000 ( -0.000280   0.000283   0.000008)
+-----------------------------------------------------------------
+                         IR Intensities                      
+-----------------------------------------------------------------
+Mode freq     Int          T2   (      Tx       Ty       Tz     )  
+     cm-1    km/mol        a.u.                                 
+----------------------------------------------------------------
+0   -0.01   -nan       -nan (      -nan       -nan       -nan)
+1   -0.00   -nan       -nan (      -nan       -nan       -nan)
+2    0.00  0.000   0.000000 ( -0.000000   0.000000   0.000000)
+3  313.26  0.000   0.000000 ( -0.000003  -0.000000   0.000000)
+4  343.16 80.790   0.014538 ( -0.000000   0.120573   0.000000)
+5  343.17 80.790   0.014538 (  0.120572   0.000000   0.000000)
+6  1256.11 183.343   0.009013 ( -0.000000  -0.000000   0.094938)
+7  1818.47 19.777   0.000672 ( -0.000000   0.025915   0.000000)
+8  1818.47 19.777   0.000672 ( -0.025915  -0.000000  -0.000000)
+9  3579.99  0.021   0.000000 ( -0.000000  -0.000000   0.000600)
+10  3685.62  0.005   0.000000 ( -0.000294  -0.000000   0.000000)
+11  3685.63  0.005   0.000000 ( -0.000000   0.000294   0.000000)
+-----------------------------------------------------------------
+                         IR Intensities                      
+-----------------------------------------------------------------
+Mode freq     Int          T2   (      Tx       Ty       Tz     )  
+     cm-1    km/mol        a.u.                                 
+----------------------------------------------------------------
+0   -0.01   -nan       -nan (      -nan       -nan       -nan)
+1    0.00  0.000   0.000000 ( -0.000000  -0.000000  -0.000000)
+2    0.01  0.000   0.000000 ( -0.000000   0.000000   0.000000)
+3  410.20  0.000   0.000000 ( -0.000008  -0.000000  -0.000000)
+4  432.70 79.887   0.011401 ( -0.000000   0.106774   0.000001)
+5  432.71 79.886   0.011400 (  0.106773   0.000000   0.000000)
+6  1277.70 180.220   0.008710 ( -0.000000  -0.000000   0.093327)
+7  1825.16 19.426   0.000657 ( -0.025637   0.000002   0.000000)
+8  1825.16 19.426   0.000657 ( -0.000002  -0.025637  -0.000000)
+9  3516.66  0.044   0.000001 (  0.000000   0.000000   0.000878)
+10  3620.31  0.001   0.000000 (  0.000132  -0.000000   0.000000)
+11  3620.32  0.001   0.000000 ( -0.000000  -0.000132   0.000000)
+-----------------------------------------------------------------
+                         IR Intensities                      
+-----------------------------------------------------------------
+Mode freq     Int          T2   (      Tx       Ty       Tz     )  
+     cm-1    km/mol        a.u.                                 
+----------------------------------------------------------------
+0   -0.01   -nan       -nan (      -nan       -nan       -nan)
+1    0.00  0.000   0.000000 ( -0.000000  -0.000000  -0.000000)
+2    0.01  0.000   0.000000 ( -0.000000  -0.000000   0.000000)
+3  351.41 38.838   0.006825 (  0.046704   0.068123  -0.001685)
+4  374.02 45.440   0.007502 ( -0.074938  -0.043348   0.002707)
+5  416.94 76.440   0.011321 ( -0.070801   0.079383   0.002567)
+6  1267.17 181.731   0.008856 (  0.001742  -0.000006   0.094090)
+7  1818.93 18.932   0.000643 (  0.017858  -0.017995  -0.000133)
+8  1824.73 20.268   0.000686 (  0.018586   0.018451  -0.000134)
+9  3538.61  0.034   0.000001 ( -0.000192   0.000053   0.000748)
+10  3634.54  0.001   0.000000 (  0.000054  -0.000052   0.000082)
+11  3681.17  0.005   0.000000 ( -0.000225  -0.000199   0.000034)
+-----------------------------------------------------------------
+                         IR Intensities                      
+-----------------------------------------------------------------
+Mode freq     Int          T2   (      Tx       Ty       Tz     )  
+     cm-1    km/mol        a.u.                                 
+----------------------------------------------------------------
+0   -0.00   -nan       -nan (      -nan       -nan       -nan)
+1   -0.00   -nan       -nan (      -nan       -nan       -nan)
+2    0.00  0.000   0.000000 (  0.000000   0.000000   0.000000)
+3  351.41 38.838   0.006825 (  0.046704  -0.068123   0.001685)
+4  374.02 45.440   0.007502 ( -0.074938   0.043348  -0.002707)
+5  416.94 76.440   0.011321 ( -0.070801  -0.079383  -0.002567)
+6  1267.17 181.731   0.008856 ( -0.001742  -0.000006   0.094090)
+7  1818.93 18.932   0.000643 (  0.017858   0.017995   0.000133)
+8  1824.73 20.268   0.000686 ( -0.018586   0.018451  -0.000134)
+9  3538.61  0.034   0.000001 (  0.000192   0.000053   0.000748)
+10  3634.54  0.001   0.000000 ( -0.000054  -0.000052   0.000082)
+11  3681.17  0.005   0.000000 ( -0.000225   0.000199  -0.000034)
+-----------------------------------------------------------------
+                         IR Intensities                      
+-----------------------------------------------------------------
+Mode freq     Int          T2   (      Tx       Ty       Tz     )  
+     cm-1    km/mol        a.u.                                 
+----------------------------------------------------------------
+0   -0.00   -nan       -nan (      -nan       -nan       -nan)
+1   -0.00   -nan       -nan (      -nan       -nan       -nan)
+2    0.01  0.000   0.000000 (  0.000000  -0.000000   0.000000)
+3  359.74  6.474   0.001111 (  0.033335   0.000000   0.000000)
+4  363.18 80.210   0.013638 ( -0.000000   0.116707   0.004214)
+5  419.40 74.034   0.010901 ( -0.104406   0.000000   0.000000)
+6  1267.17 181.732   0.008856 (  0.000000  -0.001737   0.094090)
+7  1818.91 18.930   0.000643 ( -0.025351   0.000000   0.000000)
+8  1824.75 20.270   0.000686 (  0.000000   0.026190   0.000189)
+9  3540.47  0.034   0.000001 ( -0.000000   0.000140   0.000752)
+10  3629.12  0.001   0.000000 (  0.000113  -0.000000   0.000000)
+11  3684.72  0.006   0.000000 ( -0.000000   0.000319   0.000039)
+-----------------------------------------------------------------
+                         IR Intensities                      
+-----------------------------------------------------------------
+Mode freq     Int          T2   (      Tx       Ty       Tz     )  
+     cm-1    km/mol        a.u.                                 
+----------------------------------------------------------------
+0   -0.00   -nan       -nan (      -nan       -nan       -nan)
+1   -0.00   -nan       -nan (      -nan       -nan       -nan)
+2    0.00  0.000   0.000000 ( -0.000000  -0.000000   0.000000)
+3  347.78 40.790   0.007243 (  0.085103  -0.000000   0.000000)
+4  380.72 39.381   0.006387 ( -0.079922   0.000000  -0.000000)
+5  413.94 80.547   0.012016 (  0.000000   0.109545  -0.003969)
+6  1267.17 181.731   0.008856 (  0.000000  -0.001748  -0.094090)
+7  1818.96 18.935   0.000643 (  0.000000   0.025353  -0.000188)
+8  1824.70 20.265   0.000686 ( -0.026188   0.000000  -0.000000)
+9  3536.86  0.035   0.000001 (  0.000000   0.000241  -0.000745)
+10  3640.73  0.001   0.000000 ( -0.000000   0.000036   0.000113)
+11  3676.71  0.005   0.000000 ( -0.000278   0.000000  -0.000000)
+----- collect hessians vpt2 done ! ---
+
+processing dipole derivatives 
+
+ Computing mean and mean square displacements of normal modes 
+
+ mode      frequency         <q>          <q^2>
+------------------------------------------------
+  0     1267.1032450    -0.0051338     0.0475097
+  1     1821.9043421    -0.0000001     0.0330422
+  2     1821.9044790    -0.0000000     0.0330422
+  3     3548.2179767    -0.0412738     0.0169662
+  4     3652.8491023    -0.0000000     0.0164802
+  5     3652.8542840    -0.0000023     0.0164802
+------------------------------------------------
+
+Write the harmonic data into the VPT2 file.
+Calling the VPT2 program via:
+    /usr/local/orca_6_1_0/orca_vpt2 nh3.vpt2 
+orca_vpt vpt2_filename: nh3.vpt2
+
+
+  *******************************
+                         .@      
+                      .@@@       
+                   @@@@@@*       
+                @@@@@@@@         
+               @@@@@@@@          
+             @@@@@@@@@           
+            @@@@@@@@@@           
+           @@@@@@@@@@@           
+         @@@@@@@@@@@@@@          
+   @@@@@@@@@@@@@@@@@@@@@         
+   @@@@@@@@@@@@@@@@@    @@@@@@@  
+         ORCA VPT2/GVPT2 Analysis
+  *******************************
+
+VPT2 Settings:
+    Basename:                                nh3
+    Pickettname:                                
+    Minimise the Orca amount of output:      true
+    Rotational symmetry detection threshold: 1.00e-04
+    Anharmonic displacement factor:          0.050
+    Property deriv. displ. factor:           0.050
+    Cutoff value when reading the Hessian:   1.00e-16
+    Print-level:                             1  
+    Averaged prop. (0=none,1=NMR,2=Atensor,3=Jcouplings, 4=Gtensor): 0  
+
+geometry reading: nh3.vpt2
+geometry read: nh3.vpt2
+-----------------------------------------------------------------
+                         IR Intensities                      
+-----------------------------------------------------------------
+Mode freq     Int          T2   (      Tx       Ty       Tz     )  
+     cm-1    km/mol        a.u.                                 
+----------------------------------------------------------------
+0   -0.00   -nan       -nan (      -nan       -nan       -nan)
+1    0.00  0.000   0.000000 (  0.000000   0.000000  -0.000000)
+2    0.01  0.000   0.000000 (  0.000000  -0.000000  -0.000000)
+3  365.52  0.000   0.000000 (  0.000006  -0.000000  -0.000000)
+4  391.04 80.337   0.012686 (  0.000000   0.112634   0.000000)
+5  391.05 80.337   0.012686 (  0.112633  -0.000000  -0.000000)
+6  1267.10 181.776   0.008859 (  0.000000  -0.000000   0.094120)
+7  1821.90 19.601   0.000664 ( -0.000000   0.025775   0.000000)
+8  1821.90 19.601   0.000664 ( -0.025775  -0.000000  -0.000000)
+9  3548.22  0.031   0.000001 (  0.000000   0.000000   0.000738)
+10  3652.85  0.000   0.000000 ( -0.000083  -0.000000  -0.000000)
+11  3652.85  0.000   0.000000 ( -0.000000   0.000083   0.000000)
+
+ Analysis of possible Fermi resonances with VPT2 denominators 
+ below 10 wavenumbers (denominator values in wavenumbers): 
+
+ possible Type II resonance 10 mode 1 4 1     9.040418 
+ possible Type II resonance 10 mode 1 4 2     9.040281 
+ possible Type II resonance 10 mode 1 5 1     9.045600 
+ possible Type II resonance 10 mode 1 5 2     9.045463 
+ possible Type II resonance 10 mode 2 4 1     9.040281 
+ possible Type II resonance 10 mode 2 4 2     9.040144 
+ possible Type II resonance 10 mode 2 5 1     9.045463 
+ possible Type II resonance 10 mode 2 5 2     9.045326 
+ possible Type I resonance mode 4 1     9.040418 
+ possible Type I resonance mode 4 2     9.040144 
+ possible Type I resonance mode 5 1     9.045600 
+ possible Type I resonance mode 5 2     9.045326 
+ 
+                                                  ... done 
+
+evaluating centrifugal distortion constants...................  
+centrifugal distortion constants -- 
+  i  j  k  l    Tau [cm-1]  
+  0  0  0  0  -5.742614e-03 
+  0  0  0  1  -1.321307e-12 
+  0  0  0  2  3.228190e-12 
+  0  0  1  0  1.378726e-12 
+  0  0  1  1  -3.224122e-03 
+  0  0  1  2  -2.963520e-04 
+  0  0  2  0  -2.906838e-12 
+  0  0  2  1  2.860146e-04 
+  0  0  2  2  -1.409901e-03 
+  0  1  0  0  -1.321307e-12 
+  0  1  0  1  -1.259185e-03 
+  0  1  0  2  -2.963462e-04 
+  0  1  1  0  -1.259192e-03 
+  0  1  1  1  -1.370260e-12 
+  0  1  1  2  -3.201669e-12 
+  0  1  2  0  2.859996e-04 
+  0  1  2  1  2.958450e-12 
+  0  1  2  2  -7.585220e-13 
+  0  2  0  0  3.228190e-12 
+  0  2  0  1  -2.963462e-04 
+  0  2  0  2  -1.951637e-04 
+  0  2  1  0  -2.963441e-04 
+  0  2  1  1  -3.184851e-12 
+  0  2  1  2  -1.287541e-15 
+  0  2  2  0  1.907103e-04 
+  0  2  2  1  -1.789939e-13 
+  0  2  2  2  6.918226e-15 
+  1  0  0  0  1.378726e-12 
+  1  0  0  1  -1.259192e-03 
+  1  0  0  2  -2.963441e-04 
+  1  0  1  0  -1.259199e-03 
+  1  0  1  1  1.419464e-12 
+  1  0  1  2  -3.218298e-12 
+  1  0  2  0  2.859975e-04 
+  1  0  2  1  2.974614e-12 
+  1  0  2  2  7.785738e-13 
+  1  1  0  0  -3.224122e-03 
+  1  1  0  1  -1.370260e-12 
+  1  1  0  2  -3.184851e-12 
+  1  1  1  0  1.419464e-12 
+  1  1  1  1  -5.742314e-03 
+  1  1  1  2  2.963369e-04 
+  1  1  2  0  3.061928e-12 
+  1  1  2  1  -2.859521e-04 
+  1  1  2  2  -1.409880e-03 
+  1  2  0  0  -2.963520e-04 
+  1  2  0  1  -3.201669e-12 
+  1  2  0  2  -1.287541e-15 
+  1  2  1  0  -3.218298e-12 
+  1  2  1  1  2.963369e-04 
+  1  2  1  2  -1.951620e-04 
+  1  2  2  0  1.754403e-13 
+  1  2  2  1  1.907038e-04 
+  1  2  2  2  2.291280e-10 
+  2  0  0  0  -2.906838e-12 
+  2  0  0  1  2.859996e-04 
+  2  0  0  2  1.907103e-04 
+  2  0  1  0  2.859975e-04 
+  2  0  1  1  3.061928e-12 
+  2  0  1  2  1.754403e-13 
+  2  0  2  0  -1.863745e-04 
+  2  0  2  1  4.651712e-15 
+  2  0  2  2  2.149714e-14 
+  2  1  0  0  2.860146e-04 
+  2  1  0  1  2.958450e-12 
+  2  1  0  2  -1.789939e-13 
+  2  1  1  0  2.974614e-12 
+  2  1  1  1  -2.859521e-04 
+  2  1  1  2  1.907038e-04 
+  2  1  2  0  4.651712e-15 
+  2  1  2  1  -1.863634e-04 
+  2  1  2  2  4.132892e-09 
+  2  2  0  0  -1.409901e-03 
+  2  2  0  1  -7.585220e-13 
+  2  2  0  2  6.918226e-15 
+  2  2  1  0  7.785738e-13 
+  2  2  1  1  -1.409880e-03 
+  2  2  1  2  2.291280e-10 
+  2  2  2  0  2.149714e-14 
+  2  2  2  1  4.132892e-09 
+  2  2  2  2  -6.081378e-04 
+----------------------------------- 
+ quartic centrifugal distortion parameters for Watson's symmetrically 
+ and asymmetrically reduced Hamiltonian in cm-1 : 
+ --------------------------------------------------------
+ R5    -8.594855e-05  
+ R6    -4.296942e-05  
+ sigma 1.000399e+00  
+
+         s-reduced       
+ --------------------------------------------------------
+ DJ    6.219533e-04  
+ DK    -1.717305e-04  
+ DJK   9.854306e-04  
+ D1    -3.208860e-04  
+ D2    -8.592656e-05  
+
+         a-reduced       
+ --------------------------------------------------------
+ DJ    7.078676e-04 
+ DK    2.578409e-04 
+ DJK   4.699449e-04 
+ DelJ  7.938064e-04 
+ DelK  6.875351e-04 
+ DelJK -4.568806e-05 
+ delJ  3.208860e-04 
+ delK  3.438433e-04 
+
+                                           ................... done.
+
+Generating anharmonicity constants accoding to Amos et al. 
+J. Chem. Phys. 8323 (1991) (doi:10.1063/1.461259) eq. 5 & 6 
+Definition of Fermi resonances as described by Franke et al.  
+J. Phys. Chem. A 1301 (2021)  (doi:10.1021/acs.jpca.0c09526) 
+eq. 37 and 38 (see also Papousek/Alijev, 1982, 160 pp.) 
+ 
+                                              ................ done. 
+
+evaluating zero point vibrational energies ...................  
+                                           ................... done. 
+
+
+ combination band and overtone Analysis according 
+ to Barone et al. PCCP 16, 1759 (2014) 
+ using the VPT2 anharmonicity constants (see above). 
+ unphysical contributions to the intensities due           
+ to resonances in the anharmonic terms are circumvented by 
+ eliminating contributions for which the denominator 
+ |wi + wj - wk| is larger than 2 cm-1 
+ 
+                                              ................ done.
+
+
+
+============================ Geometry ==========================
+
+
+Coordinates in Angstroem
+--------------------------------------------------------------
+Atom         x               y               z        Mass [u]
+--------------------------------------------------------------
+N       0.000000000     0.000001537     0.069601118  14.003074
+H       0.000000003    -0.932382280    -0.322348119   1.007825
+H       0.807469538     0.466180462    -0.322357098   1.007825
+H      -0.807469541     0.466180457    -0.322357098   1.007825
+--------------------------------------------------------------
+
+
+===================== Rotational Analysis ======================
+
+
+Moment of inertia tensor [u * Angstrom^2]
+-----------------------------------------
+Axis      x            y            z
+-----------------------------------------
+ x    1.6962000   -0.0000000    0.0000000
+ y   -0.0000000    1.6962292   -0.0000000
+ z    0.0000000   -0.0000000    2.6284069
+-----------------------------------------
+
+Vibrational-rotational constants [1/cm]
+---------------------------------------------------
+ a    i      T1         T2+3       T4        Total
+---------------------------------------------------
+ x    0       -inf        nan        nan        nan
+ x    1       -inf        nan        nan        nan
+ x    2       -inf        nan        nan        nan
+ x    3       -inf        nan        nan        nan
+ x    4       -inf        nan        nan        nan
+ x    5       -inf        nan        nan        nan
+ y    0   -0.08488    0.16668   -0.13562   -0.05382
+ y    1   -0.03669    0.01153   -0.01286   -0.03803
+ y    2   -0.03061   -0.10176    0.00450   -0.12788
+ y    3   -0.01230    0.00008   -0.01801   -0.03024
+ y    4   -0.01091   -0.05218   -0.00792   -0.07100
+ y    5   -0.01529   -0.01069    0.03035    0.00437
+ z    0   -0.05564    0.00000   -0.13079   -0.18643
+ z    1   -0.02395    0.19432    0.01855    0.18891
+ z    2   -0.02395    0.19432    0.01855    0.18892
+ z    3   -0.14716   -0.00000   -0.26577   -0.41293
+ z    4   -0.01657  102.81847   -0.22755  102.57434
+ z    5   -0.01657 -103.17908   -0.22756 -103.42320
+---------------------------------------------------
+
+Rotational constants B_e and B_0 [1/cm]
+----------------------------------------------
+Const          x            y            z
+----------------------------------------------
+B_e              inf      6.41363      9.93847
+B_0             -nan      6.57193     10.47366
+B_e-B_0         -nan     -0.15830     -0.53519
+----------------------------------------------
+
+
+===================== Vibrational Analysis =====================
+
+
+Anharmonic constants [1/cm]
+---------------------------
+  r      s        chi[r][s] 
+---------------------------
+  0      0        -35.92088 
+  1      0              inf 
+  1      1          1.91208 
+  2      0              inf 
+  2      1              inf 
+  2      2          1.91094 
+  3      0              inf 
+  3      1              inf 
+  3      2              inf 
+  3      3        -23.17197 
+  4      0              inf 
+  4      1              inf 
+  4      2              inf 
+  4      3              inf 
+  4      4        -40.18467 
+  5      0              inf 
+  5      1              inf 
+  5      2              inf 
+  5      3              inf 
+  5      4              inf 
+  5      5        -40.19016 
+---------------------------
+
+Fundamental transitions [1/cm] 
+-----------------------------------------
+Mode     w(harm)      v(fund)      Diff
+-----------------------------------------
+  0     1267.103          inf         inf
+  1     1821.904          inf         inf
+  2     1821.904          inf         inf
+  3     3548.218          inf         inf
+  4     3652.849          inf         inf
+  5     3652.854          inf         inf
+-----------------------------------------
+
+Zero-point ro-vibrational energy [1/cm]
+---------------------------------------
+Harmonic contribution:         7882.417
+Anharmonic correction:              inf
+Ro-vibrational correction:         -inf
+---------------------------------------
+Total:                             -nan
+
+
+Overtones and combination bands 
+--------------------------------------------------------------------------------
+  modes   freq      eps        Int     T**2     (  Tx          Ty          Tz )
+         [cm-1] [L/(mol*cm)] [km/mol] [a.u.]     
+--------------------------------------------------------------------------------
+  0   0      inf     inf     inf   0.000005   ( 0.000000 -0.000000 -0.002305)
+  0   1      inf     inf     inf   0.000000   ( 0.000000 -0.000674 -0.000000)
+  0   2      inf     inf     inf   0.000000   ( 0.000674  0.000000  0.000000)
+  0   3      inf     inf     inf   0.000016   ( 0.000000  0.000000  0.003993)
+  0   4      inf     inf     inf   0.000019   ( 0.004408  0.000000  0.000000)
+  0   5      inf     inf     inf   0.000019   ( 0.000000 -0.004408  0.000000)
+  1   1      inf     inf     inf   0.000004   (-0.000000 -0.001659 -0.001214)
+  1   2      inf     inf     inf   0.000006   (-0.002346  0.000000  0.000000)
+  1   3      inf     inf     inf   0.000002   (-0.000000  0.001424  0.000000)
+  1   4      inf     inf     inf   0.000011   ( 0.003390 -0.000000 -0.000000)
+  1   5      inf     inf     inf   0.000013   ( 0.000000  0.003534 -0.000680)
+  2   2      inf     inf     inf   0.000004   ( 0.000000  0.001659 -0.001213)
+  2   3      inf     inf     inf   0.000002   (-0.001424 -0.000000  0.000000)
+  2   4      inf     inf     inf   0.000012   (-0.000000 -0.003388 -0.000680)
+  2   5      inf     inf     inf   0.000012   ( 0.003533 -0.000000  0.000000)
+  3   3      inf     inf     inf   0.000001   (-0.000000 -0.000000 -0.000868)
+  3   4      inf     inf     inf   0.000009   (-0.003024 -0.000000 -0.000000)
+  3   5      inf     inf     inf   0.000009   (-0.000000  0.003024 -0.000000)
+  4   4      inf     inf     inf   0.000003   (-0.000000 -0.001762 -0.000454)
+  4   5      inf     inf     inf   0.000006   ( 0.002416 -0.000000  0.000000)
+  5   5      inf     inf     inf   0.000003   ( 0.000000  0.001762 -0.000454)
+
+
+============================== End =============================
+
+
+--------------------------------
+SUGGESTED CITATIONS FOR THIS RUN
+--------------------------------
+
+Below you find a list of papers that are relevant to this ORCA run
+We neither can nor want to force you to cite these papers, but we appreciate if you do
+You receive ORCA, which is the product of decades of hard work by many enthusiastic individuals, for free
+The only thing we kindly ask in return is that you cite our papers,
+We deeply appreciate it, if you show your appreciation for ORCA by not just citing the generic ORCA reference.
+
+Please note that relegating all ORCA citations to the supporting information does *not* help us.
+SI sections are not indexed - citations you put there will not count into any citation statistics
+But we need these citations in order to attract the funding resources that allow us to do what we are doing
+
+Therefore, if you are a happy ORCA user, please consider citing a few of the papers listed below in the main body of your paper
+
+In addition to the list printed below, the program has created the file nh3.bibtex that contains the list in bibtex format
+You can import this file easily into all common literature databanks and citation aid programs
+
+
+List of essential papers. We consider these as the minimum necessary citations
+
+  1. Neese, F.
+     Software update: the ORCA program system, version 6.0
+     WIRES Comput. Molec. Sci. 2025 15(1), e70019
+     doi.org/10.1002/wcms.7019
+
+List of papers to cite with high priority. The work reported in these papers was absolutely
+necessary for this run to complete.
+Our perspective: the developers of density functionals and basis sets usually get cited in chemistry papers
+Good! But without the algorithms to do something with them, the functionals or basis sets would not do anything.
+Hence, in our opinion, the algorithm design and method developments papers are equally worthy of getting cited
+
+  1. Neese, F.
+     The SHARK Integral Generation and Digestion System
+     J. Comp. Chem. 2022 44(3), 381
+     doi.org/10.1002/jcc.26942
+
+List of suggested additional citations. These are papers that are important in the 'surrounding' of 
+of this run, or papers that preceded the highly important papers. If you like your results we are grateful for a citation.
+
+  1. Mills, I.M.
+     Molecular Spectroscopy: Modern Research
+     In:Rao, K.N.; Matthews, C.W. (Eds)
+     Academic, New York 1972 115-140
+  2. Neese, F.
+     The ORCA program system
+     WIRES Comput. Molec. Sci. 2012 2(1), 73-78
+     doi.org/10.1002/wcms.81
+  3. Barone, V.; Biczysko, M.; Bloino, J.
+     Fully anharmonic IR and Raman spectra of medium-size molecular 
+      systems: accuracy and interpretation
+     Phys. Chem. Chem. Phys. 2014 16 , 1759-1787
+     doi.org/10.1039/C3CP53413H
+  4. Neese, F.
+     Software update: the ORCA program system, version 4.0
+     WIRES Comput. Molec. Sci. 2018 8(1), 1-6
+     doi.org/10.1002/wcms.1327
+  5. Neese, F.; Wennmohs, F.; Becker, U.; Riplinger, C.
+     The ORCA quantum chemistry program package
+     J. Chem. Phys. 2020 152(22), 224108
+     doi.org/10.1063/5.0004608
+  6. Franke, P.R.; Stanton, J.F.; Douberly, G.E.
+     How to VPT2: Accurate and Intuitive Simulations of CH Stretching 
+     Infrared Spectra Using VPT2+K with Large Effective Hamiltonian 
+     Resonance Treatments
+     J. Phys. Chem. A 2021 125(6), 1301-1324
+     doi.org/10.1021/acs.jpca.0c09526
+  7. Neese, F.
+     Software update: The ORCA program system—Version 5.0
+     WIRES Comput. Molec. Sci. 2022 12(1), e1606
+     doi.org/10.1002/wcms.1606
+
+List of optional additional citations
+
+  1. Waston, J.K.
+     Determination of Centrifugal Distortion Coefficients of Asymmetric-Top Molecules
+     J. Chem. Phys. 1967 46 , 1035
+     doi.org/10.1063/1.1840957
+  2. Amos, R.D.; Handy, N.C.; Green, W.H.; Jayatilaka, D.; Willetts, A.; Palmieri, P.
+     Anharmonic vibrational properties of CH2F2 : 
+     A comparison of theory and experiment
+     J. Chem. Phys. 1991 95 , 8323-8336
+     doi.org/10.1063/1.461259
+  3. Neese, F.
+     Approximate second-order SCF convergence for spin unrestricted wavefunctions
+     Chem. Phys. Lett. 2000 325(1-3), 93-98
+     doi.org/10.1016/s0009-2614(00)00662-x
+
+Timings for individual modules:
+
+Sum of individual times          ...        1.065 sec (=   0.018 min)
+Startup calculation              ...        0.260 sec (=   0.004 min)  24.4 %
+SCF iterations                   ...        0.382 sec (=   0.006 min)  35.9 %
+Property calculations            ...        0.178 sec (=   0.003 min)  16.7 %
+MP2 module                       ...        0.245 sec (=   0.004 min)  23.0 %
+                             ****ORCA TERMINATED NORMALLY****
+TOTAL RUN TIME: 0 days 0 hours 0 minutes 1 seconds 326 msec

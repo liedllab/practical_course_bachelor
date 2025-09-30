@@ -1,3 +1,12 @@
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
 ## Quantenmechanik Teil
 
 Jedem Praktikumsteilnehmer wird in diesem Teil eine Reaktion zugewiesen, welche im Verlauf des Praktikums näher untersucht wird. Dazu werden verschiedene Quantenchemischen-Rechnungen und Methoden angewandt um Eigenschaften der Moleküle zu bestimmen.

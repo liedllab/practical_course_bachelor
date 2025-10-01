@@ -7,7 +7,7 @@ MathJax = {
 </script>
 <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 
-## Frequenzberechnung
+# Frequenzberechnung
 
 Die Änderung der potentiellen Energie $V$ der Kerne kann durch eine Taylor-Reihe um Entwicklungspunkt $X_0$ ausgedrückt werden:
 
@@ -109,3 +109,105 @@ Man schreibt den Hamiltonian dann als Summe:
 $$H = H^{(0)} + H^{(1)} + H^{(2)}$$
 
 wo jeweils die kubischen Terme in $H^{(1)}$ und die quartischen Terme in $H^{(2)}$ enthalten sind. 
+
+
+### VPT2 in Orca
+
+Zuerst einige wichtige Hinweise zur Verwendung von VPT2 in Orca:
+
++ Die Startgeometrie muss strikte Konvergenzkriterien erfüllen dazu kann man in Orca die Option `!TightOpt` oder `! VeryTightOpt` verwenden.
++ Zudem sollte man mit einer vorherigen harmonischen Frequenzberechnung sicherstellen das die Geometrie ein Minimum ist.
++ Das SCF muss striktere Konvergenzkriterien erfüllen, dazu verwendet man am besten `!ExtremeSCF` oder `!VeryTightSCF` 
++ VPT2 in Orca funktioniert nur für nicht-lineare Moleküle
+
+Folgender Block zeigt einen typischen Input für eine VPT2-Rechnung in Orca für das Wassermolekül:
+
+```text
+! RHF 6-311G(d,p) ExtremeSCF  VPT2
+
+%pal nprocs 4 end
+
+%vpt2
+	VPT2			On
+	HessianCutoff 1e-12
+	PrintLevel 1
+end
+
+%method
+  Z_Tol 1e-14
+end
+
+* xyz 0 1
+  O           0.10579950836185      0.00000000000000      0.00000000000000
+  H           0.70570224581907      0.00000000000000      0.74668419232728
+  H           0.70570224581908      0.00000000000000     -0.74668419232728
+*
+```
+
+Es müssen Methoden mit analytischer Hesse-Matrix verwendet werden, zb `HF`, zudem kann man im Code-Block `%vpt2` die Parameter für die VPT2-Rechnung einstellen. Es wurde ein Cut-Off für die Elemente der Hesse-Matrix von $1 \times 10^{-12}$ gewählt um numerische Ungenauigkeiten zu vermeiden. Die Option `Z_Tol` im Block `%method` legt eine striktere Konvergenzbedingung für die CP-SCF-Rechnung fest.
+
+```text
+===================== Vibrational Analysis =====================
+
+
+Anharmonic constants [1/cm]
+---------------------------
+  r      s        chi[r][s] 
+---------------------------
+  0      0        -15.29924 
+  1      0         -8.20737 
+  1      1        -40.73760 
+  2      0        -21.57456 
+  2      1       -160.26486 
+  2      2        -45.24153 
+---------------------------
+
+Fundamental transitions [1/cm] 
+-----------------------------------------
+Mode     w(harm)      v(fund)      Diff
+-----------------------------------------
+  0     1821.363     1775.873     -45.489
+  1     3922.027     3756.316    -165.711
+  2     3990.137     3808.734    -181.403
+-----------------------------------------
+
+Zero-point ro-vibrational energy [1/cm]
+---------------------------------------
+Harmonic contribution:         4866.763
+Anharmonic correction:          -72.831
+Ro-vibrational correction:        4.718
+---------------------------------------
+Total:                         4798.650
+
+
+Overtones and combination bands 
+--------------------------------------------------------------------------------
+  modes   freq      eps        Int     T**2     (  Tx          Ty          Tz )
+         [cm-1] [L/(mol*cm)] [km/mol] [a.u.]     
+--------------------------------------------------------------------------------
+  0   0  3521.15  0.000104    0.52   0.000009   (-0.000000 -0.003031  0.000000)
+  0   1  5523.98  0.000010    0.05   0.000001   (-0.000000 -0.000755 -0.000000)
+  0   2  5563.03  0.000706    3.57   0.000040   ( 0.006291 -0.000000 -0.000000)
+  1   1  7431.16  0.000157    0.80   0.000007   ( 0.000000 -0.002571 -0.000000)
+  1   2  7404.78  0.000732    3.70   0.000031   ( 0.005552 -0.000000 -0.000000)
+  2   2  7526.98  0.000042    0.21   0.000002   (-0.000000 -0.001324 -0.000000)
+
+
+============================== End =============================
+```  
+
+In den oberen Block findet man dann die jeweiligen anharmonischen Frequenzen $v_{fund}$ und die Differenz zur harmonischen Frequenz. Zudem erhält man die Obertöne und Kombinationsbanden mit den jeweiligen Frequenzen und Intensitäten.
+
+### Verständnisfragen
+
++ Wie erkennt man anhand der harmonischen Schwingungsfrequenzen ob ein Energie-Minimum oder ein Sattelpunkt vorliegt?
++ Was sind Normalmoden? Wie werden diese berechnet und konstruiert?
++ Wie kommt man von den Eigenwerten der Hesse-Matrix zu den Schwingungsfrequenzen?
++ Welche Möglichkeiten gibt es für anharmonische Korrekturen der Schwingungsfrequenzen?
++ Wie funktioniert die VPT2-Methode? Wie funktioniert das Analoga der Elektronenstrukturtheorie (Störungstheorie)?
++ Warum unterscheiden sich harmonische Frequenzen so stark von den experimentellen Werten? Welche Effekte werden in der harmonischen Näherung nicht berücksichtigt?
+
+
+
+
+

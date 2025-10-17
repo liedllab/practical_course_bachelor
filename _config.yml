@@ -11,7 +11,8 @@ gist:
 remote_theme: "jekyll/minima@1e8a445"
 minima:
   social_links:
-    - title: Liedl Lab on Twitter
+    - title: Liedl Lab Homepage
+      url: https://liedllab.org/
 plugins:
 - jekyll-remote-theme # add this line to the plugins list if you already have one
 - jekyll-mathjax

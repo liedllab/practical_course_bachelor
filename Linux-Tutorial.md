@@ -1,3 +1,14 @@
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
+
+
 ## Linux-Tutorial
 
 Die folgende Seite dient erklärt einige der grundlegenden Befehle zum arbeiten in der Linux Kommandozeile. Die folgende Tabelle ist hierzu eine Zusammenfassung der wichtigsten Befehle.

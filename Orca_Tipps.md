@@ -92,7 +92,7 @@ $ ./full/path/to/orca input.inp > output.out
 
 Grundsätzlich sind alle Hauptmodule in Orca paralellisiert, je nach Methode und Basissatz kann die Skalierung jedoch varrieren. Folgende Abbildung zeigt beispielsweise die Skalierung der Rechenzeit für eine Single-Point Energie Berechnung von der Aminosäure Alanin mit der Coupled-Cluster Methode CCSD und einen cc-pVDZ Basissatz.
 
-![alt text](image.png)
+![alt text](/figures/image.png)
 
 ## Global Memory Usage
 

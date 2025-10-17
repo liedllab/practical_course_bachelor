@@ -11,11 +11,13 @@ MathJax = {
 
 Jedem Praktikumsteilnehmer wird in diesem Teil eine Reaktion zugewiesen, welche im Verlauf des Praktikums näher untersucht wird. Dazu werden verschiedene Quantenchemischen-Rechnungen und Methoden angewandt um Eigenschaften der Moleküle zu bestimmen.
 
+
 + **Aufgabe 1** [Optimierung der Molekülgeometrie](Optimierung.html)
 + **Aufgabe 2** Untersuchung der Potential-Hyperfläche
 + **Aufgabe 3** [Frequenzberechnung (Schwingungsspektroskopie, Infrarot)](Frequenzberechnung.html)
-+ **Aufgabe 4** Thermodynamik
++ **Aufgabe 4** [Thermodynamik](Thermodynamik.html)
 + **Linux Tutorial** [Linux Tutorial](Linux-Tutorial.html)
++ **Orca Tipps** [Orca Tipps](Orca_Tipps.html) 
 
 ### Grundlagen Orca 
 

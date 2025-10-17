@@ -10,6 +10,7 @@ gist:
   noscript: false
 remote_theme: "jekyll/minima@1e8a445"
 minima:
+  skin: dark
   social_links:
     - title: Liedl Lab Homepage
       url: https://liedllab.org/

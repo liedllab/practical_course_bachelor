@@ -108,7 +108,7 @@ Man schreibt den Hamiltonian dann als Summe:
 
 $$H = H^{(0)} + H^{(1)} + H^{(2)}$$
 
-wo jeweils die kubischen Terme in $H^{(1)}$ und die quartischen Terme in $H^{(2)}$ enthalten sind. 
+wo jeweils die kubischen Terme in $H^{(1)}$ und die quartischen Terme in $H^{(2)}$ enthalten sind. Es sei hier anzumerken, dass VPT2 nur den Beginn der anharmonischen Schwingungskorrekturen darstellt und eine Vielzahl an weiteren Korrekturen existiert. interessierte Leser können unter folgenden Schlagwörtern mehr Informationen finden (VMP2, VSCF, VCI, Numerov Procedure for solving vibrational problems).
 
 
 ### VPT2 in Orca
@@ -197,6 +197,12 @@ Overtones and combination bands
 ```  
 
 In den oberen Block findet man dann die jeweiligen anharmonischen Frequenzen $v_{fund}$ und die Differenz zur harmonischen Frequenz. Zudem erhält man die Obertöne und Kombinationsbanden mit den jeweiligen Frequenzen und Intensitäten.
+
+### Aufgabe 2a
+Berechnen Sie die harmonischen Frequenzen für alle Moleküle ihrer Reaktion und vergleiche Sie diese mit experimentellen Daten. Machen Sie sich bewusst um welche Art von Experiment es sich handelt.
+
+### Aufgabe 2b
+Berechnen Sie die anharmonischen VPT2 Frequenzen. Wie groß sind die Unterschiede zwischen harmonischen und anharmonischen Frequenzen? Handelt es sich bei den VPT2-Frequenzen um gekoppelte oder entkoppelte Vibrationszustände?
 
 ### Verständnisfragen
 

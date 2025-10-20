@@ -26,7 +26,7 @@ $$H_{ij} = \frac{\partial^2 V}{\partial R_i \partial R_j}$$
 + Ist die Hesse-Matrix negativ definit, so handelt es sich um ein Maximum (alle Eigenwerte sind negativ).
 + Hat die Hesse-Matrix sowohl positive als auch negative Eigenwerte, so handelt es sich um einen Sattelpunkt.
 
-In der folgenden Aufgabe sollte man also die Potentielhyperfläche in einer Dimension untersuchen. Konkret machen wir einen Scan entlang einer Bindungslänge eines Moleküls. Für jeden Punkt dieses Scans wird also die elektronische Schrödingergleichung gelöst um die potentielle Energie zu bestimmen. Anschließend kann man durch einen harmonischen Fit an dieses Potential die Schwingunsfrequenz der korrenspondierenden Streckschwingung bestimmen.
+In der folgenden Aufgabe wird also die Potentielhyperfläche in einer Dimension untersuchen.
 
 ## Bindungscan in Orca
 
@@ -104,4 +104,17 @@ plt.show()
 Dies gibt uns als Ergebnis die folgende Grafik:
 
 ![alt text](image.png)
+### Aufgabe 3
+Scannen Sie entlang einer Bindung in einem(!) ihrer Moleküle. Beachten Sie dabei das der Scan-Block so eingestellt werden muss, dass tatsächlich auch durch das Minimum gescannt wird. Zur Auswertung ermitteln soll die harmonische Frequenz dieser "Pseudo-Schwingung" anhand eines Parabelfits bestimmt werden. Dabei kann die harmonische Kraftkonstante über folgenden Zusammenhang aus dem Fit bestimmt werden:
+
+$V(r)= \frac{1}{2}k \cdot(r-r_0)²$
+
+Diese kann im Anschluss in eine Schwingungsfrequenz in cm <sup>-1</sup> umgerechnet und mit experimentellen Daten sowie den harmonischen Frequenzen aus der Frequenzrechnung verglichen werden.
+
+Für den Fit wird es im Laufe des Praktikums einen Code-along Tag geben, wo Ihnen das Fitten von Funktion an sich wie auch die Verwendung von Python und Jupyter-Notebooks etwas näher gebracht wird.
+
+Grundsätzlich können Sie den Fit aber durchführen wie Sie wollen (Excel, Origin, Python, Julia, R, etc...)
+
+### Verständnisfragen
+- Was ist der Unterschied zwischen ihrem 1D-Scan entlang einer Bindung und der korrespondieren Normalmode?
 

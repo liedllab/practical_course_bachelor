@@ -12,7 +12,7 @@ MathJax = {
 
 Nachdem man in ORCA die harmonischen Frequenzen berechnet hat, bekommt man Zugang auf die thermodynamischen Funktionen des Systems. 
 
-Wir errinern uns hier zurück an die Zustandsfunktionen der Thermodynamik. Ein allgemeines thermodynamisches System wird durch verschiedene Parameter wie Temperatur, Volumen oder Druck beschrieben welche nicht zwingend unabhängig voneinander sind. 
+Wir erinnern uns hier zurück an die Zustandsfunktionen der Thermodynamik. Ein allgemeines thermodynamisches System wird durch verschiedene Parameter wie Temperatur, Volumen oder Druck beschrieben welche nicht zwingend unabhängig voneinander sind. 
 
 **Innere Energie $U$**
 
@@ -224,6 +224,23 @@ Final Gibbs free energy         ...    -76.25977861 Eh
 For completeness - the Gibbs free energy minus the electronic energy
 G-E(el)                           ...      0.00419328 Eh      2.63 kcal/mol
 ```
+### Aufgabe 4
+Um den Einfluss von Temperatur und Druck auf die Thermodynamik der Reaktion zu beurteilen,
+müssen die thermodynamischen Größen für verschiedene Bedingungen berechnet werden konkret in einem Raster zwischen 100 und 1000 K und einen Druckbereich zwischen 1 und 100
+atm betrachten. Um eine solche Aufgabe manuell abzuarbeiten, muss ein Überblick über sehr
+viele Dateien behalten werden. Es bietet sich an die Aufgabe über ein script zu automatisieren.
+Ein solches script führt Befehle in ähnlicher Weise aus, wie Sie es direkt in einer Konsole per
+Tastatureingabe machen, jedoch automatisiert. Sie müssen im script lediglich im Vorhinein
+bestimmen, welche Befehle auszuführen sind. In dieser Aufgabe werden sie ein script in der
+bash Sprache schreiben. 
 
+Ein solches Skript wird Ihnen von uns zur Verfügung gestellt, soll sie aber nicht davon abhalten es selber zu versuchen. Folgende Schritte sind im Skript enthalten:
+
+- Lege das p/T Raster fest und erstelle für jeden Punkt einen Ordner.
+- Erstelle aus dem zugehörigen .inp File für jeden Rasterpunkt eine Orcainput welcher mit dem zugehörigen .hess File die thermodynamischen Größen zu diesem Punkt errechnet.
+- Lasse die Rechnungen aufsteigend laufen.
+- Extrahiere die Bedingungen und die thermodynamischen Größen und übertrage sie in ein eigen .csv file. 
+
+Die Auswertung erfolgt ähnlich zur Code-along session in einem Jupyter Notebook. Wenden Sie gerne ihr gewonnenes Wissen an um die Plots zu individualisieren. Um Ihnen bei der Übersicht zu helfen, ist das Notebook größtenteil(!) vorgefertigt.
 
 

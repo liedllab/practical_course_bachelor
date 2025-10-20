@@ -12,7 +12,7 @@ MathJax = {
 
 Eine dreidimensionale Anordnung von Atomen im Raum ist eine __Molekülgeometrie__. Die __Minimumsgeometrie__ ist jene wo die potentielle Energie des Moleküls minimal ist. Für viele quantenchemische Berechnungen ist das Auffinden einer Minimumsgeometrie oft der erste Schritt. Dies wird als __Geometrieoptimierung__ bezeichnet.
 
-Folgende Abbildung zeigt schematisch eine Geometrieoptimierung. Beginnend von einer Startgeometrie soll die relative Anordnung der Atomkerne zueinander gefunden werden sodass die Gesamtenergie des Moleküls minimal ist. In dieser Anordnung sind die Kräfte die auf die Atomkerne wirken gleich Null.
+Folgende Abbildung (erstellt von Prof. Thomas Hofer) zeigt schematisch eine Geometrieoptimierung. Beginnend von einer Startgeometrie soll die relative Anordnung der Atomkerne zueinander gefunden werden, sodass die Gesamtenergie des Moleküls minimal ist. In dieser Anordnung sind die Kräfte die auf die Atomkerne wirken gleich Null.
 
 ![Beispiel einer Geometrieoptimierung](figures/geometry_optimization.png)
 
@@ -123,13 +123,21 @@ Nach des jeweiligen SCF-Runs wird dann ein Block angezeigt welcher die aktuelle 
 ```
 
 Sobald die Optimierungskriterien erfüllt sind wird dieser Block im Output-File angezeigt. Man erhält somit eine Minimumsgeometrie welche man für weitere Berechnungen verwenden kann.
+### Aufgabe 1
+Berechnen Sie optimierte Strukturen für die Moleküle der Ihnen zugewiesenen Reaktion auf den nachfolgenden Levels of Theory:
 
+  - HF/6-311G(d,p)
+  - B3LYP/6-311G(d,p)
+  - MP2/6-311G(d,p)
+
+Vergleichen Sie im Anschluss die internen Koordinaten Ihrer Moleküle mit experimentellen Daten. Stellen Sie sich die Frage ob dieser Vergleich notwendig ist oder ob eine ähnliche Aussage bereits früher anhand der berechneten Energien getroffen werden kann?
 ### Verständnisfragen
 
 - Was bestimmt das Ende einer Geometrieoptimierung?
 - Welche Rolle spielt der Gradient in einer Geometrieoptimierung?
 - Wie könnte ich sehen ob eine Geometrieoptimierung ein Minimum gefunden hat (Stichwort: Frequenzberechnung)?
 - Was ist die Hesse-Matrix und welche Information enthält diese? 
+- Woher kommen hochgenaue experimentelle Geometriedaten von kleinen Molekülen.
 
 
 

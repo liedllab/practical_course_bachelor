@@ -52,33 +52,6 @@ extract_G_kJ() {
   echo "NA"
 }
 
-# T·S in kJ/mol (Final entropy term)
-extract_TS_kJ() {
-  local f="$1" v
-  # bevorzugt kcal
-  v=$(num_before_unit 'Final[[:space:]]+entropy[[:space:]]+term' '^kcal' "$f")
-  if [[ -n "$v" ]]; then awk -v kcal="$v" -v fac="$KCAL_TO_KJ" 'BEGIN{printf("%.6f", kcal*fac)}'; return; fi
-  # Fallback: Eh
-  v=$(num_before_unit 'Final[[:space:]]+entropy[[:space:]]+term' '(^eh$|^a\.u\.$|^au$|^hartree$)' "$f")
-  if [[ -n "$v" ]]; then awk -v eh="$v" -v fac="$EH_TO_KJ" 'BEGIN{printf("%.6f", eh*fac)}'; return; fi
-  echo "NA"
-}
-
-# S in kJ/mol/K
-# 1) direkt aus ... cal/mol*K (falls vorhanden)
-# 2) sonst: S = (T·S)/T aus Final entropy term
-extract_S_kJ_per_molK() {
-  local f="$1" T="$2" v ts_kj
-  v=$(num_before_unit '(Total|Final)[[:space:]]+entropy' 'cal' "$f")
-  if [[ -n "$v" ]]; then awk -v cal="$v" -v fac="$CAL_TO_KJ" 'BEGIN{printf("%.6f", cal*fac)}'; return; fi
-  ts_kj=$(extract_TS_kJ "$f")
-  if [[ -n "$ts_kj" && "$ts_kj" != "NA" && -n "$T" && "$T" != "NA" && "$T" != "0" ]]; then
-    awk -v ts="$ts_kj" -v T="$T" 'BEGIN{printf("%.6f", ts/T)}'
-    return
-  fi
-  echo "NA"
-}
-
 # T,p aus Pfad wie .../T100_P10atm/...
 tp_from_path() {
   local path="$1" tag T P
@@ -94,7 +67,7 @@ tp_from_path() {
 
 # ---- Hauptteil --------------------------------------------------------------
 
-header="T,p_atm,H_kJ,G_kJ,S_kJ_per_molK,TS_kJ_per_mol"
+header="T,p_atm,H_kJ,G_kJ"
 TMP_DATA="$(mktemp)"
 trap 'rm -f "$TMP_DATA"' EXIT
 
@@ -106,10 +79,7 @@ while IFS= read -r -d '' outf; do
   if [[ "$T" =~ ^[0-9]+$ && "$P" =~ ^[0-9]+$ ]]; then
     H_kJ=$(extract_H_kJ "$outf")
     G_kJ=$(extract_G_kJ "$outf")
-    TS_kJ=$(extract_TS_kJ "$outf")
-    S_kJ_per_K=$(extract_S_kJ_per_molK "$outf" "$T")
-
-    echo "$T,$P,$H_kJ,$G_kJ,$S_kJ_per_K,$TS_kJ" >> "$TMP_DATA"
+    echo "$T,$P,$H_kJ,$G_kJ" >> "$TMP_DATA"
   fi
 done < <(find . -type f -name "*.out" -print0)
 

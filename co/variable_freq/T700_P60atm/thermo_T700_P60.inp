@@ -1,0 +1,15 @@
+! PrintThermoChem
+
+%geom
+  InHessName "/home/jsc/Lehre/TCGPR/practical_course_bachelor/co/variable_freq/T700_P60atm/hessian.hess"
+end
+
+%freq
+  Temp 700
+  Pressure 60
+end
+
+* xyz 0 1
+ O                  0.93073595    1.06060604    0.00000000
+ C                 -0.32766405    1.06060604    0.00000000
+*

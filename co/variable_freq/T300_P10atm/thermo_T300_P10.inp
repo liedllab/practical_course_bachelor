@@ -1,0 +1,15 @@
+! PrintThermoChem
+
+%geom
+  InHessName "/home/jsc/Lehre/TCGPR/practical_course_bachelor/co/variable_freq/T300_P10atm/hessian.hess"
+end
+
+%freq
+  Temp 300
+  Pressure 10
+end
+
+* xyz 0 1
+ O                  0.93073595    1.06060604    0.00000000
+ C                 -0.32766405    1.06060604    0.00000000
+*

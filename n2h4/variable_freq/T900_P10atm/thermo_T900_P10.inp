@@ -1,0 +1,19 @@
+! PrintThermoChem
+
+%geom
+  InHessName "/home/jsc/Lehre/TCGPR/practical_course_bachelor/n2h4/variable_freq/T900_P10atm/hessian.hess"
+end
+
+%freq
+  Temp 900
+  Pressure 10
+end
+
+* xyz 0 1
+N    0.000000    0.000000    0.000000
+N    1.452000    0.000000    0.000000
+H   -0.349000    0.479000    0.829000
+H   -0.349000    0.479000   -0.829000
+H    1.103000   -0.829000    0.479000
+H    1.103000    0.829000    0.479000
+*

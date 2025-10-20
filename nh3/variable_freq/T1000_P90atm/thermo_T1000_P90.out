@@ -23,11 +23,11 @@
       ,#''                                            '''#######################'''  
      '                                                          ''''####''''         
              ,#######,   #######,   ,#######,      ##                                
-            ,#'     '#,  ##    ##  ,#'     '#,    #''#        ,####,    ,#,          
-            ##       ##  ##   ,#'  ##            #'  '#       #'       ,# #          
-            ##       ##  #######   ##           ,######,      #####,      #          
-            '#,     ,#'  ##    ##  '#,     ,#' ,#      #,     #,   #      #          
-             '#######'   ##     ##  '#######'  #'      '#     '####' #    #          
+            ,#'     '#,  ##    ##  ,#'     '#,    #''#        ,####,   ,####,        
+            ##       ##  ##   ,#'  ##            #'  '#       #'       #'  '#        
+            ##       ##  #######   ##           ,######,      #####,   #    #        
+            '#,     ,#'  ##    ##  '#,     ,#' ,#      #,     #,   #   #,  ,#        
+             '#######'   ##     ##  '#######'  #'      '#     '####' # '####'        
 
 
 
@@ -51,113 +51,91 @@
                 #########################################################
 
 
-                         Program Version 6.1.0  -  RELEASE   -
-                                (GIT: $679e74b$)
-                          ($2025-06-10 18:02:51 +0200$)
+                         Program Version 6.0.0  -   RELEASE  -
 
 
  With contributions from (in alphabetic order):
-[Max-Planck-Institut fuer Kohlenforschung]                               
-  Daniel Aravena         : Magnetic Suceptibility                        
-  Michael Atanasov       : Ab Initio Ligand Field Theory (pilot matlab implementation)
-  Alexander A. Auer      : GIAO ZORA, VPT2 properties, NMR spectrum      
-  Ute Becker             : All parallelization in ORCA, NUMFREQ, NUMCALC 
-  Giovanni Bistoni       : ED, misc. LED, open-shell LED, HFLD           
-  Dmytro Bykov           : pre 5.0 version of the SCF Hessian            
-  Marcos Casanova-Páez   : Triplet and SCS-CIS(D). UHF-(DLPNO)-IP/EA/STEOM-CCSD. UHF-CVS-IP/STEOM-CCSD   
-  Vijay G. Chilkuri      : MRCI spin determinant printing, contributions to CSF-ICE 
-  Pauline Colinet        : FMM embedding                                 
-  Dipayan Datta          : RHF DLPNO-CCSD density                        
-  Achintya Kumar Dutta   : EOM-CC, STEOM-CC                              
-  Nicolas Foglia         : Exact transition moments, OPA infrastructure, MCD improvements    
-  Dmitry Ganyushin       : Spin-Orbit,Spin-Spin,Magnetic field MRCI      
-  Miquel Garcia-Rates    : C-PCM and meta-GGA Hessian, CCSD/C-PCM, Gaussian charge scheme 
-  Tiago L. C. Gouveia    : GS-ROHF, GS-ROCIS                             
-  Yang Guo               : DLPNO-NEVPT2, F12-NEVPT2, CIM, IAO-localization        
-  Andreas Hansen         : Spin unrestricted coupled pair/coupled cluster methods 
-  Ingolf Harden          : AUTO-CI MPn and infrastructure                
-  Benjamin Helmich-Paris : MC-RPA, TRAH-(SCF,CASSCF), AVAS, COSX integrals, SCF dyn. polar., MC-PDFT, srDFT 
-  Lee Huntington         : MR-EOM, pCC                                   
-  Robert Izsak           : Overlap fitted RIJCOSX, COSX-SCS-MP3, EOM     
-  Riya Kayal             : Wick's Theorem for AUTO-CI, AUTO-CI UHF-CCSDT 
-  Emily Kempfer          : AUTO-CI RHF CISDT and CCSDT, approximate NEVPT4
-  Christian Kollmar      : KDIIS, OOCD, Brueckner-CCSD(T), CCSD density, CASPT2, CASPT2-K, improved NEVPT2 
-  Axel Koslowski         : Symmetry handling                             
-  Simone Kossmann        : meta-GGA functionals, TD-DFT gradient, OOMP2, (MP2 Hessian; deprecated post 5.0) 
-  Lucas Lang             : DCDCAS, Hyperfine gauge corrections, ICE-SOC+SSC
-  Marvin Lechner         : AUTO-CI (C++ implementation), FIC-MRCC        
-  Spencer Leger          : CASSCF response                               
-  Dagmar Lenk            : GEPOL surface, SMD, ORCA-2-JSON               
-  Dimitrios Liakos       : Extrapolation schemes; Compound Job, Property file
-  Dimitrios Manganas     : Further ROCIS development; embedding schemes. LFT, Crystal Embedding 
-  Dimitrios Pantazis     : SARC Basis sets                               
-  Anastasios Papadopoulos: AUTO-CI, single reference methods and gradients 
-  Taras Petrenko         : pre 6.0 DFT Hessian and TD-DFT gradient,  ECA, NRVS 
-  Petra Pikulova         : Analytic Raman intensities                    
-  Peter Pinski           : DLPNO-MP2, DLPNO-MP2 Gradient                 
-  Shashank Vittal Rao    : ES-AILFT, MagRelax                            
-  Christoph Reimann      : Effective Core Potentials                     
-  Marius Retegan         : Local ZFS, SOC                                
-  Christoph Riplinger    : Optimizer, TS searches, QM/MM, DLPNO-CCSD(T), (RO)-DLPNO pert. Triples 
-  Michael Roemelt        : Original ROCIS implementation, recursive CI coupling coefficients
-  Masaaki Saitow         : Open-shell DLPNO-CCSD energy and density      
-  Barbara Sandhoefer     : DKH picture change effects                    
-  Yorick L. A. Schmerwitz: GMF and freeze-and-release deltaSCF, NEB S-IDPP initial path                    
-  Kantharuban Sivalingam : CASSCF convergence/infrastructure, NEVPT2, NEVPT3, NEVPT4(SD), FIC-MRCI and CEPA variants
-  Bernardo de Souza      : ESD, SOC TD-DFT                               
-  Georgi L. Stoychev     : AutoAux, RI-MP2 NMR, DLPNO-MP2 response, X2C  
-  Van Anh Tran           : RI-MP2 g-tensors                              
-  Willem Van den Heuvel  : Paramagnetic NMR                              
-  Zikuan Wang            : NOTCH, Electric field optimization            
-  Frank Wennmohs         : Technical directorship and infrastructure     
-  Hang Xu                : AUTO-CI-Response properties                   
-                                                                         
-[FACCTs GmbH]                                                            
-  Markus Bursch, Nicolas Foglia, Miquel Garcia-Rates, Ingolf Harden, Hagen Neugebauer, Anastasios Papadopoulos, 
-  Christoph Riplinger, Bernardo de Souza, Georgi L. Stoychev                                                    
-                                                                 
-  APM, various basis sets, CI-OPT, improved COSX, DLPNO-Multilevel,           
-  DOCKER, DRACO, updates on ESD, Fragmentator, GOAT, IRC, LR-CPCM, L-BFGS, MBIS, meta-GGA TD-DFT gradient, ML-optimized integration grids, 
-  MM, NACMEs, nearIR, NEB, NEB-TS, NL-DFT gradient (VV10), 2- and 3-layer-ONIOM, interface openCOSMO-RS, QMMM,   
-  Crystal-QMMM, RESP, rigid body optimization, SF, symmetry and pop. for TD-DFT, various functionals, SOLVATOR                                   
-                                                                         
-[Other institutions]                                                     
-  V. Asgeirsson          : NEB                                           
-  Christoph Bannwarth    : sTDA-DFT, sTD-DFT, PBEh-3c, B97-3c, D3        
-  Giovanni Bistoni       : ETS/NOCV, ADLD/ADEX, COVALED                  
-  Martin Brehm           : Molecular dynamics                            
-  Ronald Cardenas        : ETS/NOCV                                      
-  Martina Colucci        : COVALED                                       
-  Sebastian Ehlert       : rSCAN, r2SCAN, r2SCAN-3c, D4, dhf basis sets  
-  Marvin Friede          : D4 for Fr, Ra, Ac-Lr                          
-  Lars Goerigk           : TD-DFT with DH, B97 family of functionals     
-  Stefan Grimme          : VdW corrections, initial TS optimization, DFT functionals, gCP, sTDA/sTD-DF 
-  Waldemar Hujo          : DFT-NL                                        
-  H. Jonsson             : NEB                                           
-  Holger Kruse           : gCP                                           
-  Marcel Mueller         : wB97X-3c, vDZP basis set                      
-  Hagen Neugebauer       : wr2SCAN, Native XTB                           
-  Gianluca Regni         : ADLD/ADEX                                     
-  Tobias Risthaus        : pre 6.0 range-separated hybrid DFT and stability analysis
-  Lukas Wittmann         : regularized MP2, r2SCAN double-hybrids, wr2SCAN        
-                                                                         
-We gratefully acknowledge several colleagues who have allowed us to      
-interface, adapt or use parts of their codes:                            
-  Ed Valeev, F. Pavosevic, A. Kumar             : LibInt (2-el integral package), F12 methods 
-  Garnet Chan, S. Sharma, J. Yang, R. Olivares  : DMRG                   
-  Ulf Ekstrom                                   : XCFun DFT Library      
-  Mihaly Kallay                                 : mrcc  (arbitrary order and MRCC methods)
-  Frank Weinhold                                : gennbo (NPA and NBO analysis)           
-  Simon Mueller                                 : openCOSMO-RS                            
-  Christopher J. Cramer and Donald G. Truhlar   : smd solvation model                     
-  S Lehtola, MJT Oliveira, MAL Marques          : LibXC Library                           
-  Liviu Ungur et al                             : ANISO software                          
+   Daniel Aravena         : Magnetic Suceptibility
+   Michael Atanasov       : Ab Initio Ligand Field Theory (pilot matlab implementation)
+   Alexander A. Auer      : GIAO ZORA, VPT2 properties, NMR spectrum
+   Ute Becker             : All parallelization in ORCA, NUMFREQ, NUMCALC
+   Giovanni Bistoni       : ED, misc. LED, open-shell LED, HFLD
+   Martin Brehm           : Molecular dynamics
+   Dmytro Bykov           : pre 5.0 version of the SCF Hessian
+   Marcos Casanova-Páez   : Triplet and SCS-CIS(D). UHF-(DLPNO)-IP/EA/STEOM-CCSD. UHF-CVS-IP/STEOM-CCSD
+   Vijay G. Chilkuri      : MRCI spin determinant printing, contributions to CSF-ICE
+   Pauline Colinet        : FMM embedding
+   Dipayan Datta          : RHF DLPNO-CCSD density
+   Achintya Kumar Dutta   : EOM-CC, STEOM-CC
+   Nicolas Foglia         : Exact transition moments, OPA infrastructure, MCD improvements
+   Dmitry Ganyushin       : Spin-Orbit,Spin-Spin,Magnetic field MRCI
+   Miquel Garcia          : C-PCM and meta-GGA Hessian, CCSD/C-PCM, Gaussian charge scheme
+   Tiago L. C. Gouveia    : GS-ROHF, GS-ROCIS
+   Yang Guo               : DLPNO-NEVPT2, F12-NEVPT2, CIM, IAO-localization
+   Andreas Hansen         : Spin unrestricted coupled pair/coupled cluster methods
+   Ingolf Harden          : AUTO-CI MPn and infrastructure 
+   Benjamin Helmich-Paris : MC-RPA, TRAH-(SCF,CASSCF), AVAS, COSX integrals, SCF dyn. polar.
+   Lee Huntington         : MR-EOM, pCC
+   Robert Izsak           : Overlap fitted RIJCOSX, COSX-SCS-MP3, EOM
+   Riya Kayal             : Wick's Theorem for AUTO-CI, AUTO-CI UHF-CCSDT
+   Emily Kempfer          : AUTO-CI, RHF CISDT and CCSDT
+   Christian Kollmar      : KDIIS, OOCD, Brueckner-CCSD(T), CCSD density, CASPT2, CASPT2-K, improved NEVPT2
+   Axel Koslowski         : Symmetry handling
+   Simone Kossmann        : Meta GGA functionals, TD-DFT gradient, OOMP2, (MP2 Hessian; deprecated post 5.0)
+   Lucas Lang             : DCDCAS
+   Marvin Lechner         : AUTO-CI (C++ implementation), FIC-MRCC
+   Spencer Leger          : CASSCF response
+   Dagmar Lenk            : GEPOL surface, SMD, ORCA-2-JSON
+   Dimitrios Liakos       : Extrapolation schemes; Compound Job, initial MDCI parallelization
+   Dimitrios Manganas     : Further ROCIS development; embedding schemes. LFT, Crystal Embedding
+   Dimitrios Pantazis     : SARC Basis sets
+   Anastasios Papadopoulos: AUTO-CI, single reference methods and gradients
+   Taras Petrenko         : pre 6.0 DFT Hessian and TD-DFT gradient, (ASA, deprecated), ECA, 1-Electron XAS/XES, NRVS
+   Peter Pinski           : DLPNO-MP2, DLPNO-MP2 Gradient
+   Christoph Reimann      : Effective Core Potentials
+   Marius Retegan         : Local ZFS, SOC
+   Christoph Riplinger    : Optimizer, TS searches, QM/MM, DLPNO-CCSD(T), (RO)-DLPNO pert. Triples
+   Michael Roemelt        : Original ROCIS implementation
+   Masaaki Saitow         : Open-shell DLPNO-CCSD energy and density
+   Barbara Sandhoefer     : DKH picture change effects
+   Kantharuban Sivalingam : CASSCF convergence/infrastructure, NEVPT2 and variants, FIC-MRCI
+   Bernardo de Souza      : ESD, SOC TD-DFT
+   Georgi Stoychev        : AutoAux, RI-MP2 NMR, DLPNO-MP2 response, X2C
+   Van Anh Tran           : RI-MP2 g-tensors
+   Willem Van den Heuvel  : Paramagnetic NMR
+   Zikuan Wang            : NOTCH, Electric field optimization 
+   Frank Wennmohs         : Technical directorship and infrastructure
+   Hang Xu                : AUTO-CI-Response properties 
+
+
+ We gratefully acknowledge several colleagues who have allowed us to
+ interface, adapt or use parts of their codes:
+   Stefan Grimme, W. Hujo, H. Kruse, P. Pracht,  : VdW corrections, initial TS optimization,
+                  C. Bannwarth, S. Ehlert,         DFT functionals, gCP, sTDA/sTD-DF
+                  L. Wittmann, M. Mueller
+   Ed Valeev, F. Pavosevic, A. Kumar             : LibInt (2-el integral package), F12 methods
+   Garnet Chan, S. Sharma, J. Yang, R. Olivares  : DMRG
+   Ulf Ekstrom                                   : XCFun DFT Library
+   Mihaly Kallay                                 : mrcc  (arbitrary order and MRCC methods)
+   Frank Weinhold                                : gennbo (NPA and NBO analysis)
+   Simon Mueller                                 : openCOSMO-RS
+   Christopher J. Cramer and Donald G. Truhlar   : smd solvation model
+   Lars Goerigk                                  : TD-DFT with DH, B97 family of functionals
+   V. Asgeirsson, H. Jonsson                     : NEB implementation
+   FAccTs GmbH                                   : IRC, NEB, NEB-TS, DLPNO-Multilevel, CI-OPT
+                                                   MM, QMMM, 2- and 3-layer-ONIOM, Crystal-QMMM,
+                                                   LR-CPCM, SF, NACMEs, symmetry and pop. for TD-DFT,
+                                                   nearIR, NL-DFT gradient (VV10), updates on ESD,
+                                                   ML-optimized integration grids, MBIS, APM,
+                                                   GOAT, DOCKER, SOLVATOR, interface openCOSMO-RS
+   S Lehtola, MJT Oliveira, MAL Marques          : LibXC Library
+   Liviu Ungur et al                             : ANISO software
 
 
  Your calculation uses the libint2 library for the computation of 2-el integrals
  For citations please refer to: http://libint.valeyev.net
 
- Your ORCA version has been built with support for libXC version: 7.0.0
+ Your ORCA version has been built with support for libXC version: 6.2.2
  For citations please refer to: https://libxc.gitlab.io
 
  This ORCA versions uses:
@@ -165,17 +143,10 @@ interface, adapt or use parts of their codes:
    LAPACKE interface :  Fast linear algebra routines
    SCALAPACK package :  Parallel linear algebra routines
    Shared memory     :  Shared parallel matrices
-   BLAS/LAPACK       :  OpenBLAS 0.3.29  USE64BITINT DYNAMIC_ARCH NO_AFFINITY Zen SINGLE_THREADED
+   BLAS/LAPACK       :  OpenBLAS 0.3.27  USE64BITINT DYNAMIC_ARCH NO_AFFINITY Zen SINGLE_THREADED
         Core in use  :  Zen
    Copyright (c) 2011-2014, The OpenBLAS Project
 
-
-  ***********************************
-  * Starting time: Thu Sep  4 16:42:12 2025
-  * Host name:     ae2-c724
-  * Process ID:    873765
-  * Working dir.:  /home/jsc/Lehre/TCGPR/practical_course_bachelor/nh3/variable_freq
-  ***********************************
 
 ================================================================================
 
@@ -243,12 +214,12 @@ Scaling factor for frequencies =  1.000000000  (already applied!)
      3:       0.00 cm**-1
      4:       0.00 cm**-1
      5:       0.00 cm**-1
-     6:    1128.58 cm**-1
-     7:    1674.53 cm**-1
-     8:    1674.87 cm**-1
-     9:    3524.99 cm**-1
-    10:    3662.52 cm**-1
-    11:    3662.87 cm**-1
+     6:    1128.56 cm**-1
+     7:    1674.50 cm**-1
+     8:    1674.84 cm**-1
+     9:    3524.92 cm**-1
+    10:    3662.46 cm**-1
+    11:    3662.80 cm**-1
 
 
 ------------
@@ -294,12 +265,12 @@ IR SPECTRUM
  Mode   freq       eps      Int      T**2         TX        TY        TZ
        cm**-1   L/(mol*cm) km/mol    a.u.
 ----------------------------------------------------------------------------
-  6:   1128.58   0.032889  166.21  0.009094  (-0.000008 -0.000028 -0.095363)
-  7:   1674.53   0.003975   20.09  0.000741  (-0.012589 -0.024132  0.000022)
-  8:   1674.87   0.003957   20.00  0.000737  ( 0.024106 -0.012497 -0.000019)
-  9:   3524.99   0.000055    0.28  0.000005  (-0.000007 -0.000042 -0.002213)
- 10:   3662.52   0.000201    1.02  0.000017  ( 0.004128 -0.000320 -0.000008)
- 11:   3662.87   0.000194    0.98  0.000016  (-0.000273 -0.004052  0.000034)
+  6:   1128.56   0.032889  166.21  0.009094  (-0.000008 -0.000028 -0.095364)
+  7:   1674.50   0.003975   20.09  0.000741  (-0.012589 -0.024132  0.000022)
+  8:   1674.84   0.003957   20.00  0.000737  ( 0.024106 -0.012497 -0.000019)
+  9:   3524.92   0.000055    0.28  0.000005  (-0.000007 -0.000042 -0.002213)
+ 10:   3662.46   0.000201    1.02  0.000017  ( 0.004128 -0.000320 -0.000008)
+ 11:   3662.80   0.000194    0.98  0.000016  (-0.000273 -0.004052  0.000034)
 
 * The epsilon (eps) is given for a Dirac delta lineshape.
 ** The dipole moment derivative (T) already includes vibrational overlap.
@@ -333,12 +304,12 @@ Throughout the following assumptions are being made:
       equations for an ideal gas
   (5) All vibrations are strictly harmonic
 
-freq.    1128.58  E(vib)   ...       0.79 
-freq.    1674.53  E(vib)   ...       0.47 
-freq.    1674.87  E(vib)   ...       0.47 
-freq.    3524.99  E(vib)   ...       0.06 
-freq.    3662.52  E(vib)   ...       0.05 
-freq.    3662.87  E(vib)   ...       0.05 
+freq.    1128.56  E(vib)   ...       0.79 
+freq.    1674.50  E(vib)   ...       0.47 
+freq.    1674.84  E(vib)   ...       0.47 
+freq.    3524.92  E(vib)   ...       0.06 
+freq.    3662.46  E(vib)   ...       0.05 
+freq.    3662.80  E(vib)   ...       0.05 
 
 ------------
 INNER ENERGY
@@ -355,20 +326,20 @@ The inner energy is: U= E(el) + E(ZPE) + E(vib) + E(rot) + E(trans)
 
 Summary of contributions to the inner energy U:
 Electronic energy                ...      0.00000000 Eh
-Zero point energy                ...      0.03492055 Eh      21.91 kcal/mol
-Thermal vibrational correction   ...      0.00304365 Eh       1.91 kcal/mol
+Zero point energy                ...      0.03491992 Eh      21.91 kcal/mol
+Thermal vibrational correction   ...      0.00304374 Eh       1.91 kcal/mol
 Thermal rotational correction    ...      0.00475020 Eh       2.98 kcal/mol
 Thermal translational correction ...      0.00475020 Eh       2.98 kcal/mol
 -----------------------------------------------------------------------
-Total thermal energy                      0.04746460 Eh
+Total thermal energy                      0.04746406 Eh
 
 
 Summary of corrections to the electronic energy:
 (perhaps to be used in another calculation)
-Total thermal correction                  0.01254405 Eh       7.87 kcal/mol
-Non-thermal (ZPE) correction              0.03492055 Eh      21.91 kcal/mol
+Total thermal correction                  0.01254414 Eh       7.87 kcal/mol
+Non-thermal (ZPE) correction              0.03491992 Eh      21.91 kcal/mol
 -----------------------------------------------------------------------
-Total correction                          0.04746460 Eh      29.78 kcal/mol
+Total correction                          0.04746406 Eh      29.78 kcal/mol
 
 
 --------
@@ -377,10 +348,10 @@ ENTHALPY
 
 The enthalpy is H = U + kB*T
                 kB is Boltzmann's constant
-Total thermal energy              ...      0.04746460 Eh 
+Total thermal energy              ...      0.04746406 Eh 
 Thermal Enthalpy correction       ...      0.00316689 Eh       1.99 kcal/mol
 -----------------------------------------------------------------------
-Total Enthalpy                    ...      0.05063149 Eh
+Total Enthalpy                    ...      0.05063095 Eh
 
 
 Note: Rotational entropy computed according to Herzberg 
@@ -405,11 +376,11 @@ The entropies will be listed as multiplied by the temperature to get
 units of energy
 
 Electronic entropy                ...      0.00000000 Eh      0.00 kcal/mol
-Vibrational entropy               ...      0.00438805 Eh      2.75 kcal/mol
+Vibrational entropy               ...      0.00438819 Eh      2.75 kcal/mol
 Rotational entropy                ...      0.02726659 Eh     17.11 kcal/mol
 Translational entropy             ...      0.05021680 Eh     31.51 kcal/mol
 -----------------------------------------------------------------------
-Final entropy term                ...      0.08187143 Eh     51.37 kcal/mol
+Final entropy term                ...      0.08187158 Eh     51.38 kcal/mol
 
 In case the symmetry of your molecule has not been determined correctly
 or in case you have a reason to use a different symmetry number we print 
@@ -440,13 +411,13 @@ GIBBS FREE ENERGY
 
 The Gibbs free energy is G = H - T*S
 
-Total enthalpy                    ...      0.05063149 Eh 
-Total entropy correction          ...     -0.08187143 Eh    -51.37 kcal/mol
+Total enthalpy                    ...      0.05063095 Eh 
+Total entropy correction          ...     -0.08187158 Eh    -51.38 kcal/mol
 -----------------------------------------------------------------------
-Final Gibbs free energy         ...     -0.03123994 Eh
+Final Gibbs free energy         ...     -0.03124063 Eh
 
 For completeness - the Gibbs free energy minus the electronic energy
-G-E(el)                           ...     -0.03123994 Eh    -19.60 kcal/mol
+G-E(el)                           ...     -0.03124063 Eh    -19.60 kcal/mol
 
 
 --------------------------------
@@ -471,10 +442,10 @@ You can import this file easily into all common literature databanks and citatio
 
 List of essential papers. We consider these as the minimum necessary citations
 
-  1. Neese, F.
-     Software update: the ORCA program system, version 6.0
-     WIRES Comput. Molec. Sci. 2025 15(1), e70019
-     doi.org/10.1002/wcms.7019
+  1. Neese,F.
+     Software update: the ORCA program system, version 5.0
+     WIRES Comput. Molec. Sci., 2022 12(1)e1606
+     doi.org/10.1002/wcms.1606
 
 List of papers to cite with high priority. The work reported in these papers was absolutely
 necessary for this run to complete.
@@ -482,39 +453,35 @@ Our perspective: the developers of density functionals and basis sets usually ge
 Good! But without the algorithms to do something with them, the functionals or basis sets would not do anything.
 Hence, in our opinion, the algorithm design and method developments papers are equally worthy of getting cited
 
-  1. Neese, F.
+  1. Neese,F.
      The SHARK Integral Generation and Digestion System
-     J. Comp. Chem. 2022 44(3), 381
+     J. Comp. Chem., 2022  1-16
      doi.org/10.1002/jcc.26942
 
 List of suggested additional citations. These are papers that are important in the 'surrounding' of 
 of this run, or papers that preceded the highly important papers. If you like your results we are grateful for a citation.
 
-  1. Neese, F.
+  1. Neese,F.
      The ORCA program system
-     WIRES Comput. Molec. Sci. 2012 2(1), 73-78
+     WIRES Comput. Molec. Sci., 2012 2(1)73-78
      doi.org/10.1002/wcms.81
-  2. Neese, F.
+  2. Neese,F.
      Software update: the ORCA program system, version 4.0
-     WIRES Comput. Molec. Sci. 2018 8(1), 1-6
+     WIRES Comput. Molec. Sci., 2018 8(1)1-6
      doi.org/10.1002/wcms.1327
-  3. Neese, F.; Wennmohs, F.; Becker, U.; Riplinger, C.
+  3. Neese,F.; Wennmohs,F.; Becker,U.; Riplinger,C.
      The ORCA quantum chemistry program package
-     J. Chem. Phys. 2020 152(22), 224108
+     J. Chem. Phys., 2020 152 Art. No. L224108
      doi.org/10.1063/5.0004608
-  4. Neese, F.
-     Software update: The ORCA program system—Version 5.0
-     WIRES Comput. Molec. Sci. 2022 12(1), e1606
-     doi.org/10.1002/wcms.1606
 
 List of optional additional citations
 
-  1. Neese, F.
+  1. Neese,F.
      Approximate second-order SCF convergence for spin unrestricted wavefunctions
-     Chem. Phys. Lett. 2000 325(1-3), 93-98
+     Chem. Phys. Lett., 2000 325(1-3)93-98
      doi.org/10.1016/s0009-2614(00)00662-x
 
 Timings for individual modules:
 
                              ****ORCA TERMINATED NORMALLY****
-TOTAL RUN TIME: 0 days 0 hours 0 minutes 0 seconds 43 msec
+TOTAL RUN TIME: 0 days 0 hours 0 minutes 0 seconds 41 msec

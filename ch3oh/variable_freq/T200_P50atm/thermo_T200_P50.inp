@@ -1,0 +1,19 @@
+! PrintThermoChem
+
+%geom
+  InHessName "/home/jsc/Lehre/TCGPR/practical_course_bachelor/ch3oh/variable_freq/T200_P50atm/hessian.hess"
+end
+
+%freq
+  Temp 200
+  Pressure 50
+end
+
+* xyz 0 1
+C                  2.48145767    0.37825398    0.03488332
+H                  2.85516178   -0.62138521    0.11212799
+H                  2.74770046    0.92746804    0.91373410
+H                  1.41608925    0.35429055   -0.06163548
+O                  3.05001167    1.01224990   -1.11389669
+H                  2.81113964    0.51949710   -1.90239833
+*

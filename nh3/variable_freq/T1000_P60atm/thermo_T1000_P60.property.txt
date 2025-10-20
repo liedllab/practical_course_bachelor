@@ -1,14 +1,16 @@
 *************************************************
-******************* ORCA 6.1.0 ******************
+******************* ORCA 6.0.0 ******************
 *************************************************
 $Calculation_Status
    &GeometryIndex 0
-   &version [&Type "String"] "6.1.0"
-   &progName [&Type "String"] "orca"
-   &Status [&Type "String"] "Running"
+   &ListStatus       OUT
+   &VERSION [&Type "String"] "6.0.0"
+   &PROGNAME [&Type "String"] "orca"
+   &STATUS [&Type "String"] "Running"
 $End
 $THERMOCHEMISTRY_Energies
    &GeometryIndex 0
+   &ListStatus       OUT
    &temperature [&Type "Double"]       1.0000000000000000e+03
    &pressure [&Type "Double"]       6.0000000000000000e+01
    &totalMass [&Type "Double"]       1.7030999999999999e+01
@@ -16,10 +18,10 @@ $THERMOCHEMISTRY_Energies
    &elEnergy [&Type "Double"]       0.0000000000000000e+00
    &transEnergy [&Type "Double"]       4.7501976336943889e-03
    &rotEnergy [&Type "Double"]       4.7501976336943889e-03
-   &vibEnergy [&Type "Double"]       3.0436537216432238e-03
+   &vibEnergy [&Type "Double"]       3.0437431252022169e-03
    &numOfFreqs [&Type "Integer"] 12
    &freqScalingFactor [&Type "Double"]       1.0000000000000000e+00
-   &FREQ [&Type "ArrayOfDoubles", &Units "cm^-1", &Dim (12,1)] 
+   &FREQ [&Type "ArrayOfDoubles", &Dim (12,1)] "In cm^-1"
                                                          0
 
 0                                      0.0000000000000000e+00
@@ -28,32 +30,20 @@ $THERMOCHEMISTRY_Energies
 3                                      0.0000000000000000e+00
 4                                      0.0000000000000000e+00
 5                                      0.0000000000000000e+00
-6                                      1.1285772506515088e+03
-7                                      1.6745319213343687e+03
-8                                      1.6748653818727194e+03
-9                                      3.5249869282813675e+03
-10                                     3.6625236908515240e+03
-11                                     3.6628650765870980e+03
-   &zpe [&Type "Double"]       3.4920551352802337e-02
-   &innerEnergyU [&Type "Double"]       4.7464600341834334e-02
-   &enthalpyH [&Type "Double"]       5.0631492987344352e-02
+6                                      1.1285567900188757e+03
+7                                      1.6745015627723342e+03
+8                                      1.6748350172651842e+03
+9                                      3.5249230217454724e+03
+10                                     3.6624572908317559e+03
+11                                     3.6627986703781489e+03
+   &zpe [&Type "Double"]       3.4919918257839459e-02
+   &innerEnergyU [&Type "Double"]       4.7464056650430450e-02
+   &enthalpyH [&Type "Double"]       5.0630949295940468e-02
    &qEl [&Type "Double"]       0.0000000000000000e+00
    &qRot [&Type "Double"]       2.7266593380767163e-02
-   &qVib [&Type "Double"]       4.3880456830676573e-03
+   &qVib [&Type "Double"]       4.3881902673158580e-03
    &qTrans [&Type "Double"]       5.1500821924349648e-02
-   &entropyS [&Type "Double"]       8.3155460988184465e-02
-   &freeEnergyG [&Type "Double"]      -3.2523968000840113e-02
+   &entropyS [&Type "Double"]       8.3155605572432678e-02
+   &freeEnergyG [&Type "Double"]      -3.2524656276492210e-02
    &isLinear [&Type "Boolean"] false
-$End
-$Calculation_Info
-   &GeometryIndex 0
-   &Mult [&Type "Integer"] 1
-   &Charge [&Type "Integer"] 0
-   &NumOfAtoms [&Type "Integer"] 4
-   &NumOfElectrons [&Type "Integer"] 0
-   &NumOfBasisFuncts [&Type "Integer"] 29
-   &NumOfAuxCBasisFuncts [&Type "Integer"] 0
-   &NumOfAuxJBasisFuncts [&Type "Integer"] 0
-   &NumOfAuxJKBasisFuncts [&Type "Integer"] 0
-   &NumOfCABSBasisFuncts [&Type "Integer"] 0
 $End

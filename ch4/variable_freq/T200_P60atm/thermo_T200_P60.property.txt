@@ -1,0 +1,52 @@
+*************************************************
+******************* ORCA 6.0.0 ******************
+*************************************************
+$Calculation_Status
+   &GeometryIndex 0
+   &ListStatus       OUT
+   &VERSION [&Type "String"] "6.0.0"
+   &PROGNAME [&Type "String"] "orca"
+   &STATUS [&Type "String"] "Running"
+$End
+$THERMOCHEMISTRY_Energies
+   &GeometryIndex 0
+   &ListStatus       OUT
+   &temperature [&Type "Double"]       2.0000000000000000e+02
+   &pressure [&Type "Double"]       6.0000000000000000e+01
+   &totalMass [&Type "Double"]       1.6042999999999996e+01
+   &spinDegeneracy [&Type "Integer"] 1
+   &elEnergy [&Type "Double"]       0.0000000000000000e+00
+   &transEnergy [&Type "Double"]       9.5003952673887774e-04
+   &rotEnergy [&Type "Double"]       9.5003952673887774e-04
+   &vibEnergy [&Type "Double"]       1.1938265532031693e-06
+   &numOfFreqs [&Type "Integer"] 15
+   &freqScalingFactor [&Type "Double"]       1.0000000000000000e+00
+   &FREQ [&Type "ArrayOfDoubles", &Dim (15,1)] "In cm^-1"
+                                                         0
+
+0                                      0.0000000000000000e+00
+1                                      0.0000000000000000e+00
+2                                      0.0000000000000000e+00
+3                                      0.0000000000000000e+00
+4                                      0.0000000000000000e+00
+5                                      0.0000000000000000e+00
+6                                      1.3630146610384722e+03
+7                                      1.3632625577346582e+03
+8                                      1.3633610889449096e+03
+9                                      1.5795318491835671e+03
+10                                     1.5796139313143221e+03
+11                                     3.0762130235916129e+03
+12                                     3.2130048728853812e+03
+13                                     3.2130319688115546e+03
+14                                     3.2131138076092539e+03
+   &zpe [&Type "Double"]       4.5481675180672004e-02
+   &innerEnergyU [&Type "Double"]       4.7382948060702958e-02
+   &enthalpyH [&Type "Double"]       4.8016326589804960e-02
+   &qEl [&Type "Double"]       0.0000000000000000e+00
+   &qRot [&Type "Double"]       3.7189107689524692e-03
+   &qVib [&Type "Double"]       1.3050797127176350e-06
+   &qTrans [&Type "Double"]       7.6950048358618841e-03
+   &entropyS [&Type "Double"]       1.1415220684527071e-02
+   &freeEnergyG [&Type "Double"]       3.6601105905277889e-02
+   &isLinear [&Type "Boolean"] false
+$End

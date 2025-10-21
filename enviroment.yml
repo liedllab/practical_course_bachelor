@@ -1,0 +1,42 @@
+name: python-practical-course
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.12
+  - pip
+  
+  # Core data science packages
+  - numpy
+  - pandas
+  - matplotlib
+  - seaborn
+  - scipy
+  - scikit-learn
+  - jupyter
+  - jupyterlab
+  
+  # Data handling and visualization
+  - plotly
+  - bokeh
+  - openpyxl  # For Excel files
+  - xlrd      # For older Excel files
+  
+  # Web scraping and APIs (if needed)
+  - requests
+  - beautifulsoup4
+  - lxml
+  
+  # Database connectivity
+  - sqlalchemy
+  - psycopg2
+  
+  # Development tools
+  - ipython
+  - black      # Code formatter
+  - flake8     # Linter
+  - pytest     # Testing framework
+  
+  # Package management
+  - pip:
+    - python-dotenv  # Environment variables

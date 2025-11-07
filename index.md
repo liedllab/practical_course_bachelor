@@ -9,7 +9,7 @@ MathJax = {
 
 ## Quantenmechanik Teil
 
-Jedem Praktikumsteilnehmer wird in diesem Teil eine Reaktion zugewiesen, welche im Verlauf des Praktikums näher untersucht wird. Dazu werden verschiedene Quantenchemischen-Rechnungen und Methoden angewandt um Eigenschaften der Moleküle zu bestimmen.
+Jedem Praktikumsteilnehmer wird in diesem Teil eine Reaktion zugewiesen, welche im Verlauf des Praktikums näher untersucht wird. Dazu werden verschiedene Quantenchemische-Rechnungen und Methoden angewandt, um Eigenschaften der Moleküle zu bestimmen.
 
 
 + **Aufgabe 1** [Optimierung der Molekülgeometrie](Optimierung.html)
@@ -25,7 +25,7 @@ Orca ist ein Quantenchemie-Paket, welches verschiedene Methoden im Bereich der E
 
 **Grundlegende Struktur eines Inputfiles**
 
-Folgendes beispiel gibt die grundlegende Struktur eines Inputfiles wieder:
+Folgendes Beispiel gibt die grundlegende Struktur eines Inputfiles wieder:
 
 ```text
 !HF DEF2-SVP
@@ -39,11 +39,11 @@ H   0.7920   0.0000  -0.4973
 *
 ``` 
 
-Das `!` startet den __Main Input__, spezifische Optionen können mit `%`angegeben werden. Wichtig ist hierbei das der Input-Reader nicht case-sensitiv ist man kann also sowohl Groß- als auch Kleinbuchstaben verwenden.
+Das `!` startet den __Main Input__, spezifische Optionen können mit `%` angegeben werden. Wichtig ist hierbei, dass der Input-Reader nicht case-sensitiv ist. Man kann also sowohl Groß- als auch Kleinbuchstaben verwenden.
 
-In der **Structure-Section** nach dem Main-Input wird die Molekülgeometrie angegeben. Dies wird durch ein `*` separiert, xyz steht hierbei für kartesische Koordinaten, die erste Zahl ist die Gesamtladung des Moleküls, die zweite die Multiplizität $(2S+1)$ des Systems.
+In der **Structure-Section** nach dem Main-Input wird die Molekülgeometrie angegeben. Dies wird durch ein `*` separiert, xyz steht hierbei für kartesische Koordinaten, die erste Zahl ist die Gesamtladung des Moleküls, die zweite die Spinmultiplizität $(2S+1)$ des Systems.
 
-**Beispiel für Single-Point Energie von Wasser**
+**Beispiel einer Single-Point Energieberechung von Wasser**
 
 Im folgenden Beispiel wird eine Single-Point Energie für ein Wassermolekül mit der HF-SCF-Methode berechnet. Hierbei wird ein 6-311G(d,p) Basissatz verwendet. 
 

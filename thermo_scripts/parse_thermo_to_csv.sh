@@ -35,7 +35,7 @@ num_before_unit() {
 # H in kJ/mol
 extract_H_kJ() {
   local f="$1" v
-  v=$(num_before_unit 'Total[[:space:]]+Enthalpy' '(^eh$|^a\.u\.$|^au$|^hartree$)' "$f")
+  v=$(num_before_unit 'Total[[:space:]]+Enthalpy' '(^eh$|^a[.]u[.]$|^au$|^hartree$)' "$f")
   if [[ -n "$v" ]]; then awk -v eh="$v" -v fac="$EH_TO_KJ" 'BEGIN{printf("%.6f", eh*fac)}'; return; fi
   v=$(num_before_unit 'Total[[:space:]]+Enthalpy' '^kcal' "$f")
   if [[ -n "$v" ]]; then awk -v kcal="$v" -v fac="$KCAL_TO_KJ" 'BEGIN{printf("%.6f", kcal*fac)}'; return; fi
@@ -45,7 +45,7 @@ extract_H_kJ() {
 # G in kJ/mol
 extract_G_kJ() {
   local f="$1" v
-  v=$(num_before_unit 'Final[[:space:]]+Gibbs[[:space:]]+free[[:space:]]+energy' '(^eh$|^a\.u\.$|^au$|^hartree$)' "$f")
+  v=$(num_before_unit 'Final[[:space:]]+Gibbs[[:space:]]+free[[:space:]]+energy' '(^eh$|^a[.]u[.]$|^au$|^hartree$)' "$f")
   if [[ -n "$v" ]]; then awk -v eh="$v" -v fac="$EH_TO_KJ" 'BEGIN{printf("%.6f", eh*fac)}'; return; fi
   v=$(num_before_unit 'Final[[:space:]]+Gibbs[[:space:]]+free[[:space:]]+energy' '^kcal' "$f")
   if [[ -n "$v" ]]; then awk -v kcal="$v" -v fac="$KCAL_TO_KJ" 'BEGIN{printf("%.6f", kcal*fac)}'; return; fi

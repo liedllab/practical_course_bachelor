@@ -10,13 +10,13 @@ MathJax = {
 
 ## Optimierung der Molekülgeometrie
 
-Eine dreidimensionale Anordnung von Atomen im Raum ist eine __Molekülgeometrie__. Die __Minimumsgeometrie__ ist jene wo die potentielle Energie des Moleküls minimal ist. Für viele quantenchemische Berechnungen ist das Auffinden einer Minimumsgeometrie oft der erste Schritt. Dies wird als __Geometrieoptimierung__ bezeichnet.
+Eine dreidimensionale Anordnung von Atomen im Raum ist eine __Molekülgeometrie__. Die __Minimumsgeometrie__ ist jene Anordnung bei der die potentielle Energie des Moleküls minimal ist. Für viele quantenchemische Berechnungen ist das Auffinden einer Minimumsgeometrie oft der erste Schritt. Dies wird als __Geometrieoptimierung__ bezeichnet.
 
 Folgende Abbildung (erstellt von Prof. Thomas Hofer) zeigt schematisch eine Geometrieoptimierung. Beginnend von einer Startgeometrie soll die relative Anordnung der Atomkerne zueinander gefunden werden, sodass die Gesamtenergie des Moleküls minimal ist. In dieser Anordnung sind die Kräfte die auf die Atomkerne wirken gleich Null.
 
 ![Beispiel einer Geometrieoptimierung](figures/geometry_optimization.png)
 
-> **Note:** Jede Anordnung der Kerne entspricht einen Punkt auf der __Potential-Hyperfläche__ (engl. Potential Energy Surface, PES). Diese Fläche beschreibt die potentielle Energie des Moleküls in Abhängigkeit der Kernpositionen. Eine Geometrieoptimierung sucht den nächstgelegenen Tiefpunkt auf dieser Fläche.
+> **Note:** Jede Anordnung der Kerne entspricht einem Punkt auf der __Potential-Hyperfläche__ (engl. Potential Energy Surface, PES). Diese Fläche beschreibt die potentielle Energie des Moleküls in Abhängigkeit der Kernpositionen. Eine Geometrieoptimierung sucht den nächstgelegenen Tiefpunkt auf dieser Fläche.
 
 Die Potentialhyperfläche ist unbekannt kann jedoch mathematisch als __Taylor-Reihe__ approximiert werden:
 
@@ -48,7 +48,7 @@ Die Zeilen mit dem *xyz beschreiben die Geometrie des Moleküls in Räumlichen K
 
 #### Ein Blick in den Output-File
 
-Im Output-File wird folgender Block angezeigt wann die Geometrie-Optimierung beginnt:
+Im Output-File wird folgender Block angezeigt sobald die Geometrie-Optimierung beginnt:
 
 ```text
 
@@ -92,7 +92,7 @@ Dieser Block zeigt sowohl die Optimierungsmethode (BFGS) als auch die Wahl der K
 
 The optimization has not yet converged - more geometry cycles are needed
 ``` 
-Nach des jeweiligen SCF-Runs wird dann ein Block angezeigt welcher die aktuelle Konvergenz des Verfahrens beschreibt. Dieser zeigt beispielsweise die aktuelle Step-Length sowie den Gradienten und die Toleranzparameter welche in der Anfangsphase meist nicht erfüllt sind. 
+Nach den jeweiligen SCF-Runs wird dann ein Block angezeigt welcher die aktuelle Konvergenz des Verfahrens beschreibt. Dieser zeigt beispielsweise die aktuelle Step-Length sowie den Gradienten und die Toleranzparameter welche in der Anfangsphase meist nicht erfüllt sind. 
 
 
 ```text

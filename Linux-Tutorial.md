@@ -11,14 +11,14 @@ MathJax = {
 
 ## Linux-Tutorial
 
-Die folgende Seite dient erklärt einige der grundlegenden Befehle zum arbeiten in der Linux Kommandozeile. Die folgende Tabelle ist hierzu eine Zusammenfassung der wichtigsten Befehle.
+Diese Seite erklärt einige der grundlegenden Befehle zum Arbeiten mit der Linux Kommandozeile. Die folgende Tabelle ist eine Zusammenfassung der wichtigsten Befehle.
 
 
 | Command | Description | Example |
 |---------|-------------|---------|
 | `ls` | List directory contents. | `ls` |
 | `cd` | Change directory. | `cd /path/to/directory` |
-| `pwd` | Show current directory. | `pwd` |
+| `pwd` | Path to working directory. | `pwd` |
 | `mkdir` | Create a new directory. | `mkdir new_directory` |
 | `rmdir` | Remove an empty directory. | `rmdir empty_directory` |
 | `rm` | Delete files or directories. | `rm file.txt` |
@@ -53,7 +53,7 @@ Dieser Editor ist benutzerfreundlich und einfach zu bedienen und hat außerdem e
 
 **Kate Editor**
 
-Kate ist ein grafischer Texteditor der in vielen Linux-Distributionen vorinstalliert ist. Dieser ist am ähnlichsten zu Notepad und Word damit sehr einfach zu bedienen.
+Kate ist ein grafischer Texteditor der in vielen Linux-Distributionen vorinstalliert ist. Dieser ist am ähnlichsten zu Notepad und Word und damit sehr einfach zu bedienen.
 
 **Vim Editor**
 

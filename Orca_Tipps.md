@@ -26,9 +26,9 @@ O  0.0  0.0  1.13
 *
 ```
 
-In einem Orca-Input File werden die Keywords mit einem `!` eingeleitet. Dort kann man dann beispielsweise die Methode den Basisatz und verschiedene Algorithmen wie Geometrieoptimierung oder Frequenzberechnung angeben.
+In einem Orca-Input File werden die Keywords mit einem `!` eingeleitet. Dort kann man dann beispielsweise die Methode, den Basisatz und verschiedene Algorithmen wie Geometrieoptimierung oder Frequenzberechnung angeben.
 
-Mittels `%` und `end` können spezifische Optionen für verschiedene Module angebeben. So wird im obigen Biespiel die SCF-Konvergenz auf "tight" gesetzt. Man kann in einen Inputfile kommentare mit dem `#` Zeichen einfügen.
+Mittels `%` und `end` können spezifische Optionen für verschiedene Module angebeben werden. So wird im obigen Biespiel die SCF-Konvergenz auf "tight" gesetzt. Man kann in einem Inputfile Kommentare mit dem `#` Zeichen einfügen.
 
 ```text
 # Dies ist ein Kommentar im Inputfile
@@ -57,11 +57,11 @@ Folgende Aufzählung gibt einen Überblick über die wichtigsten Keywords welche
 + `NUMFREQ` - Numerische Frequenzberechnung
 + `SP` - Single-Point Energie Berechnung
 
-## Coordinaten Input in Orca
+## Koordinaten Input in Orca
 
 Koordinaten können entweder direkt im Input-File angegeben werden oder man lädt sie aus einer externen Datei. Man hat sowohl die Möglichkeit kartesische Koordinaten als auch Z-matrizen zu verwenden.
 
-Die Kartesichen Koordinaten werden im `* xyz` Block angegeben hierzu hat man folgende Struktur:
+Die Kartesichen Koordinaten werden im `* xyz` Block angegeben. Dieser Block hat folgende Struktur:
 
 ```text
 * xyz Charge Multiplicity
@@ -77,26 +77,26 @@ Atom2   x2  y2  z2
 
 ## Multiprocessing in Orca
 
-In Orca kann man mehrere Prozessoren für eine Berechnung verwenden um die Rechenzeit zu verkürzen. Dies basiert auf OpenMPI welches ein Message Passing Interface ist und Routinen für die parallele Programmierung im High-Performance-Computing (HPC) bereitstellt. In Orca selbst kann man durch die Angabe von `%pal` im Input file die Anzahl der Prozessoren definieren. 
+In Orca kann man mehrere Prozessoren für eine Berechnung verwenden um die Rechenzeit zu verkürzen. Dies basiert auf OpenMPI welches ein Message Passing Interface ist und Routinen für die parallele Programmierung im High-Performance-Computing (HPC) bereitstellt. In Orca selbst kann man durch die Angabe von `%pal` im Inputfile die Anzahl der Prozessoren definieren. 
 
 ```text
 !HF DEF2-SVP
 %PAL NPROCS 28 END
 ```
 
-Mit dieser Option muss man für die Ausführung von Orca den ganzen Pfad zum Programm angeben. Den File-Path bekommt man in Linux durch den Befehl `which orca`. Das Programm kann dan wie folgt gestartet werden:
+Mit dieser Option muss man für die Ausführung von Orca den ganzen Pfad zum Programm angeben. Den File-Path bekommt man in Linux durch den Befehl `which orca`. Das Programm kann dann wie folgt gestartet werden:
 
 ```bash
 $ ./full/path/to/orca input.inp > output.out
 ```
 
-Grundsätzlich sind alle Hauptmodule in Orca paralellisiert, je nach Methode und Basissatz kann die Skalierung jedoch varrieren. Folgende Abbildung zeigt beispielsweise die Skalierung der Rechenzeit für eine Single-Point Energie Berechnung von der Aminosäure Alanin mit der Coupled-Cluster Methode CCSD und einen cc-pVDZ Basissatz.
+Grundsätzlich sind alle Hauptmodule in Orca parallelisiert. Je nach Methode und Basissatz kann die Skalierung jedoch varrieren. Folgende Abbildung zeigt beispielsweise die Skalierung der Rechenzeit für eine Single-Point Energie Berechnung der Aminosäure Alanin mit der Coupled-Cluster Methode CCSD und dem cc-pVDZ Basissatz.
 
 ![alt text](/figures/image.png)
 
 ## Global Memory Usage
 
-Einige Module in Orca wie beispielsweise die korrelierte Methoden brauchen eine große Menge an Scratch Array. Dies wird ziemlich sicher im Rahmen des Praktikums keine Probleme bereiten man kann jedoch Global allen Modulen eine bestimmte Menge an Scratch Memory zuweisen. Dieses Limit wird dann für jeden Prozessor gesetzt:
+Einige Module in Orca wie beispielsweise die korrelierten Methoden brauchen eine große Menge an Scratch Array. Dies wird im Rahmen des Praktikums sicherlich keine Probleme bereiten, man kann jedoch global allen Modulen eine bestimmte Menge an Scratch Memory zuweisen. Dieses Limit wird dann für jeden Prozessor gesetzt:
 
 ```text 
 %MaxCore 4000

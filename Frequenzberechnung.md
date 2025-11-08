@@ -94,7 +94,11 @@ Im Output-File findet man dann die berechneten Frequenzen in cm$^{-1}$ und die z
 
 ### Anharmonische Frequenzberechnung mit VPT2 
 
-Vibrational pertubation theroy (VPT) ist eine möglichkeit um die harmonische Beschreibung von molekularen Schwingungen zu verbessern. Ein quartisches Kraftfeld in Normalkoordinaten beschreibt hier harmonische und anharmonische Effekte
+Vibrational pertubation theroy (VPT) ist eine möglichkeit um die harmonische Beschreibung von molekularen Schwingungen zu verbessern. Man kann also die Anharmonizität der Schwingung berücksichtigen, diese ist allgemein definiert als die Abweichung der experimentellen Schwingungsfrequenzen von den harmonischen Frequenzen.
+
+In der VPT2-Methode wird der Hamiltonian in einen nullten-Ordnung teil $H^{(0)}$ und Störungsterme $H^{(1)}$ und $H^{(2)}$ usw. zerlegt. Für den nullten-Ordnung Teil sind die exakten Eigenfunktionen hierbei bekannt, zudem wird angenommen das die Störungsterme klein sind. Grundsätzlich wird VPT2 mittels des **Watson-Hamiltonians** formuliert, welcher die Kopplung zwischen Rotation und Vibration berücksichtigt. Dieser Hamiltonian ist in Normalkoordinaten $Q_i$ ausgedrückt welche bereits in der Aufgabe der harmonischen Frequenzberechnung eingeführt wurden.
+
+Der nullte-Ordnungsterm korrespondiert hierbei mit der harmonischen Näherungen, während die Störungsterme anharmonische Beiträge enthalten. Um die Anharmonizität im PES zu beschreiben wird dieses als **semi-quartic force-field (QFF)** ausgedrückt.
 
 $$V = \frac{1}{2} \sum \lambda_i Q_i² + \frac{1}{6} \sum F_{ijk} Q_i Q_j Q_k + \frac{1}{24} \sum F_{ijkl} Q_i Q_j Q_k Q_l $$
 
@@ -104,12 +108,11 @@ $$F_{ijk} = \frac{\partial^3 V}{\partial Q_i \partial Q_j \partial Q_k}$$
 
 $$F_{ijkl} = \frac{\partial^4 V}{\partial Q_i \partial Q_j \partial Q_k \partial Q_l}$$
 
-Man schreibt den Hamiltonian dann als Summe:
+Es ist hier angemerkt das VPT2 nur den Beginn der anharmonischen Schwingungskorrekturen darstellt und eine Vielzahl an weiteren Methoden exestiert. Für den interessierten Leser hier eine Liste an Literatur:
 
-$$H = H^{(0)} + H^{(1)} + H^{(2)}$$
-
-wo jeweils die kubischen Terme in $H^{(1)}$ und die quartischen Terme in $H^{(2)}$ enthalten sind. Es sei hier anzumerken, dass VPT2 nur den Beginn der anharmonischen Schwingungskorrekturen darstellt und eine Vielzahl an weiteren Korrekturen existiert. interessierte Leser können unter folgenden Schlagwörtern mehr Informationen finden (VMP2, VSCF, VCI, Numerov Procedure for solving vibrational problems).
-
++ [VSCF-VCI Methode](https://pubs.aip.org/aip/jcp/article/160/21/214118/3295842/VSCF-VCI-theory-based-on-the-Podolsky-Hamiltonian)
++ [VMP2 Methode](https://pubs.aip.org/aip/jcp/article/139/19/194108/192965/A-second-order-multi-reference-perturbation-method)
++ [Generation of PES](https://pubs.aip.org/aip/jcp/article/121/19/9313/594111/Efficient-calculation-of-potential-energy-surfaces)
 
 ### VPT2 in Orca
 
@@ -212,7 +215,9 @@ Berechnen Sie die anharmonischen VPT2 Frequenzen. Wie groß sind die Unterschied
 + Welche Möglichkeiten gibt es für anharmonische Korrekturen der Schwingungsfrequenzen?
 + Wie funktioniert die VPT2-Methode? Wie funktioniert das Analoga der Elektronenstrukturtheorie (Störungstheorie)?
 + Warum unterscheiden sich harmonische Frequenzen so stark von den experimentellen Werten? Welche Effekte werden in der harmonischen Näherung nicht berücksichtigt?
-
++ Wie viele Vibrationsmoden hat ein Molekül mit $N$ Atomen?
++ Wie beurteilt man ob eine Schwingung IR-aktiv ist? 
++ Was sind Obertöne und Kombinationsbanden?
 
 
 

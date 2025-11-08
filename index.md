@@ -18,6 +18,7 @@ Jedem Praktikumsteilnehmer wird in diesem Teil eine Reaktion zugewiesen, welche 
 + **Aufgabe 4** [Thermodynamik](Thermodynamik.html)
 + **Linux Tutorial** [Linux Tutorial](Linux-Tutorial.html)
 + **Orca Tipps** [Orca Tipps](Orca_Tipps.html) 
++ **Plotten und Auswerten mit Python** [Plotten und Auswerten mit Python](Programming.html)
 
 ### Grundlagen Orca 
 
@@ -42,6 +43,19 @@ H   0.7920   0.0000  -0.4973
 Das `!` startet den __Main Input__, spezifische Optionen können mit `%` angegeben werden. Wichtig ist hierbei, dass der Input-Reader nicht case-sensitiv ist. Man kann also sowohl Groß- als auch Kleinbuchstaben verwenden.
 
 In der **Structure-Section** nach dem Main-Input wird die Molekülgeometrie angegeben. Dies wird durch ein `*` separiert, xyz steht hierbei für kartesische Koordinaten, die erste Zahl ist die Gesamtladung des Moleküls, die zweite die Spinmultiplizität $(2S+1)$ des Systems.
+
+**Starten einer Orca Rechnung**
+
+Im Praktikumsraum können Sie die Orca Rechnung direkt über die Kommandozeile starten. Für unser Wassermolekül mit dem Inputfile `water.inp` geben Sie folgenden Befehl ein:
+
+```bash
+orca water.inp > water.out &
+```
+
+Der `&` am Ende des Befehls sorgt dafür, dass die Rechnung im Hintergrund läuft und Sie die Kommandozeile weiter verwenden können. Mittels des `>`Symbols wird die Ausgabe der Rechnung in die Datei `water.out` umgeleitet.
+
+
+
 
 **Beispiel einer Single-Point Energieberechung von Wasser**
 

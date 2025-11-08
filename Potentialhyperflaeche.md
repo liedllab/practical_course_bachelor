@@ -116,5 +116,7 @@ Für den Fit wird es im Laufe des Praktikums einen Code-along Tag geben, wo Ihne
 Grundsätzlich können Sie den Fit aber durchführen wie Sie wollen (Excel, Origin, Python, Julia, R, etc...)
 
 ### Verständnisfragen
-- Was ist der Unterschied zwischen ihrem 1D-Scan entlang einer Bindung und der korrespondieren Normalmode?
 
++ Was sind stationäre Punkte auf einer Potentialhyperfläche und wie können diese klassifiziert werden?
++ Wie kommt man von einer Potentialhyperfläche zu Schwingungsfrequenzen?
++ Was sind Sattelpunkte wie werden diese mathematisch definiert und welche Bedeutung haben diese in der Chemie?

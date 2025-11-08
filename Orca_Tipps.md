@@ -81,7 +81,7 @@ In Orca kann man mehrere Prozessoren für eine Berechnung verwenden um die Reche
 
 ```text
 !HF DEF2-SVP
-%PAL NPROCS 28 END
+%PAL NPROCS 10 END
 ```
 
 Mit dieser Option muss man für die Ausführung von Orca den ganzen Pfad zum Programm angeben. Den File-Path bekommt man in Linux durch den Befehl `which orca`. Das Programm kann dann wie folgt gestartet werden:

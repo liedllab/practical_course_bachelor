@@ -243,4 +243,9 @@ Ein solches Skript wird Ihnen von uns zur Verfügung gestellt, soll sie aber nic
 
 Die Auswertung erfolgt ähnlich zur Code-along session in einem Jupyter Notebook. Wenden Sie gerne ihr gewonnenes Wissen an um die Plots zu individualisieren. Um Ihnen bei der Übersicht zu helfen, ist das Notebook größtenteil(!) vorgefertigt.
 
+### Verständnisfragen
+
++ Was sind die Definitionen der thermodynamischen Funktionen $U, H, A, G$?
++ Wie hängt die Gibbs Energie mit dem Gleichgewicht und der Aktivierungsenergie zusammen?
+
 

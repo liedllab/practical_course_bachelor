@@ -17,7 +17,7 @@ wobei wiederum $g$ der Gradient und $H$ die Hesse-Matrix ist. Die **harmonische 
 
 $$V(X) = \frac{1}{2}(X-X_0)^T H (X-X_0)$$
 
-Die Elemente der Hesse-Matrix sind die zweiten Ableitungen der potentiellen Energie nach den Kernpositionen durch Diagonalisierung (Ähnlichkeitstransformation) wechselt man in das Koordinatensystem der **Normalmoden** und die Hesse-Matrix wird zur Diagonalmatrix $\Lambda$. Die Beiträge einzelner Atomkerne gehen hierbei massegewichtet in die Hesse-Matrix ein. Die Eigenwerte $\lambda_i$ entsprechen den Kraftkonstanten und können in Schwingungsfrequenzen $\nu_i$ umgerechnet werden:
+Die Elemente der Hesse-Matrix sind die zweiten Ableitungen der potentiellen Energie nach den Kernpositionen. Durch Diagonalisierung (Ähnlichkeitstransformation) wechselt man in das Koordinatensystem der **Normalmoden** und die Hesse-Matrix wird zur Diagonalmatrix $\Lambda$. Die Beiträge einzelner Atomkerne gehen hierbei massegewichtet in die Hesse-Matrix ein. Die Eigenwerte $\lambda_i$ entsprechen den Kraftkonstanten und können in Schwingungsfrequenzen $\nu_i$ umgerechnet werden:
 
 $$\nu_i = \frac{1}{2\pi} \sqrt{\frac{\lambda_i}{\mu}}$$
 
@@ -25,7 +25,7 @@ Wird diese harmonische Näherung korrekt auf eine Minimums-Geometrie angewandt s
 
 > Falls ein Sattelpunkt vorliegt sind einige Eigenwerte negativ und die entsprechenden Frequenzen imaginär.
 
-Folgende Abbildung zeigt die ersten drei Normalmoden des Wassermoleküls welche der antisymmetrischen- und symmetrischen Streckschwingung sowie der Biegeschwingung entsrpechen
+Folgende Abbildung zeigt die ersten drei Normalmoden des Wassermoleküls. Diese entsprechen der antisymmetrischen- und symmetrischen Streckschwingung, sowie der Biegeschwingung.
 
 ![Normalmoden des Wassermoleküls](figures/normalmoden_wasser.png)
 
@@ -41,7 +41,7 @@ Folgender Input-File ist ein Beispiel für eine Frequenzberechnung in Orca. Als 
        H      0.000000000   -1.415075762    0.956290882
  *
 ```
-Es wird sowohl eine Geometrie-Optimierung (OPT) als auch eine Frequenzberechnung (FREQ) durchgeführt. Grundsätzlich man diese Berechnung analytisch (wenn verfügbar) oder numerisch (durch zb Finite-Differenzen) durchführen. 
+Es wird sowohl eine Geometrie-Optimierung (OPT) als auch eine Frequenzberechnung (FREQ) durchgeführt. Grundsätzlich kann die Frequenzberechnung analytisch (wenn verfügbar) oder numerisch (durch z.B. Finite-Differenzen) durchführt werden. 
 
 ```text
 -----------------------
@@ -90,25 +90,25 @@ Thus, these vectors are normalized but *not* orthogonal
       7       0.430096   0.583097  -0.561316
       8       0.559049  -0.398396   0.427133
 ```
-Im Output-File findet man dann die berechneten Frequenzen in cm$^{-1}$ und die zugehörigen massegewichteten Normalmoden.
+Im Output-File findet man dann die berechneten Frequenzen in $\text{cm}^{-1}$ und die zugehörigen massegewichteten Normalmoden.
 
 ### Anharmonische Frequenzberechnung mit VPT2 
 
-Vibrational pertubation theroy (VPT) ist eine möglichkeit um die harmonische Beschreibung von molekularen Schwingungen zu verbessern. Man kann also die Anharmonizität der Schwingung berücksichtigen, diese ist allgemein definiert als die Abweichung der experimentellen Schwingungsfrequenzen von den harmonischen Frequenzen.
+Vibrational pertubation theroy (VPT) ist eine möglichkeit um die harmonische Beschreibung von molekularen Schwingungen zu verbessern. Man kann also die Anharmonizität der Schwingung berücksichtigen. Diese ist allgemein definiert als die Abweichung der experimentellen Schwingungsfrequenzen von den harmonischen Frequenzen.
 
-In der VPT2-Methode wird der Hamiltonian in einen nullten-Ordnung teil $H^{(0)}$ und Störungsterme $H^{(1)}$ und $H^{(2)}$ usw. zerlegt. Für den nullten-Ordnung Teil sind die exakten Eigenfunktionen hierbei bekannt, zudem wird angenommen das die Störungsterme klein sind. Grundsätzlich wird VPT2 mittels des **Watson-Hamiltonians** formuliert, welcher die Kopplung zwischen Rotation und Vibration berücksichtigt. Dieser Hamiltonian ist in Normalkoordinaten $Q_i$ ausgedrückt welche bereits in der Aufgabe der harmonischen Frequenzberechnung eingeführt wurden.
+In der VPT2-Methode wird der Hamiltonian in einen nullten-Ordnung teil $H^{(0)}$ und Störungsterme $H^{(1)}$ und $H^{(2)}$ usw. zerlegt. Für den nullten-Ordnung Teil sind die exakten Eigenfunktionen hierbei bekannt, zudem wird angenommen das die Störungsterme klein sind. Grundsätzlich wird VPT2 mittels des **Watson-Hamiltonians** formuliert, welcher die Kopplung zwischen Rotation und Vibration berücksichtigt. Dieser Hamiltonian ist in Normalkoordinaten $Q_i$ ausgedrückt, welche bereits in der Aufgabe der harmonischen Frequenzberechnung eingeführt wurden.
 
-Der nullte-Ordnungsterm korrespondiert hierbei mit der harmonischen Näherungen, während die Störungsterme anharmonische Beiträge enthalten. Um die Anharmonizität im PES zu beschreiben wird dieses als **semi-quartic force-field (QFF)** ausgedrückt.
+Der nullte-Ordnungsterm korrespondiert hierbei mit der harmonischen Näherung, während die Störungsterme anharmonische Beiträge enthalten. Um die Anharmonizität der PES zu beschreiben wird dieses als **semi-quartic force-field (QFF)** ausgedrückt.
 
 $$V = \frac{1}{2} \sum \lambda_i Q_i² + \frac{1}{6} \sum F_{ijk} Q_i Q_j Q_k + \frac{1}{24} \sum F_{ijkl} Q_i Q_j Q_k Q_l $$
 
-hierbei sind $F_{ijk}$ und $F_{ijkl}$ die kubischen und quartischen Ableitungen des Potentials mit der Form:
+Hierbei sind $F_{ijk}$ und $F_{ijkl}$ die kubischen und quartischen Ableitungen des Potentials mit der Form:
 
 $$F_{ijk} = \frac{\partial^3 V}{\partial Q_i \partial Q_j \partial Q_k}$$
 
 $$F_{ijkl} = \frac{\partial^4 V}{\partial Q_i \partial Q_j \partial Q_k \partial Q_l}$$
 
-Es ist hier angemerkt das VPT2 nur den Beginn der anharmonischen Schwingungskorrekturen darstellt und eine Vielzahl an weiteren Methoden exestiert. Für den interessierten Leser hier eine Liste an Literatur:
+Es sei hier angemerkt, dass VPT2 nur den Beginn der anharmonischen Schwingungskorrekturen darstellt und eine Vielzahl weiterer Methoden existiert. Für den interessierten Leser hier eine Liste an Literatur:
 
 + [VSCF-VCI Methode](https://pubs.aip.org/aip/jcp/article/160/21/214118/3295842/VSCF-VCI-theory-based-on-the-Podolsky-Hamiltonian)
 + [VMP2 Methode](https://pubs.aip.org/aip/jcp/article/139/19/194108/192965/A-second-order-multi-reference-perturbation-method)
@@ -118,10 +118,10 @@ Es ist hier angemerkt das VPT2 nur den Beginn der anharmonischen Schwingungskorr
 
 Zuerst einige wichtige Hinweise zur Verwendung von VPT2 in Orca:
 
-+ Die Startgeometrie muss strikte Konvergenzkriterien erfüllen dazu kann man in Orca die Option `!TightOpt` oder `! VeryTightOpt` verwenden.
-+ Zudem sollte man mit einer vorherigen harmonischen Frequenzberechnung sicherstellen das die Geometrie ein Minimum ist.
-+ Das SCF muss striktere Konvergenzkriterien erfüllen, dazu verwendet man am besten `!ExtremeSCF` oder `!VeryTightSCF` 
-+ VPT2 in Orca funktioniert nur für nicht-lineare Moleküle
++ Die Startgeometrie muss strikte Konvergenzkriterien erfüllen. Hierfür kann man in Orca die Option `!TightOpt` oder `! VeryTightOpt` verwenden.
++ Zudem sollte man mit einer vorherigen harmonischen Frequenzberechnung sicherstellen, dass die Geometrie einem Minimum entspricht.
++ Das SCF muss striktere Konvergenzkriterien erfüllen. Dazu verwendet man am besten `!ExtremeSCF` oder `!VeryTightSCF`.
++ VPT2 in Orca funktioniert nur für nicht-lineare Moleküle.
 
 Folgender Block zeigt einen typischen Input für eine VPT2-Rechnung in Orca für das Wassermolekül:
 
@@ -147,7 +147,7 @@ end
 *
 ```
 
-Es müssen Methoden mit analytischer Hesse-Matrix verwendet werden, zb `HF`, zudem kann man im Code-Block `%vpt2` die Parameter für die VPT2-Rechnung einstellen. Es wurde ein Cut-Off für die Elemente der Hesse-Matrix von $1 \times 10^{-12}$ gewählt um numerische Ungenauigkeiten zu vermeiden. Die Option `Z_Tol` im Block `%method` legt eine striktere Konvergenzbedingung für die CP-SCF-Rechnung fest.
+Es müssen Methoden mit analytischer Hesse-Matrix verwendet werden, z.B. `HF`. Zudem kann man im Code-Block `%vpt2` die Parameter für die VPT2-Rechnung einstellen. Es wurde ein Cut-Off für die Elemente der Hesse-Matrix von $1 \times 10^{-12}$ gewählt um numerische Ungenauigkeiten zu vermeiden. Die Option `Z_Tol` im Block `%method` legt eine striktere Konvergenzbedingung für die CP-SCF-Rechnung fest.
 
 ```text
 ===================== Vibrational Analysis =====================
@@ -199,7 +199,7 @@ Overtones and combination bands
 ============================== End =============================
 ```  
 
-In den oberen Block findet man dann die jeweiligen anharmonischen Frequenzen $v_{fund}$ und die Differenz zur harmonischen Frequenz. Zudem erhält man die Obertöne und Kombinationsbanden mit den jeweiligen Frequenzen und Intensitäten.
+Im oberen Block findet man die jeweiligen anharmonischen Frequenzen $v_{fund}$ und die Differenz zur harmonischen Frequenz. Zudem erhält man die Obertöne und Kombinationsbanden mit den jeweiligen Frequenzen und Intensitäten.
 
 ### Aufgabe 2a
 Berechnen Sie die harmonischen Frequenzen für alle Moleküle ihrer Reaktion und vergleiche Sie diese mit experimentellen Daten. Machen Sie sich bewusst um welche Art von Experiment es sich handelt.
@@ -213,7 +213,7 @@ Berechnen Sie die anharmonischen VPT2 Frequenzen. Wie groß sind die Unterschied
 + Was sind Normalmoden? Wie werden diese berechnet und konstruiert?
 + Wie kommt man von den Eigenwerten der Hesse-Matrix zu den Schwingungsfrequenzen?
 + Welche Möglichkeiten gibt es für anharmonische Korrekturen der Schwingungsfrequenzen?
-+ Wie funktioniert die VPT2-Methode? Wie funktioniert das Analoga der Elektronenstrukturtheorie (Störungstheorie)?
++ Wie funktioniert die VPT2-Methode? Wie funktioniert das Analogon der Elektronenstrukturtheorie (Störungstheorie)?
 + Warum unterscheiden sich harmonische Frequenzen so stark von den experimentellen Werten? Welche Effekte werden in der harmonischen Näherung nicht berücksichtigt?
 + Wie viele Vibrationsmoden hat ein Molekül mit $N$ Atomen?
 + Wie beurteilt man ob eine Schwingung IR-aktiv ist? 

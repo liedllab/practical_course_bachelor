@@ -105,7 +105,7 @@ Dies gibt uns als Ergebnis die folgende Grafik:
 
 ![alt text](image.png)
 ### Aufgabe 3
-Scannen Sie entlang einer Bindung in einem(!) ihrer Moleküle. Beachten Sie dabei das der Scan-Block so eingestellt werden muss, dass tatsächlich auch durch das Minimum gescannt wird. Zur Auswertung soll die harmonische Frequenz dieser "Pseudo-Schwingung" anhand eines Parabelfits bestimmt werden. Dabei kann die harmonische Kraftkonstante über folgenden Zusammenhang aus dem Fit bestimmt werden:
+Scannen Sie entlang einer Bindung in einem(!) ihrer Moleküle. Als Methode verwenden Sie bitte MP2 in Kombination mit dem 6-311G(d,p) Basissatz. Beachten Sie dabei das der Scan-Block so eingestellt werden muss, dass tatsächlich auch durch das Minimum gescannt wird. Zur Auswertung soll die harmonische Frequenz dieser "Pseudo-Schwingung" anhand eines Parabelfits bestimmt werden. Dabei kann die harmonische Kraftkonstante über folgenden Zusammenhang aus dem Fit bestimmt werden:
 
 $V(r)= \frac{1}{2}k \cdot(r-r_0)²$
 

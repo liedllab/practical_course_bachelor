@@ -10,9 +10,9 @@ MathJax = {
 
 ## Thermodynamik
 
-Nachdem man in ORCA die harmonischen Frequenzen berechnet hat, bekommt man Zugang auf die thermodynamischen Funktionen des Systems. 
+Nachdem man in ORCA die harmonischen Frequenzen berechnet hat, bekommt man Zugang zu den thermodynamischen Funktionen des Systems. 
 
-Wir erinnern uns hier zurück an die Zustandsfunktionen der Thermodynamik. Ein allgemeines thermodynamisches System wird durch verschiedene Parameter wie Temperatur, Volumen oder Druck beschrieben welche nicht zwingend unabhängig voneinander sind. 
+Wir erinnern uns hier zurück an die Zustandsfunktionen der Thermodynamik. Ein allgemeines thermodynamisches System wird durch verschiedene Parameter wie Temperatur, Volumen oder Druck beschrieben, welche nicht zwingend unabhängig voneinander sind. 
 
 **Innere Energie $U$**
 
@@ -27,17 +27,17 @@ Die Enthalpie $H$ ist die Summe der inneren Energie und dem Produkt aus Druck un
 
 $$H = U + pV$$
 
-Die Enthalpie ist eine extensive Größe, damit ist die Enthalpie eines Gesamtsystems die Summe der Enthalpien seiner Teilsysteme.
+Die Enthalpie ist eine extensive Größe. Dies bedeutet, dass die Enthalpie eines Gesamtsystems die Summe der Enthalpien seiner Teilsysteme ist.
 
-**Helmholtz freie Energie $A$**
+**Helmholtz Freie Energie $A$**
 
-Die freie Energie $A$ ist eine weitere extensive Größe definiert als:
+Die freie Energie $A$ ist eine weitere extensive Größe und definiert als:
 
 $$A = U - TS$$
 
 wobei $T$ die absolute Temperatur und $S$ die Entropie des Systems ist. Die Helmholtz freie Energie ist die Energie, die in einem System bei konstantem Volumen und konstanter Temperatur für Arbeit zur Verfügung steht.
 
-**Gibbs freie Energie $G$**
+**Gibbs Freie Energie $G$**
 
 Die Gibbs Energie eines Systewms ist definiert als:
 
@@ -49,7 +49,7 @@ Die Gibbs-Energie kann hierbei als Gleichgewichtskriterium verwendet werden. Bes
 + Ist die Gibbs-Energie der Reaktionsprodukte größer als die Gibbs-Energie der Ausgangsstoffe ($\Delta G > 0$ ), so läuft die Reaktion nicht freiwillig ab.
 + Ist die Gibbs-Energie der Reaktionsprodukte gleich der Gibbs-Energie der Ausgangsstoffe ($\Delta G = 0$ ), so befindet sich das System im Gleichgewicht.
 
-### Zusammenhang mit statistischer Thermodynamik
+### Zusammenhang mit Statistischer Thermodynamik
 
 Für ein kanonisches Ensemble ($N, V, T$ konstant) ist die Zustandssumme $Q$ definiert als:
 
@@ -63,15 +63,15 @@ $$S = k_B \ln(Q) + k_B T \left(\frac{\partial \ln(Q)}{\partial T}\right)_{N,V} $
 
 $$E = k_B T^2 \left(\frac{\partial \ln(Q)}{\partial T}\right)_{N,V} $$
 
-Für ein mehratomiges Gas kann man die Zustandssumme näherungsweise über den Zusammenhang,
+Für ein mehratomiges Gas kann die Zustandssumme näherungsweise über den Zusammenhang,
 
 $$Q = \frac{(q_{trans} + q_{rot} + q_{vib} + q_{elec})^N}{N!}$$
 
-beschrieben werden. Trifft man die Annahme das die Kernwellenfunktion während der chemischen Reaktion nicht verändert wird so ist die Kernzustandssumme $q_{nuc} = 1$. Die elektronische Zustandssumme $q_{elec}$ wird über folgenden Zusammenhang bestimmt:
+beschrieben werden. Trifft man die Annahme, dass die Kernwellenfunktion während der chemischen Reaktion nicht verändert wird so ist die Kernzustandssumme $q_{nuc} = 1$. Die elektronische Zustandssumme $q_{elec}$ wird über folgenden Zusammenhang bestimmt:
 
 $$q_{elec} = e^{\frac{D_e}{k_B T}} (w_{e_1} + w_{e_2} e^{-\frac{\Delta E_{12}}{k_B T}} + w_{e_3} e^{-\frac{\delta E_{13}}{k_B T}} + ...)$$
 
-Hier ist $D_e$ die elektronische Grundszustandsenergie in Bezug auf isolierte Kerne und Elektronen und $w_{e_i}$ die Entartung des elektronischen Zustands mit $i$ der Spinmultiplizität und $\Delta E_{ij}$ die Energieunterschiede zwischen den elektronischen Zuständen.
+Hier ist $D_e$ die elektronische Grundszustandsenergie in Bezug auf isolierte Kerne und Elektronen und $w_{e_i}$ die Entartung des elektronischen Zustands mit $i$ der Spinmultiplizität und $\Delta E_{ij}$ dem Energieunterschiede zwischen den elektronischen Zuständen.
 
 Die Vibtrationszustandssumme $q_{vib}$ ist gegeben über:
 
@@ -81,21 +81,21 @@ wobei die charakteristische Temperatur $\Theta_{v_j}$ definiert ist als:
 
 $$\Theta_{v_j} = \frac{h \nu_j}{k_B}$$
 
-Zur Notation: Hier ist $j$ der Index für de Schwingung mit Frequenz $\nu_j$ und $\lambda$ die Anzahl der Schwingungsfreiheitsgrade. Die Vibrationsenergie ist gequantelt und für die Nullpunktsschwingung $T=0$ exestiert eine Nullpunktsenergie (ZPE).
+Zur Notation: Hier ist $j$ der Index für de Schwingung mit Frequenz $\nu_j$ und $\lambda$ die Anzahl der Schwingungsfreiheitsgrade. Die Vibrationsenergie ist gequantelt und für die Nullpunktsschwingung $T=0$ existiert eine Nullpunktsenergie (ZPE).
 
 Die Rotationszustandssumme $q_{rot}$ ist gegeben durch:
 
 $$q_{rot} = \frac{\sqrt{\pi}}{\sigma} \left(\frac{T^{3/2}}{\Theta_{r_A} \Theta_{r_B} \Theta_{r_C}}\right)^{1/2}$$
 
-Hierbei sind $\Theta_{r_i}$ die charakteristischen Rotations-Temperaturen definiert als:
+Hierbei sind die charakteristischen Rotations-Temperaturen $\Theta_{r_i}$ definiert als:
 
 $$\Theta_{r_i} = \frac{h^2}{8 \pi^2 I_i k_B}$$
 
-In der Formel sind $I_A,I_B,I_C$ die Hauptträgheitsmomente die sich als Eigenwerte des Trgäheitstensors bestimmen lassen. Zuletzt ergibt sich die Translationszustandssumme als:
+In der Formel sind $I_A,I_B,I_C$ die Hauptträgheitsmomente die sich als Eigenwerte des Trägheitstensors bestimmen lassen. Zuletzt ergibt sich die Translationszustandssumme als:
 
 $$q_{trans} = \left(\frac{2 \pi M k_B T}{h^2} \right)^{3/2} V$$
 
-Hierbei ist $M$ die Masse des Moleküls und $V$ das Volumen des Systems. Für Chemiker ist der isotherme-isobare Fall ($N,T,p$ konstant) von größerem Interesse hier gilt:
+Hierbei ist $M$ die Masse des Moleküls und $V$ das Volumen des Systems. Für Chemiker ist der isotherme-isobare Fall ($N,T,p$ konstant) von größerem Interesse, hier gilt:
 
 $$H = E + pV = E + nRT$$
 
@@ -105,7 +105,7 @@ $$\Delta G^0 = -RT \ln(K_p)$$
 
 ## Analyse der Thermodynamik in Orca
 
-Nach einer Frequenzberechnung erhält man die thermodynamischen Funktion wie die Enthalpie $H$ die Entropy $S$ und die Gibbs Energie $G$ im Output-File.
+Nach einer Frequenzberechnung erhält man die thermodynamischen Funktion, wie die Enthalpie $H$, die Entropy $S$ und die Gibbs Energie $G$, im Output-File.
 
 ```text
 ! MP2 6-311G(d,p) OPT FREQ NUMFREQ
@@ -116,7 +116,7 @@ Nach einer Frequenzberechnung erhält man die thermodynamischen Funktion wie die
 *
 ```
 
-Der Input-File oben ist ein beispiel für eine Geometrieoptimierung gefolgt von einer Frequenzberechnung. Hier wurde die **MP2** Methode mit dem **6-311G(d,p)** Basissatz verwendet. 
+Der Input-File oben ist ein Beispiel für eine Geometrieoptimierung gefolgt von einer Frequenzberechnung. Hier wurde die **MP2** Methode mit dem **6-311G(d,p)** Basissatz verwendet. 
 
 Im Output-File findet man nach Block über das IR-Spectrum den Abschnitt zur Thermochemie
 
@@ -226,22 +226,21 @@ G-E(el)                           ...      0.00419328 Eh      2.63 kcal/mol
 ```
 ### Aufgabe 4
 Um den Einfluss von Temperatur und Druck auf die Thermodynamik der Reaktion zu beurteilen,
-müssen die thermodynamischen Größen für verschiedene Bedingungen berechnet werden konkret in einem Raster zwischen 100 und 1000 K und einen Druckbereich zwischen 1 und 100
-atm betrachten. Um eine solche Aufgabe manuell abzuarbeiten, muss ein Überblick über sehr
+müssen die thermodynamischen Größen für verschiedene Bedingungen berechnet werden. Konkret in einem Raster zwischen 100 und 1000 K und einen Druckbereich zwischen 1 und 100
+atm. Um eine solche Aufgabe manuell abzuarbeiten, muss ein Überblick über sehr
 viele Dateien behalten werden. Es bietet sich an die Aufgabe über ein script zu automatisieren.
 Ein solches script führt Befehle in ähnlicher Weise aus, wie Sie es direkt in einer Konsole per
 Tastatureingabe machen, jedoch automatisiert. Sie müssen im script lediglich im Vorhinein
-bestimmen, welche Befehle auszuführen sind. In dieser Aufgabe werden sie ein script in der
-bash Sprache schreiben. 
+bestimmen, welche Befehle auszuführen sind. In dieser Aufgabe werden Sie ein in der Sprache Bash geschriebenes script verwenden. 
 
-Ein solches Skript wird Ihnen von uns zur Verfügung gestellt, soll sie aber nicht davon abhalten es selber zu versuchen. Folgende Schritte sind im Skript enthalten:
+Es wird Ihnen von uns ein entsprechendes script zu Verfügung gestellt. Dies soll Sie allerdings nicht davon abhalten zu versuchen selbst ein solches script zu schreiben. Folgende Schritte sind im Skript enthalten:
 
 - Lege das p/T Raster fest und erstelle für jeden Punkt einen Ordner.
-- Erstelle aus dem zugehörigen .inp File für jeden Rasterpunkt eine Orcainput welcher mit dem zugehörigen .hess File die thermodynamischen Größen zu diesem Punkt errechnet.
+- Erstelle aus dem zugehörigen .inp File für jeden Rasterpunkt einen Orcainput, welcher mit dem zugehörigen .hess File die thermodynamischen Größen zu diesem Punkt errechnet.
 - Lasse die Rechnungen aufsteigend laufen.
-- Extrahiere die Bedingungen und die thermodynamischen Größen und übertrage sie in ein eigen .csv file. 
+- Extrahiere die Bedingungen und die thermodynamischen Größen und übertrage diese in ein .csv file. 
 
-Die Auswertung erfolgt ähnlich zur Code-along session in einem Jupyter Notebook. Wenden Sie gerne ihr gewonnenes Wissen an um die Plots zu individualisieren. Um Ihnen bei der Übersicht zu helfen, ist das Notebook größtenteil(!) vorgefertigt.
+Die Auswertung erfolgt ähnlich zur Code-along session in einem Jupyter Notebook. Wenden Sie gerne ihr gewonnenes Wissen an, um die Plots zu individualisieren. Um Ihnen bei der Übersicht zu helfen, ist das Notebook größtenteils(!) vorgefertigt.
 
 ### Verständnisfragen
 

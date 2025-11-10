@@ -13,8 +13,8 @@ Jedem Praktikumsteilnehmer wird in diesem Teil eine Reaktion zugewiesen, welche 
 
 
 + **Aufgabe 1** [Optimierung der Molekülgeometrie](Optimierung.html)
-+ **Aufgabe 2** [Untersuchung der Potential-Hyperfläche](Potentialhyperflaeche.html)
-+ **Aufgabe 3** [Frequenzberechnung (Schwingungsspektroskopie, Infrarot)](Frequenzberechnung.html)
++ **Aufgabe 2** [Frequenzberechnung (Schwingungsspektroskopie, Infrarot)](Frequenzberechnung.html)
++ **Aufgabe 3** [Untersuchung der Potential-Hyperfläche](Potentialhyperflaeche.html)
 + **Aufgabe 4** [Thermodynamik](Thermodynamik.html)
 + **Linux Tutorial** [Linux Tutorial](Linux-Tutorial.html)
 + **Orca Tipps** [Orca Tipps](Orca_Tipps.html) 

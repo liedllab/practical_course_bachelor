@@ -201,13 +201,15 @@ Overtones and combination bands
 
 Im oberen Block findet man die jeweiligen anharmonischen Frequenzen $v_{fund}$ und die Differenz zur harmonischen Frequenz. Zudem erhält man die Obertöne und Kombinationsbanden mit den jeweiligen Frequenzen und Intensitäten.
 
-Verwenden Sie für die folgenden Aufgaben bitte die MP2 Methode und den 6-311G(d,p) Basissatz.
-
 ### Aufgabe 2a
-Berechnen Sie die harmonischen Frequenzen für alle Moleküle ihrer Reaktion und vergleiche Sie diese mit experimentellen Daten. Machen Sie sich bewusst um welche Art von Experiment es sich handelt.
+Berechnen Sie die harmonischen Frequenzen für alle Moleküle ihrer Reaktion und vergleiche Sie diese mit experimentellen Daten. Machen Sie sich bewusst um welche Art von Experiment es sich handelt. Verwenden Sie für die Berechnung die folgenden Methoden-Basissatz Kombinationen:
+
+  - HF/6-311G(d,p)
+  - B3LYP/6-311G(d,p)
+  - MP2/6-311G(d,p)
 
 ### Aufgabe 2b
-Berechnen Sie die anharmonischen VPT2 Frequenzen. Wie groß sind die Unterschiede zwischen harmonischen und anharmonischen Frequenzen? Handelt es sich bei den VPT2-Frequenzen um gekoppelte oder entkoppelte Vibrationszustände?
+Berechnen Sie die anharmonischen VPT2 Frequenzen mittels der MP2 Methode und dem 6-311G(d,p) Basissatz. Wie groß sind die Unterschiede zwischen harmonischen und anharmonischen Frequenzen? Handelt es sich bei den VPT2-Frequenzen um gekoppelte oder entkoppelte Vibrationszustände?
 
 ### Verständnisfragen
 

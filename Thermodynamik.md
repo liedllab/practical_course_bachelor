@@ -233,7 +233,7 @@ Ein solches script führt Befehle in ähnlicher Weise aus, wie Sie es direkt in 
 Tastatureingabe machen, jedoch automatisiert. Sie müssen im script lediglich im Vorhinein
 bestimmen, welche Befehle auszuführen sind. In dieser Aufgabe werden Sie ein in der Sprache Bash geschriebenes script verwenden. 
 
-Es wird Ihnen von uns ein entsprechendes script zu Verfügung gestellt. Dies soll Sie allerdings nicht davon abhalten zu versuchen selbst ein solches script zu schreiben. Folgende Schritte sind im Skript enthalten:
+Es wird Ihnen von uns ein entsprechendes script zu Verfügung gestellt. Dies soll Sie allerdings nicht davon abhalten zu versuchen selbst ein solches script zu schreiben. Folgende Schritte sind im script enthalten:
 
 - Lege das p/T Raster fest und erstelle für jeden Punkt einen Ordner.
 - Erstelle aus dem zugehörigen .inp File für jeden Rasterpunkt einen Orcainput, welcher mit dem zugehörigen .hess File die thermodynamischen Größen zu diesem Punkt errechnet.
@@ -241,6 +241,8 @@ Es wird Ihnen von uns ein entsprechendes script zu Verfügung gestellt. Dies sol
 - Extrahiere die Bedingungen und die thermodynamischen Größen und übertrage diese in ein .csv file. 
 
 Die Auswertung erfolgt ähnlich zur Code-along session in einem Jupyter Notebook. Wenden Sie gerne ihr gewonnenes Wissen an, um die Plots zu individualisieren. Um Ihnen bei der Übersicht zu helfen, ist das Notebook größtenteils(!) vorgefertigt.
+
+Die Auswertung der themodynamischen Größen soll basierend auf den Ergebnissen der harmonischen Frequenzberechnungen auf MP2 Niveau erfolgen.
 
 ### Verständnisfragen
 

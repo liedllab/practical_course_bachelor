@@ -209,7 +209,7 @@ Berechnen Sie die harmonischen Frequenzen für alle Moleküle ihrer Reaktion und
   - MP2/6-311G(d,p)
 
 ### Aufgabe 2b
-Berechnen Sie die anharmonischen VPT2 Frequenzen mittels der MP2 Methode und dem 6-311G(d,p) Basissatz. Wie groß sind die Unterschiede zwischen harmonischen und anharmonischen Frequenzen? Handelt es sich bei den VPT2-Frequenzen um gekoppelte oder entkoppelte Vibrationszustände?
+Berechnen Sie die anharmonischen VPT2 Frequenzen mittels der HF Methode und dem 6-311G(d,p) Basissatz. Wie groß sind die Unterschiede zwischen harmonischen und anharmonischen Frequenzen? Handelt es sich bei den VPT2-Frequenzen um gekoppelte oder entkoppelte Vibrationszustände?
 
 ### Verständnisfragen
 

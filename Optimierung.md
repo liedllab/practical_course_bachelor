@@ -136,7 +136,8 @@ Vergleichen Sie im Anschluss die internen Koordinaten Ihrer Moleküle mit experi
 - Was bestimmt das Ende einer Geometrieoptimierung?
 - Welche Rolle spielt der Gradient in einer Geometrieoptimierung?
 - Wie könnte ich sehen ob eine Geometrieoptimierung ein Minimum gefunden hat (Stichwort: Frequenzberechnung)?
-- Was ist die Hesse-Matrix und welche Information enthält diese? 
+- Was ist die Hesse-Matrix und welche Information enthält diese?
+- Wie ist der 6-311G(d,p) Basissatz zu interpretieren? Wie viele AOs erwarten Sie sich für Ihre einzelnen Reaktanden bei der Verwendung dieses Basissatzes? Tipp: Versuchen Sie es selbst auszurechnen und mit dem ORCA-Output abzugleichen.
 - Woher kommen hochgenaue experimentelle Geometriedaten von kleinen Molekülen.
 
 

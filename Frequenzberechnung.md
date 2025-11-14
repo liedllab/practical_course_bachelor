@@ -208,6 +208,11 @@ Berechnen Sie die harmonischen Frequenzen für alle Moleküle ihrer Reaktion und
   - B3LYP/6-311G(d,p)
   - MP2/6-311G(d,p)
 
+**Wichtig!!**
+
+In Orca sind für die MP2-Methode  keine analytischen zweiten Ableitungen (Hesse-Matrix) implementiert. Daher muss die Hesse-Matrix numerisch über Finite-Differenzen berechnet werden. Dies kann durch die Angabe der Option `numfreq` im Input-File erreicht werden.
+
+
 ### Aufgabe 2b
 Berechnen Sie die anharmonischen VPT2 Frequenzen mittels der HF Methode und dem 6-311G(d,p) Basissatz. Wie groß sind die Unterschiede zwischen harmonischen und anharmonischen Frequenzen? Handelt es sich bei den VPT2-Frequenzen um gekoppelte oder entkoppelte Vibrationszustände?
 

@@ -40,7 +40,7 @@ $$\vec{r}_{ab} = (x_b - x_a) \vec{e}_x + (y_b - y_a) \vec{e}_y + (z_b - z_a) \ve
 
 Die Länge ergibt sich als Betrag des Distanzvektors:
 
-$|\vec{r}_{ab}|^2 = (x_b - x_a)^2 + (y_b - y_a)^2 + (z_b - z_a)^2$
+$$|\vec{r}_{ab}|^2 = (x_b - x_a)^2 + (y_b - y_a)^2 + (z_b - z_a)^2$$
 
 Das Differential der Bindungslänge ergibt sich durch die Kettenregel:
 

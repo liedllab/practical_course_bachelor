@@ -16,9 +16,12 @@ Jedem Praktikumsteilnehmer wird in diesem Teil eine Reaktion zugewiesen, welche 
 + **Aufgabe 2** [Frequenzberechnung (Schwingungsspektroskopie, Infrarot)](Frequenzberechnung.html)
 + **Aufgabe 3** [Untersuchung der Potential-Hyperfläche](Potentialhyperflaeche.html)
 + **Aufgabe 4** [Thermodynamik](Thermodynamik.html)
++ **Aufgabe 5** [Nomodeco](Nomodeco.html)
 + **Linux Tutorial** [Linux Tutorial](Linux-Tutorial.html)
 + **Orca Tipps** [Orca Tipps](Orca_Tipps.html) 
 + **Plotten und Auswerten mit Python** [Plotten und Auswerten mit Python](Programming.html)
+
+
 
 ### Grundlagen Orca 
 

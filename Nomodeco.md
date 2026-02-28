@@ -32,6 +32,27 @@ Die folgende Abbildung zeig die verschiedenen internen Koordinaten welche in `No
 
 ![alt text](figures/prim_ic.png)
 
+## Transformation zu Internen Koordinaten
+
+Ein Molekül mit $N$ Atomen hat $3N$ kartesische und $S = 3N-6(5)$ interne Koordinaten $\vec{R}$. 
+
+$$\vec{X} = (x_1,y_1,z_1,...,x_N,y_N,z_N)^T$$
+
+$$\vec{R} = (r_1,...,r_S)^T$$
+
+Die Transformation von **kartesischen** in **interne Koordinaten** erfolgt über die **Wilson B-Matrix**:
+
+$$\vec{R} = \mathbf{B} \cdot \vec{X}$$
+
+Die potentielle Energie eines Moleküls ergibt sich aus den Kraftkonstanten, welche die zweiten Ableitungen der potentiellen Energie nach den jeweiligen Koordinatern sind.
+
+$$f_{ij} = \frac{\partial^2 E}{\partial x_i \partial x_j}$$
+
+$$F_{ij} = \frac{\partial^2 E}{\partial r_i \partial r_j}$$
+
+Durch die $\mathbf{B}$ Matrix kann man also durch eine Ähnlichkeitstransformation die 
+
+
 
 
 

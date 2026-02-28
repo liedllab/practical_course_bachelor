@@ -92,114 +92,7 @@ Thus, these vectors are normalized but *not* orthogonal
 ```
 Im Output-File findet man dann die berechneten Frequenzen in $\text{cm}^{-1}$ und die zugehörigen massegewichteten Normalmoden.
 
-### Anharmonische Frequenzberechnung mit VPT2 
 
-Vibrational pertubation theroy (VPT) ist eine möglichkeit um die harmonische Beschreibung von molekularen Schwingungen zu verbessern. Man kann also die Anharmonizität der Schwingung berücksichtigen. Diese ist allgemein definiert als die Abweichung der experimentellen Schwingungsfrequenzen von den harmonischen Frequenzen.
-
-In der VPT2-Methode wird der Hamiltonian in einen nullten-Ordnung teil $H^{(0)}$ und Störungsterme $H^{(1)}$ und $H^{(2)}$ usw. zerlegt. Für den nullten-Ordnung Teil sind die exakten Eigenfunktionen hierbei bekannt, zudem wird angenommen das die Störungsterme klein sind. Grundsätzlich wird VPT2 mittels des **Watson-Hamiltonians** formuliert, welcher die Kopplung zwischen Rotation und Vibration berücksichtigt. Dieser Hamiltonian ist in Normalkoordinaten $Q_i$ ausgedrückt, welche bereits in der Aufgabe der harmonischen Frequenzberechnung eingeführt wurden.
-
-Der nullte-Ordnungsterm korrespondiert hierbei mit der harmonischen Näherung, während die Störungsterme anharmonische Beiträge enthalten. Um die Anharmonizität der PES zu beschreiben wird dieses als **semi-quartic force-field (QFF)** ausgedrückt.
-
-$$V = \frac{1}{2} \sum \lambda_i Q_i² + \frac{1}{6} \sum F_{ijk} Q_i Q_j Q_k + \frac{1}{24} \sum F_{ijkl} Q_i Q_j Q_k Q_l $$
-
-Hierbei sind $F_{ijk}$ und $F_{ijkl}$ die kubischen und quartischen Ableitungen des Potentials mit der Form:
-
-$$F_{ijk} = \frac{\partial^3 V}{\partial Q_i \partial Q_j \partial Q_k}$$
-
-$$F_{ijkl} = \frac{\partial^4 V}{\partial Q_i \partial Q_j \partial Q_k \partial Q_l}$$
-
-Es sei hier angemerkt, dass VPT2 nur den Beginn der anharmonischen Schwingungskorrekturen darstellt und eine Vielzahl weiterer Methoden existiert. Für den interessierten Leser hier eine Liste an Literatur:
-
-+ [VSCF-VCI Methode](https://pubs.aip.org/aip/jcp/article/160/21/214118/3295842/VSCF-VCI-theory-based-on-the-Podolsky-Hamiltonian)
-+ [VMP2 Methode](https://pubs.aip.org/aip/jcp/article/139/19/194108/192965/A-second-order-multi-reference-perturbation-method)
-+ [Generation of PES](https://pubs.aip.org/aip/jcp/article/121/19/9313/594111/Efficient-calculation-of-potential-energy-surfaces)
-
-### VPT2 in Orca
-
-Zuerst einige wichtige Hinweise zur Verwendung von VPT2 in Orca:
-
-+ Die Startgeometrie muss strikte Konvergenzkriterien erfüllen. Hierfür kann man in Orca die Option `!TightOpt` oder `! VeryTightOpt` verwenden.
-+ Zudem sollte man mit einer vorherigen harmonischen Frequenzberechnung sicherstellen, dass die Geometrie einem Minimum entspricht.
-+ Das SCF muss striktere Konvergenzkriterien erfüllen. Dazu verwendet man am besten `!ExtremeSCF` oder `!VeryTightSCF`.
-+ VPT2 in Orca funktioniert nur für nicht-lineare Moleküle.
-
-Folgender Block zeigt einen typischen Input für eine VPT2-Rechnung in Orca für das Wassermolekül:
-
-```text
-! RHF 6-311G(d,p) ExtremeSCF  VPT2
-
-%pal nprocs 4 end
-
-%vpt2
-	VPT2			On
-	HessianCutoff 1e-12
-	PrintLevel 1
-end
-
-%method
-  Z_Tol 1e-14
-end
-
-* xyz 0 1
-  O           0.10579950836185      0.00000000000000      0.00000000000000
-  H           0.70570224581907      0.00000000000000      0.74668419232728
-  H           0.70570224581908      0.00000000000000     -0.74668419232728
-*
-```
-
-Es müssen Methoden mit analytischer Hesse-Matrix verwendet werden, z.B. `HF`. Zudem kann man im Code-Block `%vpt2` die Parameter für die VPT2-Rechnung einstellen. Es wurde ein Cut-Off für die Elemente der Hesse-Matrix von $1 \times 10^{-12}$ gewählt um numerische Ungenauigkeiten zu vermeiden. Die Option `Z_Tol` im Block `%method` legt eine striktere Konvergenzbedingung für die CP-SCF-Rechnung fest.
-
-```text
-===================== Vibrational Analysis =====================
-
-
-Anharmonic constants [1/cm]
----------------------------
-  r      s        chi[r][s] 
----------------------------
-  0      0        -15.29924 
-  1      0         -8.20737 
-  1      1        -40.73760 
-  2      0        -21.57456 
-  2      1       -160.26486 
-  2      2        -45.24153 
----------------------------
-
-Fundamental transitions [1/cm] 
------------------------------------------
-Mode     w(harm)      v(fund)      Diff
------------------------------------------
-  0     1821.363     1775.873     -45.489
-  1     3922.027     3756.316    -165.711
-  2     3990.137     3808.734    -181.403
------------------------------------------
-
-Zero-point ro-vibrational energy [1/cm]
----------------------------------------
-Harmonic contribution:         4866.763
-Anharmonic correction:          -72.831
-Ro-vibrational correction:        4.718
----------------------------------------
-Total:                         4798.650
-
-
-Overtones and combination bands 
---------------------------------------------------------------------------------
-  modes   freq      eps        Int     T**2     (  Tx          Ty          Tz )
-         [cm-1] [L/(mol*cm)] [km/mol] [a.u.]     
---------------------------------------------------------------------------------
-  0   0  3521.15  0.000104    0.52   0.000009   (-0.000000 -0.003031  0.000000)
-  0   1  5523.98  0.000010    0.05   0.000001   (-0.000000 -0.000755 -0.000000)
-  0   2  5563.03  0.000706    3.57   0.000040   ( 0.006291 -0.000000 -0.000000)
-  1   1  7431.16  0.000157    0.80   0.000007   ( 0.000000 -0.002571 -0.000000)
-  1   2  7404.78  0.000732    3.70   0.000031   ( 0.005552 -0.000000 -0.000000)
-  2   2  7526.98  0.000042    0.21   0.000002   (-0.000000 -0.001324 -0.000000)
-
-
-============================== End =============================
-```  
-
-Im oberen Block findet man die jeweiligen anharmonischen Frequenzen $v_{fund}$ und die Differenz zur harmonischen Frequenz. Zudem erhält man die Obertöne und Kombinationsbanden mit den jeweiligen Frequenzen und Intensitäten.
 
 ### Aufgabe 2a
 Berechnen Sie die harmonischen Frequenzen für alle Moleküle ihrer Reaktion und vergleiche Sie diese mit experimentellen Daten. Machen Sie sich bewusst um welche Art von Experiment es sich handelt. Verwenden Sie für die Berechnung die folgenden Methoden-Basissatz Kombinationen:
@@ -213,8 +106,6 @@ Berechnen Sie die harmonischen Frequenzen für alle Moleküle ihrer Reaktion und
 In Orca sind für die MP2-Methode  keine analytischen zweiten Ableitungen (Hesse-Matrix) implementiert. Daher muss die Hesse-Matrix numerisch über Finite-Differenzen berechnet werden. Dies kann durch die Angabe der Option `numfreq` im Input-File erreicht werden.
 
 
-### Aufgabe 2b
-Berechnen Sie die anharmonischen VPT2 Frequenzen mittels der HF Methode und dem 6-311G(d,p) Basissatz. Wie groß sind die Unterschiede zwischen harmonischen und anharmonischen Frequenzen? Handelt es sich bei den VPT2-Frequenzen um gekoppelte oder entkoppelte Vibrationszustände?
 
 ### Verständnisfragen
 
@@ -222,7 +113,6 @@ Berechnen Sie die anharmonischen VPT2 Frequenzen mittels der HF Methode und dem 
 + Was sind Normalmoden? Wie werden diese berechnet und konstruiert?
 + Wie kommt man von den Eigenwerten der Hesse-Matrix zu den Schwingungsfrequenzen?
 + Welche Möglichkeiten gibt es für anharmonische Korrekturen der Schwingungsfrequenzen?
-+ Wie funktioniert die VPT2-Methode? Wie funktioniert das Analogon der Elektronenstrukturtheorie (Störungstheorie)?
 + Warum unterscheiden sich harmonische Frequenzen so stark von den experimentellen Werten? Welche Effekte werden in der harmonischen Näherung nicht berücksichtigt?
 + Wie viele Vibrationsmoden hat ein Molekül mit $N$ Atomen?
 + Wie beurteilt man ob eine Schwingung IR-aktiv ist? 

@@ -34,7 +34,7 @@ Die folgende Abbildung zeig die verschiedenen internen Koordinaten welche in `No
 
 ### Beispiel: Elemente der $\mathbf{B}$ Matrix für die Bindungslänge $\vec{r}_{ab}$:
 
-In kartesischen Koordinaten ist die Distanz vektorielle Differenz der Positionen der Atome $a$ und $b$:
+In kartesischen Koordinaten ist die Distanz eine vektorielle Differenz der Positionen der Atome $a$ und $b$:
 
 $$\vec{r}_{ab} = (x_b - x_a) \vec{e}_x + (y_b - y_a) \vec{e}_y + (z_b - z_a) \vec{e}_z$$
 
@@ -111,7 +111,7 @@ Die folgende Abbildung zeigt die Contribution Table für die Schwingungsmoden ei
 
 Wir können aus dieser Tabelle folgende Informationen entnehmen:
 
-1. Die Notation der Normalmode kann abgeleitet werden: z.b bei 1751 $\text{cm}^{-1}$ handelt es sich um die Biegeschwingung $\delta_{ip}$ da die in-plane Winkelkoordinate $\phi$ (H1,O,H2) den höchsten Beitrag von 98.5\% hat.
+1. Die Notation der Normalmode kann abgeleitet werden: z.b bei 1751 $\text{cm}^{-1}$ handelt es sich um die Biegeschwingung $\delta_{ip}$ da die in-plane Winkelkoordinate $\phi$ (H1,O,H2) den höchsten Beitrag von 98.5 % hat.
 2. Man kann zudem stark delokalisierte Schwingungsmoden identifizieren: diese weisen beispielsweise mehrere kleine Beiträge von verschiedenen internen Koordinaten auf.
 
 

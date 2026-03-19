@@ -105,6 +105,19 @@ Berechnen Sie die harmonischen Frequenzen für alle Moleküle ihrer Reaktion und
 
 In Orca sind für die MP2-Methode  keine analytischen zweiten Ableitungen (Hesse-Matrix) implementiert. Daher muss die Hesse-Matrix numerisch über Finite-Differenzen berechnet werden. Dies kann durch die Angabe der Option `numfreq` im Input-File erreicht werden.
 
+### Plotten von Normalmoden
+
+Zum Plotten und visualisieren der Normalmoden verwenden wir das Programm **Jmol** dieses ist unter folgenden Link kostenlos zum Download verfügbar:
+
+https://jmol.sourceforge.net/
+
+Will man die Vibrationen eines Moleküls also nach einer abgeschlossenen Frequenzrechung von **Orca** visualisieren geht man wie folgt vor:
+
+1. Man generiert Trajektorien zu den jeweiligen Moden mittels den Befehl `orca_pltvib jobname.out all`.
+2. Als Resultat erhält man Files vom Typ `jobname.out.v00x.xyz` welche man dann mit **Jmol** öffnen kann
+3. Hierzu verwendet man den Befehl `jmol jobname.out.v00x.xyz`.
+4. Mittels des graphischen Interfaces von Jmol oder der zugehörigen Konsole kann man dann die Vektoren der Normalmoden anzeigen lassen und Bilder für die Präsentation erstellen.
+
 
 
 ### Verständnisfragen

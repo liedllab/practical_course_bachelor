@@ -1,6 +1,6 @@
 lsi: false
 safe: true
-source: [your repo's top level directory]
+source: .
 incremental: false
 highlighter: rouge
 mathjax: true
@@ -18,7 +18,7 @@ minima:
     - Linux-Tutorial.md 
     - Orca_Tipps.md
   social_links:
-    - title: Practical Course Github
+    - title: Practical Course GitHub
       icon: github
       url: "https://github.com/liedllab/practical_course_bachelor"
   author:

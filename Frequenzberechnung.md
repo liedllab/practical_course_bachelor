@@ -9,11 +9,11 @@ MathJax = {
 
 # Frequenzberechnung
 
-Die Änderung der potentiellen Energie $V$ der Kerne kann durch eine Taylor-Reihe um Entwicklungspunkt $X_0$ ausgedrückt werden:
+Die Änderung der potentiellen Energie $V$ der Kerne kann durch eine Taylor-Reihe um den Entwicklungspunkt $X_0$ ausgedrückt werden:
 
 $$V(X) = V(X_0) + g^T(X-X_0) + \frac{1}{2}(X-X_0)^T H (X-X_0) + ... $$
 
-wobei wiederum $g$ der Gradient und $H$ die Hesse-Matrix ist. Die **harmonische Näherung** vereinfacht diese Taylor-Reihe indem nur die Terme bis zur zweiten Ableitung berücksichtigt werden. Im Energie-Minimum ist der Gradient $g^T=0$ und mit der Wahl $V(X_0)=0$ ergibt sich:
+wobei wiederum $g$ der Gradient und $H$ die Hesse-Matrix ist. Die **harmonische Näherung** vereinfacht diese Taylor-Reihe, indem nur die Terme bis zur zweiten Ableitung berücksichtigt werden. Im Energie-Minimum ist der Gradient $g^T=0$ und mit der Wahl $V(X_0)=0$ ergibt sich:
 
 $$V(X) = \frac{1}{2}(X-X_0)^T H (X-X_0)$$
 
@@ -31,7 +31,7 @@ Folgende Abbildung zeigt die ersten drei Normalmoden des Wassermoleküls. Diese 
 
 ### Frequenzberechnung in Orca
 
-Folgender Input-File ist ein Beispiel für eine Frequenzberechnung in Orca. Als Methode wird wiederum Hartree Fock mit dem 6-311G(d,p) Basissatz verwendet. 
+Folgendes Input-File ist ein Beispiel für eine Frequenzberechnung in Orca. Als Methode wird wiederum Hartree-Fock mit dem 6-311G(d,p) Basissatz verwendet.
 
 ```text
  !HF 6-311G(d,p) OPT FREQ
@@ -41,7 +41,7 @@ Folgender Input-File ist ein Beispiel für eine Frequenzberechnung in Orca. Als 
        H      0.000000000   -1.415075762    0.956290882
  *
 ```
-Es wird sowohl eine Geometrie-Optimierung (OPT) als auch eine Frequenzberechnung (FREQ) durchgeführt. Grundsätzlich kann die Frequenzberechnung analytisch (wenn verfügbar) oder numerisch (durch z.B. Finite-Differenzen) durchführt werden. 
+Es wird sowohl eine Geometrie-Optimierung (OPT) als auch eine Frequenzberechnung (FREQ) durchgeführt. Grundsätzlich kann die Frequenzberechnung analytisch (wenn verfügbar) oder numerisch (durch z.B. Finite-Differenzen) durchgeführt werden.
 
 ```text
 -----------------------
@@ -90,12 +90,12 @@ Thus, these vectors are normalized but *not* orthogonal
       7       0.430096   0.583097  -0.561316
       8       0.559049  -0.398396   0.427133
 ```
-Im Output-File findet man dann die berechneten Frequenzen in $\text{cm}^{-1}$ und die zugehörigen massegewichteten Normalmoden.
+Im Output-File findet man die berechneten Wellenzahlen in $\text{cm}^{-1}$ und die zugehörigen Normalmoden als kartesische Auslenkungen.
 
 
 
 ### Aufgabe 2a
-Berechnen Sie die harmonischen Frequenzen für alle Moleküle ihrer Reaktion und vergleiche Sie diese mit experimentellen Daten. Machen Sie sich bewusst um welche Art von Experiment es sich handelt. Verwenden Sie für die Berechnung die folgenden Methoden-Basissatz Kombinationen:
+Berechnen Sie die harmonischen Frequenzen für alle Moleküle Ihrer Reaktion und vergleichen Sie diese mit experimentellen Daten. Machen Sie sich bewusst, um welche Art von Experiment es sich handelt. Verwenden Sie für die Berechnung die folgenden Methoden-Basissatz-Kombinationen:
 
   - HF/6-311G(d,p)
   - B3LYP/6-311G(d,p)
@@ -103,18 +103,18 @@ Berechnen Sie die harmonischen Frequenzen für alle Moleküle ihrer Reaktion und
 
 **Wichtig!!**
 
-In Orca sind für die MP2-Methode  keine analytischen zweiten Ableitungen (Hesse-Matrix) implementiert. Daher muss die Hesse-Matrix numerisch über Finite-Differenzen berechnet werden. Dies kann durch die Angabe der Option `numfreq` im Input-File erreicht werden.
+In Orca sind für die MP2-Methode keine analytischen zweiten Ableitungen (Hesse-Matrix) implementiert. Daher muss die Hesse-Matrix numerisch über Finite-Differenzen berechnet werden. Dies kann durch die Angabe der Option `numfreq` im Input-File erreicht werden.
 
 ### Plotten von Normalmoden
 
-Zum Plotten und visualisieren der Normalmoden verwenden wir das Programm **Jmol** dieses ist unter folgenden Link kostenlos zum Download verfügbar:
+Zum Plotten und Visualisieren der Normalmoden verwenden wir das Programm **Jmol**. Dieses ist unter folgendem Link kostenlos zum Download verfügbar:
 
 https://jmol.sourceforge.net/
 
-Will man die Vibrationen eines Moleküls also nach einer abgeschlossenen Frequenzrechung von **Orca** visualisieren geht man wie folgt vor:
+Will man die Vibrationen eines Moleküls also nach einer abgeschlossenen Frequenzrechnung von **Orca** visualisieren, geht man wie folgt vor:
 
-1. Man generiert Trajektorien zu den jeweiligen Moden mittels den Befehl `orca_pltvib jobname.out all`.
-2. Als Resultat erhält man Files vom Typ `jobname.out.v00x.xyz` welche man dann mit **Jmol** öffnen kann
+1. Man generiert Trajektorien zu den jeweiligen Moden mittels des Befehls `orca_pltvib jobname.out all`.
+2. Als Resultat erhält man Files vom Typ `jobname.out.v00x.xyz`, welche man dann mit **Jmol** öffnen kann
 3. Hierzu verwendet man den Befehl `jmol jobname.out.v00x.xyz`.
 4. Mittels des graphischen Interfaces von Jmol oder der zugehörigen Konsole kann man dann die Vektoren der Normalmoden anzeigen lassen und Bilder für die Präsentation erstellen.
 
@@ -122,13 +122,13 @@ Will man die Vibrationen eines Moleküls also nach einer abgeschlossenen Frequen
 
 ### Verständnisfragen
 
-+ Wie erkennt man anhand der harmonischen Schwingungsfrequenzen ob ein Energie-Minimum oder ein Sattelpunkt vorliegt?
++ Wie erkennt man anhand der harmonischen Schwingungsfrequenzen, ob ein Energie-Minimum oder ein Sattelpunkt vorliegt?
 + Was sind Normalmoden? Wie werden diese berechnet und konstruiert?
 + Wie kommt man von den Eigenwerten der Hesse-Matrix zu den Schwingungsfrequenzen?
 + Welche Möglichkeiten gibt es für anharmonische Korrekturen der Schwingungsfrequenzen?
 + Warum unterscheiden sich harmonische Frequenzen so stark von den experimentellen Werten? Welche Effekte werden in der harmonischen Näherung nicht berücksichtigt?
 + Wie viele Vibrationsmoden hat ein Molekül mit $N$ Atomen?
-+ Wie beurteilt man ob eine Schwingung IR-aktiv ist? 
++ Wie beurteilt man, ob eine Schwingung IR-aktiv ist?
 + Was sind Obertöne und Kombinationsbanden?
 
 

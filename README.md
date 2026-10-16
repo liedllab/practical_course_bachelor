@@ -1,6 +1,6 @@
 # Grundpraktikum Theoretische Chemie
 
-Willkommen zum Github-Repository für das Grundpraktikum Theoretische Chemie! Dieses Repository enthält alle notwendigen Materialien, Anleitungen und Ressourcen, die Sie für das erfolgreiche Absolvieren des Praktikums benötigen.
+Willkommen zum GitHub-Repository für das Grundpraktikum Theoretische Chemie! Dieses Repository enthält alle notwendigen Materialien, Anleitungen und Ressourcen, die Sie für das erfolgreiche Absolvieren des Praktikums benötigen.
 
 Die Homepage mit den Aufgaben und Anleitungen finden Sie unter:
 

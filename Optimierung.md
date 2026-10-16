@@ -10,24 +10,24 @@ MathJax = {
 
 ## Optimierung der Molekülgeometrie
 
-Eine dreidimensionale Anordnung von Atomen im Raum ist eine __Molekülgeometrie__. Die __Minimumsgeometrie__ ist jene Anordnung bei der die potentielle Energie des Moleküls minimal ist. Für viele quantenchemische Berechnungen ist das Auffinden einer Minimumsgeometrie oft der erste Schritt. Dies wird als __Geometrieoptimierung__ bezeichnet.
+Eine dreidimensionale Anordnung von Atomen im Raum ist eine __Molekülgeometrie__. Die __Minimumsgeometrie__ ist jene Anordnung, bei der die potentielle Energie des Moleküls minimal ist. Für viele quantenchemische Berechnungen ist das Auffinden einer Minimumsgeometrie oft der erste Schritt. Dies wird als __Geometrieoptimierung__ bezeichnet.
 
-Folgende Abbildung (erstellt von Prof. Thomas Hofer) zeigt schematisch eine Geometrieoptimierung. Beginnend von einer Startgeometrie soll die relative Anordnung der Atomkerne zueinander gefunden werden, sodass die Gesamtenergie des Moleküls minimal ist. In dieser Anordnung sind die Kräfte die auf die Atomkerne wirken gleich Null.
+Folgende Abbildung (erstellt von Prof. Thomas Hofer) zeigt schematisch eine Geometrieoptimierung. Beginnend von einer Startgeometrie soll die relative Anordnung der Atomkerne zueinander gefunden werden, sodass die Gesamtenergie des Moleküls minimal ist. In dieser Anordnung sind die Kräfte, die auf die Atomkerne wirken, gleich Null.
 
 ![Beispiel einer Geometrieoptimierung](figures/geometry_optimization.png)
 
 > **Note:** Jede Anordnung der Kerne entspricht einem Punkt auf der __Potential-Hyperfläche__ (engl. Potential Energy Surface, PES). Diese Fläche beschreibt die potentielle Energie des Moleküls in Abhängigkeit der Kernpositionen. Eine Geometrieoptimierung sucht den nächstgelegenen Tiefpunkt auf dieser Fläche.
 
-Die Potentialhyperfläche ist unbekannt kann jedoch mathematisch als __Taylor-Reihe__ approximiert werden:
+Die Potentialhyperfläche ist unbekannt, kann jedoch mathematisch als __Taylor-Reihe__ approximiert werden:
 
 $$ E(x) = E(x_0) + g_0^T \Delta x + \frac{1}{2} \Delta x^T H_0 \Delta x + ... $$
 
-+ $g_0^T$ ist der Gradient und entspricht der ersten Ableitung der Energie nach den Kernpositionen. Im Minimum ist dieser Vektor gleich Null.
++ $g_0$ ist der Gradient am Entwicklungspunkt $x_0$ und entspricht der ersten Ableitung der Energie nach den Kernpositionen. $g_0^T$ ist dessen Transponierte. Im Minimum ist der Gradient gleich Null.
 + $H_0$ ist die Hesse-Matrix und entspricht der zweiten Ableitung der Energie nach den Kernpositionen. Diese Matrix beschreibt die Krümmung der Potential-Hyperfläche
 
 ### Geometrie-Optimierung in Orca
 
-Folgender Input-File ist ein Beispiel für eine Geometrieoptimierung in Orca. 
+Folgendes Input-File ist ein Beispiel für eine Geometrieoptimierung in Orca.
 
 ```text
 ! HF 6-311G(d,p) OPT
@@ -44,11 +44,11 @@ Die erste Zeile beginnend mit dem `!` Symbol enthält hier die Anweisungen für 
 + **6-311G(d,p):** Spezifikation des Basissatzes
 + **OPT:** Keyword für die Geometrieoptimierung
 
-Die Zeilen mit dem *xyz beschreiben die Geometrie des Moleküls in Räumlichen Koordinaten. Die 0 und 1 geben die Gesamtladung und Multiplizität des Moleküls an.
+Die Zeilen mit `* xyz` beschreiben die Geometrie des Moleküls in räumlichen Koordinaten. Die 0 und 1 geben die Gesamtladung und Multiplizität des Moleküls an.
 
 #### Ein Blick in den Output-File
 
-Im Output-File wird folgender Block angezeigt sobald die Geometrie-Optimierung beginnt:
+Im Output-File wird folgender Block angezeigt, sobald die Geometrie-Optimierung beginnt:
 
 ```text
 
@@ -92,7 +92,7 @@ Dieser Block zeigt sowohl die Optimierungsmethode (BFGS) als auch die Wahl der K
 
 The optimization has not yet converged - more geometry cycles are needed
 ``` 
-Nach den jeweiligen SCF-Runs wird dann ein Block angezeigt welcher die aktuelle Konvergenz des Verfahrens beschreibt. Dieser zeigt beispielsweise die aktuelle Step-Length sowie den Gradienten und die Toleranzparameter welche in der Anfangsphase meist nicht erfüllt sind. 
+Nach den jeweiligen SCF-Runs wird dann ein Block angezeigt, welcher die aktuelle Konvergenz des Verfahrens beschreibt. Dieser zeigt beispielsweise die aktuelle Step-Length sowie den Gradienten und die Toleranzparameter, welche in der Anfangsphase meist nicht erfüllt sind.
 
 
 ```text
@@ -122,7 +122,7 @@ Nach den jeweiligen SCF-Runs wird dann ein Block angezeigt welcher die aktuelle 
                     *************************************************
 ```
 
-Sobald die Optimierungskriterien erfüllt sind wird dieser Block im Output-File angezeigt. Man erhält somit eine Minimumsgeometrie welche man für weitere Berechnungen verwenden kann.
+Sobald die Optimierungskriterien erfüllt sind, wird dieser Block im Output-File angezeigt. Man erhält somit eine Minimumsgeometrie, welche man für weitere Berechnungen verwenden kann.
 ### Aufgabe 1
 Berechnen Sie optimierte Strukturen für die Moleküle der Ihnen zugewiesenen Reaktion auf den nachfolgenden Levels of Theory:
 
@@ -130,15 +130,15 @@ Berechnen Sie optimierte Strukturen für die Moleküle der Ihnen zugewiesenen Re
   - B3LYP/6-311G(d,p)
   - MP2/6-311G(d,p)
 
-Vergleichen Sie im Anschluss die internen Koordinaten Ihrer Moleküle mit experimentellen Daten. Stellen Sie sich die Frage ob dieser Vergleich notwendig ist oder ob eine ähnliche Aussage bereits früher anhand der berechneten Energien getroffen werden kann?
+Vergleichen Sie im Anschluss die internen Koordinaten Ihrer Moleküle mit experimentellen Daten. Stellen Sie sich die Frage, ob dieser Vergleich notwendig ist oder ob eine ähnliche Aussage bereits früher anhand der berechneten Energien getroffen werden kann?
 ### Verständnisfragen
 
 - Was bestimmt das Ende einer Geometrieoptimierung?
 - Welche Rolle spielt der Gradient in einer Geometrieoptimierung?
-- Wie könnte ich sehen ob eine Geometrieoptimierung ein Minimum gefunden hat (Stichwort: Frequenzberechnung)?
+- Wie könnte ich sehen, ob eine Geometrieoptimierung ein Minimum gefunden hat (Stichwort: Frequenzberechnung)?
 - Was ist die Hesse-Matrix und welche Information enthält diese?
 - Wie ist der 6-311G(d,p) Basissatz zu interpretieren? Wie viele AOs erwarten Sie sich für Ihre einzelnen Reaktanden bei der Verwendung dieses Basissatzes? Tipp: Versuchen Sie es selbst auszurechnen und mit dem ORCA-Output abzugleichen.
-- Woher kommen hochgenaue experimentelle Geometriedaten von kleinen Molekülen.
+- Woher kommen hochgenaue experimentelle Geometriedaten von kleinen Molekülen?
 
 
 

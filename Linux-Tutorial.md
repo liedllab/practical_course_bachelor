@@ -11,7 +11,7 @@ MathJax = {
 
 ## Linux-Tutorial
 
-Diese Seite erklärt einige der grundlegenden Befehle zum Arbeiten mit der Linux Kommandozeile. Die folgende Tabelle ist eine Zusammenfassung der wichtigsten Befehle.
+Diese Seite erklärt einige der grundlegenden Befehle zum Arbeiten mit der Linux-Kommandozeile. Die folgende Tabelle ist eine Zusammenfassung der wichtigsten Befehle.
 
 
 | Command | Description | Example |
@@ -53,7 +53,7 @@ Dieser Editor ist benutzerfreundlich und einfach zu bedienen und hat außerdem e
 
 **Kate Editor**
 
-Kate ist ein grafischer Texteditor der in vielen Linux-Distributionen vorinstalliert ist. Dieser ist am ähnlichsten zu Notepad und Word und damit sehr einfach zu bedienen.
+Kate ist ein grafischer Texteditor, der in vielen Linux-Distributionen vorinstalliert ist. Dieser ist am ähnlichsten zu Notepad und Word und damit sehr einfach zu bedienen.
 
 **Vim Editor**
 

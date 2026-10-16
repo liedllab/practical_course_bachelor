@@ -39,7 +39,7 @@ wobei $T$ die absolute Temperatur und $S$ die Entropie des Systems ist. Die Helm
 
 **Gibbs Freie Energie $G$**
 
-Die Gibbs Energie eines Systewms ist definiert als:
+Die Gibbs Energie eines Systems ist definiert als:
 
 $$G = H - TS$$
 
@@ -73,7 +73,7 @@ $$q_{elec} = e^{\frac{D_e}{k_B T}} (w_{e_1} + w_{e_2} e^{-\frac{\Delta E_{12}}{k
 
 Hier ist $D_e$ die elektronische Grundszustandsenergie in Bezug auf isolierte Kerne und Elektronen und $w_{e_i}$ die Entartung des elektronischen Zustands mit $i$ der Spinmultiplizität und $\Delta E_{ij}$ dem Energieunterschiede zwischen den elektronischen Zuständen.
 
-Die Vibtrationszustandssumme $q_{vib}$ ist gegeben über:
+Die Vibrationszustandssumme $q_{vib}$ ist gegeben über:
 
 $$q_{vib} = \prod_i^\lambda \frac{e^{-\frac{\Theta_{v_j}}{2T}}}{1 - e^{-\frac{\Theta_{v_j}}{T}}}$$
 
@@ -81,7 +81,7 @@ wobei die charakteristische Temperatur $\Theta_{v_j}$ definiert ist als:
 
 $$\Theta_{v_j} = \frac{h \nu_j}{k_B}$$
 
-Zur Notation: Hier ist $j$ der Index für de Schwingung mit Frequenz $\nu_j$ und $\lambda$ die Anzahl der Schwingungsfreiheitsgrade. Die Vibrationsenergie ist gequantelt und für die Nullpunktsschwingung $T=0$ existiert eine Nullpunktsenergie (ZPE).
+Zur Notation: Hier ist $j$ der Index für die Schwingung mit Frequenz $\nu_j$ und $\lambda$ die Anzahl der Schwingungsfreiheitsgrade. Die Vibrationsenergie ist gequantelt und für die Nullpunktsschwingung $T=0$ existiert eine Nullpunktsenergie (ZPE).
 
 Die Rotationszustandssumme $q_{rot}$ ist gegeben durch:
 
@@ -105,7 +105,7 @@ $$\Delta G^0 = -RT \ln(K_p)$$
 
 ## Analyse der Thermodynamik in Orca
 
-Nach einer Frequenzberechnung erhält man die thermodynamischen Funktion, wie die Enthalpie $H$, die Entropy $S$ und die Gibbs Energie $G$, im Output-File.
+Nach einer Frequenzberechnung erhält man die thermodynamischen Funktionen, wie die Enthalpie $H$, die Entropie $S$ und die Gibbs Energie $G$, im Output-File.
 
 ```text
 ! MP2 6-311G(d,p) OPT FREQ NUMFREQ
@@ -116,9 +116,9 @@ Nach einer Frequenzberechnung erhält man die thermodynamischen Funktion, wie di
 *
 ```
 
-Der Input-File oben ist ein Beispiel für eine Geometrieoptimierung gefolgt von einer Frequenzberechnung. Hier wurde die **MP2** Methode mit dem **6-311G(d,p)** Basissatz verwendet. 
+Das Input-File oben ist ein Beispiel für eine Geometrieoptimierung gefolgt von einer Frequenzberechnung. Hier wurde die **MP2** Methode mit dem **6-311G(d,p)** Basissatz verwendet.
 
-Im Output-File findet man nach Block über das IR-Spectrum den Abschnitt zur Thermochemie
+Im Output-File findet man nach dem Block über das IR-Spektrum den Abschnitt zur Thermochemie:
 
 ```text
 --------------------------
@@ -144,9 +144,9 @@ Throughout the following assumptions are being made:
 freq.    1666.81  E(vib)   ...       0.00 
 freq.    3904.64  E(vib)   ...       0.00 
 freq.    4012.16  E(vib)   ...       0.00 
-````
+```
 
-In dieser ersten Section sieht man die Temperatur, den Druck und die Gesamtmasse des Systems, sowie die Annahmen die bei der Berechnung der thermodynamischen Funktionen getroffen wurden.
+In dieser ersten Section sieht man die Temperatur, den Druck und die Gesamtmasse des Systems, sowie die Annahmen, die bei der Berechnung der thermodynamischen Funktionen getroffen wurden.
 
 
 ```text
@@ -171,9 +171,9 @@ Thermal rotational correction    ...      0.00141627 Eh       0.89 kcal/mol
 Thermal translational correction ...      0.00141627 Eh       0.89 kcal/mol
 -----------------------------------------------------------------------
 Total thermal energy                    -76.23930382 Eh
-````
+```
 
-Zuerst erfolgt die Berechnung der inneren ENergie $U$. Die elektronische Energie ist hierbei die letzte Single-Point Energie aus der Geometrieoptimierung. Der nächste Block zeigt dann die Berechnung der Enthalpie $H$:
+Zuerst erfolgt die Berechnung der inneren Energie $U$. Die elektronische Energie ist hierbei die letzte Single-Point Energie aus der Geometrieoptimierung. Der nächste Block zeigt dann die Berechnung der Enthalpie $H$:
 
 ```text
 --------
@@ -186,7 +186,7 @@ Total thermal energy              ...    -76.23930382 Eh
 Thermal Enthalpy correction       ...      0.00094421 Eh       0.59 kcal/mol
 -----------------------------------------------------------------------
 Total Enthalpy                    ...    -76.23835962 Eh
-````
+```
 Final sieht man noch die Werte für die Entropie $S$ sowie die Gibbs Energie $G$:
 
 ```text
@@ -226,23 +226,23 @@ G-E(el)                           ...      0.00419328 Eh      2.63 kcal/mol
 ```
 ### Aufgabe 4
 Um den Einfluss von Temperatur und Druck auf die Thermodynamik der Reaktion zu beurteilen,
-müssen die thermodynamischen Größen für verschiedene Bedingungen berechnet werden. Konkret in einem Raster zwischen 100 und 1000 K und einen Druckbereich zwischen 1 und 100
+müssen die thermodynamischen Größen für verschiedene Bedingungen berechnet werden. Konkret in einem Raster zwischen 100 und 1000 K und einem Druckbereich zwischen 1 und 100
 atm. Um eine solche Aufgabe manuell abzuarbeiten, muss ein Überblick über sehr
-viele Dateien behalten werden. Es bietet sich an die Aufgabe über ein script zu automatisieren.
-Ein solches script führt Befehle in ähnlicher Weise aus, wie Sie es direkt in einer Konsole per
-Tastatureingabe machen, jedoch automatisiert. Sie müssen im script lediglich im Vorhinein
-bestimmen, welche Befehle auszuführen sind. In dieser Aufgabe werden Sie ein in der Sprache Bash geschriebenes script verwenden. 
+viele Dateien behalten werden. Es bietet sich an, die Aufgabe über ein Skript zu automatisieren.
+Ein solches Skript führt Befehle in ähnlicher Weise aus, wie Sie es direkt in einer Konsole per
+Tastatureingabe machen, jedoch automatisiert. Sie müssen im Skript lediglich im Vorhinein
+bestimmen, welche Befehle auszuführen sind. In dieser Aufgabe werden Sie ein in der Sprache Bash geschriebenes Skript verwenden.
 
-Es wird Ihnen von uns ein entsprechendes script zu Verfügung gestellt. Dies soll Sie allerdings nicht davon abhalten zu versuchen selbst ein solches script zu schreiben. Folgende Schritte sind im script enthalten:
+Es wird Ihnen von uns ein entsprechendes Skript zur Verfügung gestellt. Dies soll Sie allerdings nicht davon abhalten zu versuchen, selbst ein solches Skript zu schreiben. Folgende Schritte sind im Skript enthalten:
 
 - Lege das p/T Raster fest und erstelle für jeden Punkt einen Ordner.
 - Erstelle aus dem zugehörigen .inp File für jeden Rasterpunkt einen Orcainput, welcher mit dem zugehörigen .hess File die thermodynamischen Größen zu diesem Punkt errechnet.
 - Lasse die Rechnungen aufsteigend laufen.
 - Extrahiere die Bedingungen und die thermodynamischen Größen und übertrage diese in ein .csv file. 
 
-Die Auswertung erfolgt ähnlich zur Code-along session in einem Jupyter Notebook. Wenden Sie gerne ihr gewonnenes Wissen an, um die Plots zu individualisieren. Um Ihnen bei der Übersicht zu helfen, ist das Notebook größtenteils(!) vorgefertigt.
+Die Auswertung erfolgt ähnlich zur Code-along-Session in einem Jupyter Notebook. Wenden Sie gerne Ihr gewonnenes Wissen an, um die Plots zu individualisieren. Um Ihnen bei der Übersicht zu helfen, ist das Notebook größtenteils(!) vorgefertigt.
 
-Die Auswertung der themodynamischen Größen soll basierend auf den Ergebnissen der harmonischen Frequenzberechnungen auf MP2 Niveau erfolgen.
+Die Auswertung der thermodynamischen Größen soll basierend auf den Ergebnissen der harmonischen Frequenzberechnungen auf MP2-Niveau erfolgen.
 
 ### Verständnisfragen
 

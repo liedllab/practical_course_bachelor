@@ -11,28 +11,28 @@ MathJax = {
 
 Das Standardverfahren zur quantenmechanischen Berechnung von Schwingungsfrequenzen basiert auf der **harmonischen Näherung**. Hierbei wird die Potentialfläche um die Minimumsgeometrie durch eine Taylor-Reihe bis zur zweiten Ableitung approximiert. Durch das Diagonalisieren der massengewichteten Hesse-Matrix erhält man die **Normalmoden** und die entsprechenden **Schwingungsfrequenzen**.
 
-Für viele fortgeschrittene Anwendungen, z.b der anharmonischen Frequenzberechnung oder der Berechnung von multidimensionalen Potentialhyperflächen zeigen diese Normalmoden jedoch einige Einschränkungen:
+Bei fortgeschrittenen Anwendungen, z. B. der anharmonischen Frequenzberechnung oder der Berechnung von multidimensionalen Potentialhyperflächen, zeigen diese Normalmoden jedoch einige Einschränkungen:
 
 + Durch die harmonische Näherung ist die akkurate Beschreibung von **Schwingungsmoden nur in der Nähe des Minimums möglich**
-+ Die Normalmoden sind **gekoppelt** und **delokalisiert** dies erschwert sowohl die Interpretation als auch Formulierung des zugehörigen Hamiltonoperators.
++ Die Normalmoden sind **gekoppelt** und **delokalisiert** - dies erschwert sowohl die Interpretation als auch Formulierung des zugehörigen Hamiltonoperators.
 
-Wir verwenden in diesem Teil des Praktikums die Software `Nomodeco` welche durch einen Algorithmus optimale interne Koordinaten für ein gegebenes Molekül konstruiert. Diese sind **optimal** im Sinne von maximaler Entkopplung der Schwingungsmoden und des zugehörigen Vibrationsraums.
+Wir verwenden in diesem Teil des Praktikums die Software `Nomodeco`, welche durch einen Algorithmus optimale interne Koordinaten für ein gegebenes Molekül konstruiert. Diese sind **optimal** im Sinne von maximaler Entkopplung der Schwingungsmoden und des zugehörigen Vibrationsraums.
 
 ### Primitive Interne Koordinaten
 
 > Primitive Interne Koordinaten (ICs) sind geometrische Parameter wie Änderungen in Bindungslängen, Bindungswinkel und Diederwinkel. Diese sind direkt mit der Molekülgeometrie verbunden und können über die kartesischen Koordinaten der Atomkerne berechnet werden.
 
-Die folgende Abbildung zeig die verschiedenen internen Koordinaten welche in `Nomodeco` implementiert sind.
+Die folgende Abbildung zeigt die verschiedenen internen Koordinaten, welche in `Nomodeco` implementiert sind.
 
 + **Bonds:** Änderung der Bindungslänge $\vec{r}_{ab}$ 
-+ **In-plane angles:** Änderung des Bindungswinkel $\phi$
-+ **Linear angles:** Spezielle Winkelkoordinate für lineare Moleküle (zb $\text{CO}_2$) $\phi'$
++ **In-plane angles:** Änderung des Bindungswinkels $\phi$
++ **Linear angles:** Spezielle Winkelkoordinate für lineare Moleküle (z. B. $\text{CO}_2$) $\phi'$
 + **Dihedrals:** Änderung im Diederwinkel $\tau$
 + **Out-of-plane angles:** Änderung im Winkel der durch drei koplanare Atome definiert wird $\gamma$
 
 ![alt text](figures/prim_ic.png)
 
-### Beispiel: Elemente der $\mathbf{B}$ Matrix für die Bindungslänge $\vec{r}_{ab}$:
+### Beispiel: Elemente der $\mathbf{B}$-Matrix für die Bindungslänge $r_{ab}$:
 
 In kartesischen Koordinaten ist die Distanz eine vektorielle Differenz der Positionen der Atome $a$ und $b$:
 
@@ -72,7 +72,7 @@ Die Transformation von **kartesischen** in **interne Koordinaten** erfolgt über
 
 $$\vec{R} = \mathbf{B} \cdot \vec{X}$$
 
-Die potentielle Energie eines Moleküls ergibt sich aus den Kraftkonstanten, welche die zweiten Ableitungen der potentiellen Energie nach den jeweiligen Koordinatern sind.
+Die potentielle Energie eines Moleküls ergibt sich aus den Kraftkonstanten, welche die zweiten Ableitungen der potentiellen Energie nach den jeweiligen Koordinaten sind.
 
 $$f_{ij} = \frac{\partial^2 E}{\partial x_i \partial x_j}$$
 
@@ -84,41 +84,41 @@ $$\mathbf{F} = (\tilde{\mathbf{B}}^{-1})^T \cdot \mathbf{f} \cdot \tilde{\mathbf
 
 $$\mathbf{f} = \tilde{\mathbf{B}}^T \cdot \mathbf{F} \cdot \tilde{\mathbf{B}}$$
 
-Die Matrix $\tilde{\mathbf{B}}$ enspricht einer modifizierten $\mathbf{B}$ Matrix wo  zusätzliche Nullzeilen für die translativen und rotativen Freiheitsgrade hinzufügt wurden.
+Die Matrix $\tilde{\mathbf{B}}$ enspricht einer modifizierten $\mathbf{B}$ Matrix in welcher zusätzliche Nullzeilen für die translativen und rotativen Freiheitsgrade hinzufügt wurden.
 
 Ausgehend von den massengewichteten Kraftkonstanten in kartesischen Koordinaten kann man eine Darstellung von Normalmoden in internen Koordinaten erhalten:
 
 1. $\mathbf{f'} = (\mathbf{M}^{-1/2})^T \cdot \mathbf{f} \cdot \mathbf{M}^{-1/2}$
-2. Die Diagonalisiert man zu $\Lambda = \mathbf{L}^T \cdot \mathbf{f'} \cdot \mathbf{L}$
-3. Die $\mathbf{L}$ Matrix enthält also die Normalmoden in kartesischen Koordinaten.
+2. Diese diagonalisiert man zu $\Lambda = \mathbf{L}^T \cdot \mathbf{f'} \cdot \mathbf{L}$.
+3. Die Spalten von $\mathbf{L}$ enthalten die Normalmoden in massengewichteten kartesischen Koordinaten.
 4. Man definiert $\mathbf{l} = \mathbf{M}^{-1/2} \cdot \mathbf{L}$
-5. Dann verwendet man die $\mathbf{B}$ Matrix für folgende Transformation: $\Lambda = \mathbf{l}^T \cdot \mathbf{l} = \mathbf{l}^T \cdot (\mathbf{B}^T \cdot \mathbf{F} \cdot \mathbf{B}) \cdot \mathbf{l}$
+5. Dann verwendet man die $\mathbf{B}$ Matrix für folgende Transformation: $\Lambda = \mathbf{l}^T \cdot \mathbf{f} \cdot \mathbf{l} = \mathbf{l}^T \cdot (\mathbf{B}^T \cdot \mathbf{F} \cdot \mathbf{B}) \cdot \mathbf{l}$.
 6. Die Darstellung $\mathbf{D} = \mathbf{B} \cdot \mathbf{l}$ gibt uns also eine Darstellung der massengewichteten Normalmoden in internen Koordinaten.
 
 
 ## Molekulare Topologie
 
-Ein weiterer wichtiger Aspekt von `Nomodeco`ist die Reduktion der möglichen Anzahl der internen Koordinaten durch die Berücksichtigung der molekularen Topologie. Eine Reihe an mathematischer Beziehung gibt uns hier automatisch die Anzahl der möglichen primitiven internen Koordinaten für ein gegebenes Molekül vor
+Ein weiterer wichtiger Aspekt von `Nomodeco` ist die Reduktion der möglichen Anzahl der internen Koordinaten durch die Berücksichtigung der molekularen Topologie. Eine Reihe von mathematischen Beziehungen gibt uns hier automatisch die Anzahl der möglichen primitiven internen Koordinaten für ein gegebenes Molekül vor.
 
 ![alt text](figures/topology.png)
 
 ## Wie interpretiert man eine Contribution Table?
 
-Die folgende Abbildung zeigt die Contribution Table für die Schwingungsmoden eines Wassermoleküls. Auf der $x$-Achse sind die harmonischen Frequenzen der Normalmoden in $\text{cm}^{-1}$ aufgetragen. Auf der $y$-Achse sieht man als Tupel das vom Programm selektierte **optimale interne Koordinatenset** für die Darstellung der Normalmoden. Die Werte in der Heatmap gibt den prozentuellen Beitrag der jeweiligen internen Koordinate zur beschreibung der Schwingungsbewegung der Normalmode an.
+Die folgende Abbildung zeigt die Contribution Table für die Schwingungsmoden eines Wassermoleküls. Auf der $x$-Achse sind die harmonischen Frequenzen der Normalmoden in $\text{cm}^{-1}$ aufgetragen. Auf der $y$-Achse sieht man als Tupel das vom Programm selektierte **optimale interne Koordinatenset** für die Darstellung der Normalmoden. Die Werte in der Heatmap geben den prozentuellen Beitrag der jeweiligen internen Koordinate zur Beschreibung der Schwingungsbewegung der Normalmode an.
 
 
 ![alt text](figures/contr.png)
 
 Wir können aus dieser Tabelle folgende Informationen entnehmen:
 
-1. Die Notation der Normalmode kann abgeleitet werden: z.b bei 1751 $\text{cm}^{-1}$ handelt es sich um die Biegeschwingung $\delta_{ip}$ da die in-plane Winkelkoordinate $\phi$ (H1,O,H2) den höchsten Beitrag von 98.5 % hat.
+1. Die Notation der Normalmode kann abgeleitet werden: z. B. bei 1751 $\text{cm}^{-1}$ handelt es sich um die Biegeschwingung $\delta_{ip}$ da die in-plane Winkelkoordinate $\phi$ (H1,O,H2) den höchsten Beitrag von 98.5 % hat.
 2. Man kann zudem stark delokalisierte Schwingungsmoden identifizieren: diese weisen beispielsweise mehrere kleine Beiträge von verschiedenen internen Koordinaten auf.
 
 
 ### Aufgaben:
 
-+ Verwende `Nomodeco`um die Normalmodenzerlegung auf ein Molekül deiner Reaktion durchzuführen. Wie viele interne Koordinaten wurden generiert? Welches Set wurde dann ausgewählt? Wie hilft dir die Contribution Table bei der physikalischen Interpretation der Schwingungsmoden?
-+ Leite dir aus der Contribution Table und mittels einer Internetrecherche die Notation der jeweiligen Schwingungen ab. Welche Schwingungsmoden kannst du idenfizieren? In welchen Frequenzbereichen liegen diese?
++ Verwende `Nomodeco`, um die Normalmodenzerlegung auf ein Molekül deiner Reaktion durchzuführen. Wie viele interne Koordinaten wurden generiert? Welches Set wurde dann ausgewählt? Wie hilft dir die Contribution Table bei der physikalischen Interpretation der Schwingungsmoden?
++ Leite dir aus der Contribution Table und mittels einer Internetrecherche die Notation der jeweiligen Schwingungen ab. Welche Schwingungsmoden kannst du identifizieren? In welchen Frequenzbereichen liegen diese?
 + Siehst du einen Effekt der Geometrie und Symmetrie des Moleküls in der Contribution Table?
 + Wenn dein Molekül H-Atome enthält, kannst du auch eine Deuterierung durchführen. Wie ändert sich die Contribution Table? Wie ändern sich die Schwingungsfrequenzen?
 

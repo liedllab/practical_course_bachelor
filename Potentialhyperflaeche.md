@@ -10,27 +10,29 @@ MathJax = {
 
 ## Potentialhyperfläche
 
-Wie bereits in der Aufgabe zur Frequenzberechnung beschrieben entspricht jede geometrische Anordnung eines Moleküls mit Kernkoordinaten $R$ einen Punkt auf einer Potentialhyperfläche $V(R)$
+Wie bereits in der Aufgabe zur Frequenzberechnung beschrieben, entspricht jede geometrische Anordnung eines Moleküls mit Kernkoordinaten $R$ einem Punkt auf einer Potentialhyperfläche $V(R)$. In atomaren Einheiten gilt:
 
 $$V(R) = \sum_{A=1}^N \sum_{B>A}^N \frac{Z_A Z_B}{|R_A - R_B|} + E_{el}(R)$$
 
-Diese potentielle Energie $V(R)$ besteht aus der Wechselwirkung der Kerne untereinander und aus der Wechselwirkung mit den Elektronen $E_{el}(R)$, welche durch die elektronische Schrödingergleichung bestimmt wird. Für ein Molekül mit $N$ Kernen ist diese Potentialhyperfläche eine Funktion in einem $3N$-dimensionalen Raum. Da jedoch Translation und Rotation invariant in Bezug auf die potentielle Energie sind, reduziert sich die Anzahl der Freiheitsgrade um 6 (bzw. 5 für lineare Moleküle). Somit hat ein Molekül mit $N$ Atomen $3N-6$ innere Freiheitsgrade die die Form der Potentialhyperfläche bestimmen. In der folgenden Abbildung ist eine schematische Darstellung einer solchen Hyperfläche ersichtlich.
+Diese potentielle Energie $V(R)$ besteht aus der Kern-Kern-Abstoßung und der elektronischen Energie $E_{el}(R)$. Letztere enthält die kinetische Energie der Elektronen sowie die Elektron-Kern- und Elektron-Elektron-Wechselwirkungen und wird durch die elektronische Schrödingergleichung bestimmt. Für ein Molekül mit $N$ Kernen ist diese Potentialhyperfläche eine Funktion in einem $3N$-dimensionalen Raum. Da die potentielle Energie bei Translation und Rotation des gesamten Moleküls invariant bleibt, reduziert sich die Anzahl der inneren Freiheitsgrade auf $3N-6$ (bzw. $3N-5$ für lineare Moleküle). In der folgenden Abbildung ist eine schematische Darstellung einer solchen Hyperfläche ersichtlich.
 
 ![Potentielle Energiehyperfläche entnommen von https://chem.libretexts.org/Bookshelves/Organic_Chemistry/Intermediate_Physical_Organic_%28Morsch%29/03%3A_Chemical_Thermodynamics/3.03%3A_Describing_a_Reaction_-_Energy_Diagrams_and_Transition_States/3.3.02%3A_The_Potential-Energy_Surface_Can_Be_Calculated_Using_Quantum_Mechanics](figures/image-1.png)
 
-Chemisch interessant sind Punkte an welchen die erste Ableitung der potentiellen Energie für jede beliebige Kernkoordinate $R_A$ null ist (Gradient). Diese Punkte werden allgemein als stationäre Punkte bezeichnet und können Minima, Sattelpunkte oder Maxima sein. Die Klassifikation dieser stationären Punkte erfolgt über die Matrix der zweiten Ableitungen der potentiellen Energie, die sogenannte Hesse-Matrix $H$ mit den Elementen:
+Chemisch interessant sind Punkte, an welchen die erste Ableitung der potentiellen Energie für jede beliebige Kernkoordinate $R_A$ null ist (Gradient). Diese Punkte werden allgemein als stationäre Punkte bezeichnet und können Minima, Sattelpunkte oder Maxima sein. Die Klassifikation dieser stationären Punkte erfolgt über die Matrix der zweiten Ableitungen der potentiellen Energie, die sogenannte Hesse-Matrix $H$ mit den Elementen:
 
 $$H_{ij} = \frac{\partial^2 V}{\partial R_i \partial R_j}$$
 
-+ Ist die Hesse-Matrix positiv definit, so handelt es sich um ein Minimum (alle Eigenwerte sind positiv).
-+ Ist die Hesse-Matrix negativ definit, so handelt es sich um ein Maximum (alle Eigenwerte sind negativ).
-+ Hat die Hesse-Matrix sowohl positive als auch negative Eigenwerte, so handelt es sich um einen Sattelpunkt.
+Für die Klassifikation eines Moleküls werden Translationen und Rotationen entfernt und nur die inneren Freiheitsgrade betrachtet:
+
++ Ist die Hesse-Matrix in diesem Raum positiv definit, so handelt es sich um ein Minimum (alle Eigenwerte sind positiv).
++ Ist sie negativ definit, so handelt es sich um ein Maximum (alle Eigenwerte sind negativ).
++ Hat sie sowohl positive als auch negative Eigenwerte, so handelt es sich um einen Sattelpunkt.
 
 In der folgenden Aufgabe wird also die Potentialhyperfläche in einer Dimension untersucht.
 
 ## Bindungsscan in Orca
 
-In Orca ist es möglich durch den Relaxed Surface Scan eine Koordinate zu varrieren während alle anderen Koordinaten relaxiert bleiben. Der folgende Inputfile zeigt ein Beispiel für einen solchen Scan entlang der O-O Bindung in einem $O_2$ Molekül:
+In Orca ist es möglich, durch den Relaxed Surface Scan eine Koordinate zu variieren, während alle anderen Koordinaten optimiert werden. Das folgende Input-File zeigt ein Beispiel für einen solchen Scan entlang der O-O-Bindung in einem $O_2$-Molekül:
 
 ```text
 ! MP2 6-311G(d,p) OPT
@@ -47,7 +49,7 @@ end
 *
 ```
 
-Es wird also die $MP2$ Methode mit einen 6-311G(d,p) Basisatz verwendet. Man gibt das Keyword `OPT` an und variiert dann im Optionsblock `%geom Scan` die Bindungslänge zwischen Atom 0 und Atom 1 von $2.224\,\text{\AA}$ bis $0.7240\,\text{\AA}$ in 150 Schritten. Man erhält nun in jedem Schritt einen `.xyz` File der jeweiligen Struktur (welcher auch den Wert für die Energie enthält). Im Output-FIle findet man am Ende zusammenfassend die Ergebnisse dieses Scans.
+Es wird also die MP2-Methode mit einem 6-311G(d,p)-Basissatz verwendet. Man gibt das Keyword `OPT` an und variiert dann im Optionsblock `%geom Scan` die Bindungslänge zwischen Atom 0 und Atom 1 von $2.224\,\text{\AA}$ bis $0.7240\,\text{\AA}$ an 150 Scanpunkten. Man erhält nun in jedem Schritt eine `.xyz`-Datei der jeweiligen Struktur (welche auch den Wert für die Energie enthält). Im Output-File findet man am Ende zusammenfassend die Ergebnisse dieses Scans.
 
 ```text
 ----------------------------
@@ -64,20 +66,20 @@ The Calculated Surface using the MP2 energy
     ...
 ``` 
 
-Für die weitere Analyse kann man den `.relaxedscan(methode).dat` File verwenden, welcher in der ersten Spalte die varrierte Koordinate und in der zweiten Spalte die potentielle Energie enthält.
+Für die weitere Analyse kann man den `.relaxedscan(methode).dat` File verwenden, welcher in der ersten Spalte die variierte Koordinate und in der zweiten Spalte die potentielle Energie enthält.
 
 ### Beispiel zur Klassifikation stationärer Punkte
 
-Wir betrachten im folgenden die Funktion $f(x,y) = 3x^2 + y^2$. Diese ist eine Funktion mit zwei Variablen und man kann sich die Frage nach möglichen stationären Punkten stellen. Dazu berechnen wir zuerst den Gradienten:
+Wir betrachten im Folgenden die Funktion $f(x,y) = 3x^2 + y^2$. Diese ist eine Funktion mit zwei Variablen und man kann sich die Frage nach möglichen stationären Punkten stellen. Dazu berechnen wir zuerst den Gradienten:
 
 + $\frac{\partial f}{\partial x} = 6x$
 + $\frac{\partial f}{\partial y} = 2y$
 
 Durch Nullsetzen des Gradienten erhalten wir den einzigen stationären Punkt bei $(x,y) = (0,0)$. Um die Natur dieses stationären Punktes zu bestimmen, berechnen wir die Hesse-Matrix:
 
-$$H_f(x,y)  = \begin{pmatrix}\frac{\partial^2 f}{\partial x^2} & \frac{\partial^2 f}{\partial x \partial y} \\\\ \frac{\partial^2 f}{\partial y \partial x} & \frac{\partial^2 f}{\partial y^2} \end{pmatrix} = \begin{pmatrix}6 & 0 \\\\ 0 & 2 \end{pmatrix}$$
+$$H_f(x,y)  = \begin{pmatrix}\frac{\partial^2 f}{\partial x^2} & \frac{\partial^2 f}{\partial x \partial y} \\ \frac{\partial^2 f}{\partial y \partial x} & \frac{\partial^2 f}{\partial y^2} \end{pmatrix} = \begin{pmatrix}6 & 0 \\ 0 & 2 \end{pmatrix}$$
 
-Man sieht sofort das die einzigen Eigenwerte dieser Matrix $6$ und $2$ sind. Somit ist die Hesse-Matrix positiv definit und der stationäre Punkt bei $(0,0)$ ein Minimum.
+Man sieht sofort, dass die einzigen Eigenwerte dieser Matrix $6$ und $2$ sind. Somit ist die Hesse-Matrix positiv definit und der stationäre Punkt bei $(0,0)$ ein Minimum.
 
 Dieses Problem kann man auch sehr leicht in Python visualisieren:
 
@@ -99,19 +101,19 @@ ax.set_ylabel('Y')
 ax.set_zlabel('f(X,Y)')
 ax.legend()
 plt.show()
-````
+```
 
 Dies gibt uns als Ergebnis die folgende Grafik:
 
 ![alt text](image.png)
 ### Aufgabe 3
-Scannen Sie entlang einer Bindung in einem(!) ihrer Moleküle. Als Methode verwenden Sie bitte MP2 in Kombination mit dem 6-311G(d,p) Basissatz. Beachten Sie dabei das der Scan-Block so eingestellt werden muss, dass tatsächlich auch durch das Minimum gescannt wird. Zur Auswertung soll die harmonische Frequenz dieser "Pseudo-Schwingung" anhand eines Parabelfits bestimmt werden. Dabei kann die harmonische Kraftkonstante über folgenden Zusammenhang aus dem Fit bestimmt werden:
+Scannen Sie entlang einer Bindung in einem(!) Ihrer Moleküle. Als Methode verwenden Sie bitte MP2 in Kombination mit dem 6-311G(d,p) Basissatz. Beachten Sie dabei, dass der Scan-Block so eingestellt werden muss, dass tatsächlich auch durch das Minimum gescannt wird. Zur Auswertung soll die harmonische Frequenz dieser "Pseudo-Schwingung" anhand eines Parabelfits bestimmt werden. Dabei kann die harmonische Kraftkonstante über folgenden Zusammenhang aus dem Fit bestimmt werden:
 
-$V(r)= \frac{1}{2}k \cdot(r-r_0)²$
+$V(r)=V(r_0) + \frac{1}{2}k \cdot(r-r_0)^2$
 
 Diese kann im Anschluss in eine Schwingungsfrequenz in cm <sup>-1</sup> umgerechnet und mit experimentellen Daten sowie den harmonischen Frequenzen aus der Frequenzrechnung verglichen werden.
 
-Für den Fit wird es im Laufe des Praktikums einen Code-along Tag geben, wo Ihnen das Fitten von Funktion an sich, wie auch die Verwendung von Python und Jupyter-Notebooks etwas näher gebracht wird.
+Für den Fit wird es im Laufe des Praktikums einen Code-along Tag geben, wo Ihnen das Fitten von Funktionen an sich, wie auch die Verwendung von Python und Jupyter-Notebooks etwas näher gebracht wird.
 
 Grundsätzlich können Sie den Fit aber durchführen wie Sie wollen (Excel, Origin, Python, Julia, R, etc...).
 

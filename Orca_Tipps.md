@@ -26,9 +26,9 @@ O  0.0  0.0  1.13
 *
 ```
 
-In einem Orca-Input File werden die Keywords mit einem `!` eingeleitet. Dort kann man dann beispielsweise die Methode, den Basisatz und verschiedene Algorithmen wie Geometrieoptimierung oder Frequenzberechnung angeben.
+In einem Orca-Input File werden die Keywords mit einem `!` eingeleitet. Dort kann man dann beispielsweise die Methode, den Basissatz und verschiedene Algorithmen wie Geometrieoptimierung oder Frequenzberechnung angeben.
 
-Mittels `%` und `end` können spezifische Optionen für verschiedene Module angebeben werden. So wird im obigen Biespiel die SCF-Konvergenz auf "tight" gesetzt. Man kann in einem Inputfile Kommentare mit dem `#` Zeichen einfügen.
+Mittels `%` und `end` können spezifische Optionen für verschiedene Module angegeben werden. So wird im obigen Beispiel die SCF-Konvergenz auf "tight" gesetzt. Man kann in einem Inputfile Kommentare mit dem `#` Zeichen einfügen.
 
 ```text
 # Dies ist ein Kommentar im Inputfile
@@ -43,7 +43,7 @@ Man hat die Möglichkeit folgende Blöcke mit `%` zu verwenden:
 + `%basis` - Definition von Basissätzen
 
 
-## Überblick über die wichtigsten Methoden und und Runtypes
+## Überblick über die wichtigsten Methoden und Runtypes
 
 Folgende Aufzählung gibt einen Überblick über die wichtigsten Keywords welche mit `!` angegeben werden können:
 
@@ -59,9 +59,9 @@ Folgende Aufzählung gibt einen Überblick über die wichtigsten Keywords welche
 
 ## Koordinaten Input in Orca
 
-Koordinaten können entweder direkt im Input-File angegeben werden oder man lädt sie aus einer externen Datei. Man hat sowohl die Möglichkeit kartesische Koordinaten als auch Z-matrizen zu verwenden.
+Koordinaten können entweder direkt im Input-File angegeben werden oder man lädt sie aus einer externen Datei. Man hat sowohl die Möglichkeit kartesische Koordinaten als auch Z-Matrizen zu verwenden.
 
-Die Kartesichen Koordinaten werden im `* xyz` Block angegeben. Dieser Block hat folgende Struktur:
+Die kartesischen Koordinaten werden im `* xyz` Block angegeben. Dieser Block hat folgende Struktur:
 
 ```text
 * xyz Charge Multiplicity
@@ -87,12 +87,12 @@ In Orca kann man mehrere Prozessoren für eine Berechnung verwenden um die Reche
 Mit dieser Option muss man für die Ausführung von Orca den ganzen Pfad zum Programm angeben. Den File-Path bekommt man in Linux durch den Befehl `which orca`. Das Programm kann dann wie folgt gestartet werden:
 
 ```bash
-$ ./full/path/to/orca input.inp > output.out
+/full/path/to/orca input.inp > output.out
 ```
 
-Grundsätzlich sind alle Hauptmodule in Orca parallelisiert. Je nach Methode und Basissatz kann die Skalierung jedoch varrieren. Folgende Abbildung zeigt beispielsweise die Skalierung der Rechenzeit für eine Single-Point Energie Berechnung der Aminosäure Alanin mit der Coupled-Cluster Methode CCSD und dem cc-pVDZ Basissatz.
+Grundsätzlich sind alle Hauptmodule in Orca parallelisiert. Je nach Methode und Basissatz kann die Skalierung jedoch variieren. Folgende Abbildung zeigt beispielsweise die Skalierung der Rechenzeit für eine Single-Point Energie Berechnung der Aminosäure Alanin mit der Coupled-Cluster Methode CCSD und dem cc-pVDZ Basissatz.
 
-![alt text](/figures/image.png)
+![Skalierung einer CCSD-Berechnung](figures/image.png)
 
 ## Global Memory Usage
 
@@ -100,7 +100,7 @@ Einige Module in Orca wie beispielsweise die korrelierten Methoden brauchen eine
 
 ```text 
 %MaxCore 4000
-````
+```
 
 Dies setzt zum Beispiel ein Limit von 4000 MB pro Prozessor.
 

@@ -7,9 +7,9 @@ MathJax = {
 </script>
 <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 
-## Quantenmechanik Teil
+## Quantenmechanik-Teil
 
-Jedem Praktikumsteilnehmer wird in diesem Teil eine Reaktion zugewiesen, welche im Verlauf des Praktikums näher untersucht wird. Dazu werden verschiedene Quantenchemische-Rechnungen und Methoden angewandt, um Eigenschaften der Moleküle zu bestimmen.
+Jedem Praktikumsteilnehmer wird in diesem Teil eine Reaktion zugewiesen, welche im Verlauf des Praktikums näher untersucht wird. Dazu werden verschiedene quantenchemische Rechnungen und Methoden angewandt, um Eigenschaften der Moleküle zu bestimmen.
 
 
 + **Aufgabe 1** [Optimierung der Molekülgeometrie](Optimierung.html)
@@ -55,25 +55,25 @@ Im Praktikumsraum können Sie die Orca Rechnung direkt über die Kommandozeile s
 orca water.inp > water.out &
 ```
 
-Der `&` am Ende des Befehls sorgt dafür, dass die Rechnung im Hintergrund läuft und Sie die Kommandozeile weiter verwenden können. Mittels des `>`Symbols wird die Ausgabe der Rechnung in die Datei `water.out` umgeleitet.
+Der `&` am Ende des Befehls sorgt dafür, dass die Rechnung im Hintergrund läuft und Sie die Kommandozeile weiter verwenden können. Mittels des `>`-Symbols wird die Ausgabe der Rechnung in die Datei `water.out` umgeleitet.
 
 
 
 
-**Beispiel einer Single-Point Energieberechung von Wasser**
+**Beispiel einer Single-Point Energieberechnung von Wasser**
 
 Im folgenden Beispiel wird eine Single-Point Energie für ein Wassermolekül mit der HF-SCF-Methode berechnet. Hierbei wird ein 6-311G(d,p) Basissatz verwendet. 
 
-Bei HF-SCF wird die Roothan-Hall Gleichung $\mathbb{F}C = SCE$ iterativ gelöst. Ein typischer SCF-Ablauf hat die folgenden Schritte:
+Bei HF-SCF wird die Roothaan-Hall-Gleichung $\mathbb{F}C = SCE$ iterativ gelöst. Ein typischer SCF-Ablauf hat die folgenden Schritte:
 
-1. Berechnung von Ein- und Zwei-Elektronen Integralen
+1. Berechnung von Ein- und Zwei-Elektronen-Integralen
 2. Erzeugung von MO-Koeffizienten
 3. Aufbau der Dichte-Matrix
 4. Bildung der Fock-Matrix
 5. Diagonalisierung der Fock-Matrix. Als Ergebnis erhält man die Eigenvektoren als neue MO-Koeffizienten und die Eigenwerte als Orbitalenergien.
 6. Bildung der neuen Dichte-Matrix und Iteration bis zur Konvergenz
 
-Orca verwendet das SHARK Integral Package welches die Berechnung von Integralen und den Aufbau der Fock-Matrix übernimmt. 
+Orca verwendet das SHARK Integral Package, welches die Berechnung von Integralen und den Aufbau der Fock-Matrix übernimmt.
 
 ```text
 
@@ -164,7 +164,7 @@ Iteration    Energy (Eh)           Delta-E    RMSDP     MaxDP     MaxGrad    Tim
                *****************************************************
 ``` 
 
-Hier sieht man die einzelnen Iterationen des SCF-Zyklus mit Änderung der Energie dem Gradienten der Dichte-Matrix und der Zeit pro Iteration. DIIS steht hierbei für **Direct Inversion in the Iterative Subspace** und ist eine Extrapolationsmethode um die Konvergenz des SCF-Zyklus zu beschleunigen. Am Ende der Rechnung wird dann die Totale SCF-Energie sowie die einzelnen Beiträge ausgegeben:
+Hier sieht man die einzelnen Iterationen des SCF-Zyklus mit der Änderung der Energie, den Änderungen der Dichte-Matrix und der Zeit pro Iteration. DIIS steht hierbei für **Direct Inversion in the Iterative Subspace** und ist eine Extrapolationsmethode, um die Konvergenz des SCF-Zyklus zu beschleunigen. Am Ende der Rechnung werden dann die totale SCF-Energie sowie die einzelnen Beiträge ausgegeben:
 
 ```text
 ----------------

@@ -94,7 +94,7 @@ Im Output-File findet man die berechneten Wellenzahlen in $\text{cm}^{-1}$ und d
 
 
 
-### Aufgabe 2a
+### Aufgabe 2
 Berechnen Sie die harmonischen Frequenzen für alle Moleküle Ihrer Reaktion und vergleichen Sie diese mit experimentellen Daten. Machen Sie sich bewusst, um welche Art von Experiment es sich handelt. Verwenden Sie für die Berechnung die folgenden Methoden-Basissatz-Kombinationen:
 
   - HF/6-311G(d,p)

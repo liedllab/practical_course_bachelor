@@ -126,9 +126,9 @@ Sobald die Optimierungskriterien erfüllt sind, wird dieser Block im Output-File
 ### Aufgabe 1
 Berechnen Sie optimierte Strukturen für die Moleküle der Ihnen zugewiesenen Reaktion auf den nachfolgenden Levels of Theory:
 
-  - HF/6-311G(d,p)
-  - B3LYP/6-311G(d,p)
-  - MP2/6-311G(d,p)
+  - `HF 6-311G(d,p)` 
+  - `B3LYP 6-311G(d,p)` 
+  - `MP2 6-311G(d,p)`
 
 Vergleichen Sie im Anschluss die internen Koordinaten Ihrer Moleküle mit experimentellen Daten. Stellen Sie sich die Frage, ob dieser Vergleich notwendig ist oder ob eine ähnliche Aussage bereits früher anhand der berechneten Energien getroffen werden kann?
 ### Verständnisfragen
